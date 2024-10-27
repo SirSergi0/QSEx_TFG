@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  27 OCT 2024 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  27 OCT 2024 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**Notes.tex
-(./Notes.tex
+**Manuscript.tex
+(./Manuscript.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -881,8 +881,9 @@ Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
 \c@reflection=\count350
 \c@PyPackage=\count351
 \c@book=\count352
- (./Notes.aux)
-\openout1 = `Notes.aux'.
+
+(./Manuscript.aux)
+\openout1 = `Manuscript.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
@@ -906,6 +907,7 @@ LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
 LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -965,9 +967,9 @@ e
 \c@lstlisting=\count359
 Package hyperref Info: Link coloring OFF on input line 82.
 
-(./Notes.out) (./Notes.out)
+(./Manuscript.out) (./Manuscript.out)
 \@outlinefile=\write4
-\openout4 = `Notes.out'.
+\openout4 = `Manuscript.out'.
 
 <GeneralSources/UABLogo.png, id=11, 392.12303pt x 138.01239pt>
 File: GeneralSources/UABLogo.png Graphic file (type png)
@@ -1006,35 +1008,51 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.130 \newpage
-               [1] (./Notes.bbl) [2]
+l.126 \begin{definition}\lipsum\cite
+                                    {Bandyopadhyay2014} [1]
+
+Package natbib Warning: Citation `Bandyopadhyay2014' on page 2 undefined on inp
+ut line 126.
+
+[2]
+No file Manuscript.bbl.
+
+Package natbib Warning: There were undefined citations.
+
 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Notes.aux)
+(./Manuscript.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `Notes.out' has not changed.
-(rerunfilecheck)             Checksum: 28F845A9BC69495C49CED7228B986493;98.
+
+
+Package rerunfilecheck Warning: File `Manuscript.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Manuscript.out':
+(rerunfilecheck)             Before: 28F845A9BC69495C49CED7228B986493;98
+(rerunfilecheck)             After:  11FE03584FB351472B51DB4E41CA6717;103.
  ) 
 Here is how much of TeX's memory you used:
- 26273 strings out of 474116
- 478603 string characters out of 5743682
- 1931187 words of memory out of 5000000
- 48166 multiletter control sequences out of 15000+600000
+ 26260 strings out of 474116
+ 478461 string characters out of 5743682
+ 1941187 words of memory out of 5000000
+ 48158 multiletter control sequences out of 15000+600000
  569579 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,101p,542b,474s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,101p,547b,779s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Notes.pdf (3 pages, 78364 bytes).
+Output written on Manuscript.pdf (3 pages, 82916 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
+ 57 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
+ 5 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
