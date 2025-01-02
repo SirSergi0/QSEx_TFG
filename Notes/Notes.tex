@@ -123,7 +123,59 @@
 [
 \section{Definitions}
 ]
-\begin{definition}Yey\cite{Bandyopadhyay2014}
+\begin{definition}
+\textbf{Completely positive map}: "Let $ A $ and $ B $ be C*-algebras. A linear map $ \phi: A \to B $ is called a \textit{positive map} if $ \phi $ maps positive elements to positive elements:
+\begin{align}
+a \geq 0 \implies \phi(a) \geq 0.
+\end{align}
+
+Any linear map $ \phi: A \to B $ induces another map
+\begin{align}
+\mathrm{id} \otimes \phi : \mathbb{C}^{k \times k} \otimes A \to \mathbb{C}^{k \times k} \otimes B
+\end{align}
+in a natural way. If $ \mathbb{C}^{k \times k} \otimes A $ is identified with the C*-algebra $ A^{k \times k} $ of $ k \times k $-matrices with entries in $ A $, then $ \mathrm{id} \otimes \phi $ acts as
+\begin{align}
+\begin{pmatrix}
+a_{11} & \cdots & a_{1k} \\
+\vdots & \ddots & \vdots \\
+a_{k1} & \cdots & a_{kk}
+\end{pmatrix}
+\mapsto
+\begin{pmatrix}
+\phi(a_{11}) & \cdots & \phi(a_{1k}) \\
+\vdots & \ddots & \vdots \\
+\phi(a_{k1}) & \cdots & \phi(a_{kk})
+\end{pmatrix}.
+\end{align}
+
+The map $ \phi $ is called \textit{k-positive} if $ \mathrm{id}_{\mathbb{C}^{k \times k}} \otimes \phi $ is a positive map, and \textit{completely positive} if $ \phi $ is $ k $-positive for all $ k $."\cite{completely_positive_map_Wikipedia}
+\end{definition}
+\begin{definition}\textbf{Kraus operator: } 
+\end{definition}
+
+\begin{definition}\label{innerProductDefinition}
+\textbf{Inner product}: Given a vector space $A$ and a field $F$ we define the an inner product $\langle \cdot , \cdot \rangle$ as $\langle \cdot , \cdot \rangle:A\times A\rightarrow F$ that satisfies the following properties. Given $x,y,z\in A$ and $\lambda,\mu\in F$:
+\begin{enumerate}
+\item Conjugate symmetry: $\langle x,y\rangle=(\langle y,x\rangle)^*$.
+\item Linearity: $\langle \lambda x+\mu y, z\rangle=\lambda\langle  x, z\rangle+\mu\langle  y, z\rangle$
+\item Positive-definiteness: $\langle x,x\rangle>0$ if $x\neq0$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\textbf{Inner product space}: Given a vector space $A$ and a field $F$ we define the  inner product space as the duple $(A,\langle \cdot , \cdot \rangle)$ such that  $\langle \cdot , \cdot \rangle:A\times A\rightarrow F$ is an inner product.
+\end{definition}
+
+\begin{definition}
+\textbf{Gram matrix}: Given a vector space $A$, a field $F$ , a set of vectors $\{v_i\}_{i=0}^n\subset A$ and an inner product space such that  $\langle \cdot , \cdot \rangle:A\times A\rightarrow F$  the Gram matrix $G$ is defined as the matrix $G\in F^{n\times n}$ whose entries are $g_{i,j}=\langle v_i,v_j\rangle$ i.e,
+\begin{align}
+G=\begin{pmatrix}
+\langle v_1,v_1\rangle & \hdots & \langle v_1,v_n\rangle\\
+\vdots & \ddots & \vdots\\
+\langle v_n,v_1\rangle & \hdots & \langle v_n,v_n\rangle
+\end{pmatrix}.
+\end{align}
+Due to the first property of the inner product definition \ref{innerProductDefinition} it is immediate that $G^\dagger =G$ in other word G is hemitian (trivial proof).
 \end{definition}
 
 \end{multicols}
