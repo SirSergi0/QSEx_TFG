@@ -11,17 +11,27 @@ import QSExSetUp
 import picos
 import numpy as np
 
-NumberOfMatrices       = 10
-MatrixDimension        = 3
-RandomConditions       = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension)
+NumberOfMatrices = 4 
+MatrixDimension  = 3
+GenerationMethod = 'Random'
+Overlap          = 0
 
-print(RandomConditions)
+Conditions = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,GenerationMethod, Overlap = Overlap)
 
-Solution = QSExSetUp.SDPSolver.SolveSDP(RandomConditions)
+print(Conditions)
 
-print("The given problem has been", Solution['SDPSolution'])
+DensityMatrices = Conditions.getDesityMatrices()
 
-print("The POVMs found are:\n")
+for iMatix in range(len(DensityMatrices)):
+    print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
+
+Solution = QSExSetUp.SDPSolver.SolveSDP(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", round(Solution['SDPSolution'],4))
+
+print("The found POVMs are:\n")
 
 for iPOVM in range(len(Solution['POVMs'])):
     print(f"POVM_{iPOVM}:\n",Solution['POVMs'][iPOVM])

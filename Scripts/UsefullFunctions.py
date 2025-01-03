@@ -39,4 +39,16 @@ def RandomSetOfProbabilities (NumberOfMatrices):
     priorProbabilities /= sum(priorProbabilities)
     return priorProbabilities
 
+def GrupGeneratedDensityMatrices (NumberOfMatrices, MatrixDimension, Overlap):
+    if not isinstance(MatrixDimension,int):
+        raise TypeError("The given MatrixDimension must be an Integer")
+    if not isinstance(NumberOfMatrices,int):
+        raise TypeError("The given NumberOfMatices must be an Integer")
+    def GroupGenerateDensityMatrix(Dimension, Overlap):
+        return picos.Constant([[1 if iDimension == jDimension else (Overlap if iDimension < jDimension else Overlap.conjugate()) for jDimension in range(MatrixDimension)]for iDimension in range(MatrixDimension)])
+    return [GroupGenerateDensityMatrix(MatrixDimension, Overlap) for iDensityMatrix in range(NumberOfMatrices)]
 
+def SetOfEqualProbabilities (NumberOfMatrices):
+    if not isinstance(NumberOfMatrices,int):
+        raise TypeError("The given NumberOfMatices must be an Integer")
+    return np.array([1/NumberOfMatrices for iMatrix in range (NumberOfMatrices)])
