@@ -1,3 +1,9 @@
 # Scripts functionalities
-## Main.py
-Link all the files and store the hole Machine Learning Process. This will be the main script file.
+## QSExSetUp.py
+Store all the utilities of the project: Funcitons, class definitions.
+
+## DensityMatricesAndPriorsClass.py
+Defining the DensityMaticesAndPriors class 
+
+## UsefullFuncitions.py
+Store diverse usefull functions (although sound redundandt)

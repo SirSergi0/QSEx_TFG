@@ -9,35 +9,15 @@
 import numpy
 import picos
 
-# defining sigma_y
-sigma_y=picos.Constant([[0, -1j],[1j,0]])
-
-# Show sigma_y
-print("Sigma_y = ",sigma_y)
-
-# print sigma_y dagger,
-print("Sigma_y dagger = ",sigma_y.H)
-
-#Creating a function that tells us weather a matrix is hermitian or not 
-def Hermitian(matrix):
-    return numpy.allclose(matrix.value, matrix.H.value)
-
-# Is 'sigma_y' hermitian
-print("Is sigma_y hermitian? ", Hermitian(sigma_y))
-
 # Lets create an hermitian we start by defining a non hermitian matrix '_P'
 _P = picos.Constant([
 [ 1 -1j, 2 +2j, 1 ],
 [ 3j, -2j, -1 -1j],
 [ 1 +2j, -0.5+1j, 1.5 ]])
 
-print("Is '_P' hermitian? ", Hermitian(_P))
-
 # now we construct P as _P*_P^dagger which ensures that P is hermitian
 
 P = (_P*_P.H).renamed("P")
-
-print("Is 'P' hermitian? ", Hermitian(P))
 
 # We do the same procedure with a Q matrix
 
@@ -47,11 +27,6 @@ _Q = picos.Constant([
 [ 1 +2j, -1 +1j, 1 +4j]])
 Q = (_Q*_Q.H).renamed("Q")
 
-print("Is '_Q' hermitian? ", Hermitian(_P))
-
-print("Is 'Q' hermitian? ", Hermitian(P))
-
-"""
 # Define the problem.
 F = picos.Problem()
 Z = picos.ComplexVariable("Z", P.shape)
@@ -71,4 +46,3 @@ S,U = numpy.linalg.eig(QQ)
 sqQ = U * numpy.diag([s**0.5 for s in S]) * U.H # Square root of Q.
 Fnp = sum(numpy.linalg.svd(sqP * sqQ)[1]) # Trace-norm of sqrt(P)·sqrt(Q).
 print("Fidelity F(P,Q) computed by NumPy:", round(Fnp, 4))
-"""
