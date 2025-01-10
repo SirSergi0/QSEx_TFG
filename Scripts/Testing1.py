@@ -11,12 +11,12 @@ import QSExSetUp
 import picos
 import numpy as np
 
-NumberOfMatrices = 4 
-MatrixDimension  = 3
-GenerationMethod = 'Random'
-Overlap          = 0
+NumberOfMatrices = 3
+MatrixDimension  = 2
+MatrixGenerationMethod = "Random"
+ProbabliltiesGenerationMethod = "Equal"
 
-Conditions = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,GenerationMethod, Overlap = Overlap)
+Conditions = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod)
 
 print(Conditions)
 
@@ -33,5 +33,10 @@ print("The success probability is: ", round(Solution['SDPSolution'],4))
 
 print("The found POVMs are:\n")
 
+# POVMsum = picos.Constant([[0 for iDimension in range(MatrixDimension)] for jDimension in range(MatrixDimension)])
+
 for iPOVM in range(len(Solution['POVMs'])):
+    # POVMsum +=Solution['POVMs'][iPOVM]
     print(f"POVM_{iPOVM}:\n",Solution['POVMs'][iPOVM])
+
+# print("POVMs Sum:\n",POVMsum)

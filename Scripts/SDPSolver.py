@@ -29,7 +29,7 @@ def SolveSDP(Conditions):
     SuccessProbability = 0
 
     for iPOVM in range(NumberOfMatrices):
-        SuccessProbability += MyPriorsPropbabilities[iPOVM]*picos.trace(POVMlist[iPOVM]*MyPriorsPropbabilities[iPOVM])
+        SuccessProbability += MyPriorsPropbabilities[iPOVM]*picos.trace(POVMlist[iPOVM]*MyDenisityMatrices[iPOVM])
 
     MySDP.set_objective("max", SuccessProbability)
 

@@ -9,6 +9,7 @@
 
 import numpy as np 
 import picos
+import qiskit
 
 def Hermitian(matrix, SilentMode = True):
     if not isinstance(matrix,(picos.expressions.exp_affine.AffineExpression,
@@ -20,35 +21,50 @@ def Hermitian(matrix, SilentMode = True):
     if not SilentMode : print("The matrix is NOT hermitian")
     return False
 
-def RandomSetOfDensityMatrices (NumberOfMatrices, MatrixDimension):
+def SetOfRandomDensityMatrices (NumberOfMatrices, MatrixDimension):
     if not isinstance(MatrixDimension,int):
         raise TypeError("The given MatrixDimension must be an Integer")
     if not isinstance(NumberOfMatrices,int):
         raise TypeError("The given NumberOfMatices must be an Integer")
     def RandomDensityMatrix(Dimension):
-        NonHemitianMatix = picos.Constant([[np.random.rand()+1j*np.random.rand() for jDimension in range(Dimension)] 
-                                            for iDimension in range(Dimension)])
-        HermitianMatix   = NonHemitianMatix.H*NonHemitianMatix
-        return HermitianMatix/picos.trace(HermitianMatix)
+        return picos.Constant(qiskit.quantum_info.random_density_matrix(Dimension).data)
     return [RandomDensityMatrix(MatrixDimension) for iDensityMatrix in range(NumberOfMatrices)]
 
-def RandomSetOfProbabilities (NumberOfMatrices):
+def SetOfRandomProbabilities (NumberOfMatrices):
     if not isinstance(NumberOfMatrices,int):
         raise TypeError("The given NumberOfMatices must be an Integer")
     priorProbabilities = np.random.rand(NumberOfMatrices)
     priorProbabilities /= sum(priorProbabilities)
     return priorProbabilities
 
-def GrupGeneratedDensityMatrices (NumberOfMatrices, MatrixDimension, Overlap):
-    if not isinstance(MatrixDimension,int):
-        raise TypeError("The given MatrixDimension must be an Integer")
-    if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
-    def GroupGenerateDensityMatrix(Dimension, Overlap):
-        return picos.Constant([[1 if iDimension == jDimension else (Overlap if iDimension < jDimension else Overlap.conjugate()) for jDimension in range(MatrixDimension)]for iDimension in range(MatrixDimension)])
-    return [GroupGenerateDensityMatrix(MatrixDimension, Overlap) for iDensityMatrix in range(NumberOfMatrices)]
-
 def SetOfEqualProbabilities (NumberOfMatrices):
     if not isinstance(NumberOfMatrices,int):
         raise TypeError("The given NumberOfMatices must be an Integer")
     return np.array([1/NumberOfMatrices for iMatrix in range (NumberOfMatrices)])
+
+def SetOfMatrices (MatrixMethod, NumberOfMatrices, MatrixDimension):
+    if not isinstance(MatrixDimension,int):
+        raise TypeError("The given MatrixDimension must be an Integer")
+    if not isinstance(NumberOfMatrices,int):
+        raise TypeError("The given NumberOfMatices must be an Integer")
+    if not isinstance(MatrixMethod, str):
+        raise TypeError("The given MatrixMethod must be a string")
+    if not MatrixMethod in ["Random"]:
+        raise ValueError("The given MatrixMethod is not a valid method")
+    if MatrixMethod == "Random":
+        return SetOfRandomDensityMatrices(NumberOfMatrices,MatrixDimension)
+    raise ValueError("The SetOfMatrices function has not worked")
+
+def SetOfProbabilities (ProbabilitiesMethod, NumberOfMatrices):
+    if not isinstance(NumberOfMatrices,int):
+        raise TypeError("The given NumberOfMatices must be an Integer")
+    if not isinstance(ProbabilitiesMethod, str):
+        raise TypeError("The given Method must be a string")
+    if not ProbabilitiesMethod in ["Random","Equal"]:
+        raise ValueError("The given ProbabilitiesMethod is not a valid method")
+    if ProbabilitiesMethod == "Random":
+        return SetOfRandomProbabilities(NumberOfMatrices)
+    if ProbabilitiesMethod == "Equal":
+        return SetOfEqualProbabilities(NumberOfMatrices)
+    raise ValueError("The SetOfMatrices function has not worked")
+
