@@ -42,3 +42,25 @@ def SolveSDP(Conditions):
     MySDP.solve(solver="cvxopt")
 
     return {'SDPSolution' : MySDP, 'POVMs' : POVMlist}
+
+def SolveSDPDual(Conditions):
+    if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
+        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
+    MyDensityMatrices     = Conditions.getDesityMatrices()
+    MyPriorsPropbabilities = Conditions.getPriorProbabilities()
+    NumberOfMatrices       = Conditions.getNumberOfMatrices()
+
+    MySDP = picos.Problem()
+
+    LagrangeMultiplierY = picos.HermitianVariable("LagrangeMultiplier", MyDensityMatrices[0].shape)
+
+    ErrorProbability = picos.trace(LagrangeMultiplierY)
+
+    MySDP.set_objective("min", ErrorProbability)
+    
+    for iContrain in range(NumberOfMatrices):
+        MySDP.add_constraint(LagrangeMultiplierY - MyPriorsPropbabilities[iContrain]*MyDensityMatrices[iContrain]>>0)
+
+    MySDP.solve(solver="cvxopt")
+
+    return {'SDPSolution' : MySDP }
