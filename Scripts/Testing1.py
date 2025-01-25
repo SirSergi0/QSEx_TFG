@@ -25,7 +25,7 @@ DensityMatrices = Conditions.getDensityMatrices()
 
 for iMatix in range(len(DensityMatrices)):
     print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
-"""
+
 print("------------------------\n\
 Computing the primal SDP\n\
 ------------------------")
@@ -45,7 +45,7 @@ Solution = QSExSetUp.SDPSolver.SolveSDPDual(Conditions)
 print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
-"""
+
 print("----------------------\n\
 Pretty Good Measurement\n\
 -----------------------")
