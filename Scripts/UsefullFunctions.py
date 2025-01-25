@@ -93,3 +93,16 @@ def GramMatrix(NumberOfMatrices, MyDensityMatrices):
             GramRow.append(Overlap(MyDensityMatrices[iMatrix],MyDensityMatrices[jMatrix]))
         GramMatrix.append(GramRow)
     return picos.Constant(GramMatrix)
+
+def GramMatrixWithPriors(NumberOfMatrices, MyDensityMatrices, priorProbabilities):
+    def Overlap (braDenistyMatrix, ketDensityMatrix):
+        braEigenValues, braEigenVectors = np.linalg.eigh(braDenistyMatrix)
+        ketEigenValues, ketEigenVectors = np.linalg.eigh(ketDensityMatrix)
+        return np.vdot(braEigenVectors[:, np.argmax(braEigenValues)], ketEigenVectors[:, np.argmax(ketEigenValues)])
+    GramMatrix = []
+    for iMatrix in range(NumberOfMatrices):
+        GramRow = []
+        for jMatrix in range(NumberOfMatrices):
+            GramRow.append(Overlap(MyDensityMatrices[iMatrix],MyDensityMatrices[jMatrix])*priorProbabilities[iMatrix]*priorProbabilities[jMatrix])
+        GramMatrix.append(GramRow)
+    return picos.Constant(GramMatrix)

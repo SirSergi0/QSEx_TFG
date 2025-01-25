@@ -25,17 +25,19 @@ class DensityMaticesAndPriors:
         self.MatrixDimension                = MatrixDimension
         self.MatrixConstructionMethod       = MatrixConstructionMethod
         self.ProbabilitiesContructionMethod = ProbabilitiesContructionMethod
+        self.PriorProbabilities             = UsefullFunctions.SetOfProbabilities(ProbabilitiesContructionMethod,NumberOfMatrices)
         self.DensityMatrices                = UsefullFunctions.SetOfMatrices(MatrixConstructionMethod, NumberOfMatrices, MatrixDimension)
 
     def to_dict(self):
         return {
             'NumberOfMatrices'               : self.NumberOfMatrices,
             'MatrixDimension'                : self.MatrixDimension,
-            'PriorProbabilities'             : UsefullFunctions.SetOfProbabilities(self.ProbabilitiesContructionMethod,self.NumberOfMatrices),
+            'PriorProbabilities'             : self.PriorProbabilities,
             'DensityMatrices'                : self.DensityMatrices,
             'MatrixConstructionMethod'       : self.MatrixConstructionMethod,
             'ProbabilitiesContructionMethod' : self.ProbabilitiesContructionMethod,
-            'GramMatrix'                     : UsefullFunctions.GramMatrix(self.NumberOfMatrices, self.DensityMatrices)
+            'GramMatrix'                     : UsefullFunctions.GramMatrix(self.NumberOfMatrices, self.DensityMatrices),
+            'GramMatrixWithPriors'           : UsefullFunctions.GramMatrixWithPriors(self.NumberOfMatrices, self.DensityMatrices, self.PriorProbabilities)
         }
     def __getitem__(self, key):
         return self.to_dict()[key]
@@ -54,6 +56,9 @@ class DensityMaticesAndPriors:
 
     def getGramMatrix(self):
         return self.to_dict()['GramMatrix']
+
+    def getGramMatrixWithPriors(self):
+        return self.to_dict()['GramMatrixWithPriors']
 
     def __repr__(self):
         PrintingText = "The working paramaters are:\n"

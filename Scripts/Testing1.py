@@ -50,9 +50,7 @@ print("----------------------\n\
 Pretty Good Measurement\n\
 -----------------------")
 
-GramMatrix = Conditions.getGramMatrix()
-
-GramEigenValues, GraEigenVectors = np.linalg.eigh(GramMatrix)
+GramMatrix = Conditions.getGramMatrixWithPriors()
 
 SquareRoot = picos.Constant(sqrtm(GramMatrix))
 
@@ -62,8 +60,10 @@ sum = 0
 for iElement in SquareRootDiagonal:
     sum += abs(iElement)**2
 
-print(SquareRoot)
+print("The GramMatrix is:\n",GramMatrix)
 
-print(SquareRootDiagonal)
+print("The square of the squareRoot Matrix is:\n", SquareRoot)
 
-print(sum)
+print("Computing G-S^2=0?:\n", GramMatrix-(SquareRoot*SquareRoot))
+
+print("The sum of the diagonalSquare is:", sum)
