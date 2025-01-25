@@ -21,14 +21,25 @@ def Hermitian(matrix, SilentMode = True):
     if not SilentMode : print("The matrix is NOT hermitian")
     return False
 
-def SetOfRandomDensityMatrices (NumberOfMatrices, MatrixDimension):
+def SetOfRandomDensityMatricesMixed(NumberOfMatrices, MatrixDimension):
     if not isinstance(MatrixDimension,int):
         raise TypeError("The given MatrixDimension must be an Integer")
     if not isinstance(NumberOfMatrices,int):
         raise TypeError("The given NumberOfMatices must be an Integer")
-    def RandomDensityMatrix(Dimension):
+    def RandomDensityMatrixMixed(Dimension):
         return picos.Constant(qiskit.quantum_info.random_density_matrix(Dimension).data)
-    return [RandomDensityMatrix(MatrixDimension) for iDensityMatrix in range(NumberOfMatrices)]
+    return [RandomDensityMatrixMixed(MatrixDimension) for iDensityMatrix in range(NumberOfMatrices)]
+
+def SetOfRandomDensityMatricesPure (NumberOfMatrices, MatrixDimension):
+    if not isinstance(MatrixDimension,int):
+        raise TypeError("The given MatrixDimension must be an Integer")
+    if not isinstance(NumberOfMatrices,int):
+        raise TypeError("The given NumberOfMatices must be an Integer")
+    def RandomDensityMatrixPure(Dimension):
+        randomState         = qiskit.quantum_info.random_statevector(Dimension)
+        randomDensityMatrix = np.outer(randomState.data, np.conj(randomState.data))
+        return picos.Constant("randomDensityMatrix",(randomDensityMatrix + randomDensityMatrix.T.conj())/2)
+    return [RandomDensityMatrixPure(MatrixDimension) for iDensityMatrix in range(NumberOfMatrices)]
 
 def SetOfRandomProbabilities (NumberOfMatrices):
     if not isinstance(NumberOfMatrices,int):
@@ -49,10 +60,12 @@ def SetOfMatrices (MatrixMethod, NumberOfMatrices, MatrixDimension):
         raise TypeError("The given NumberOfMatices must be an Integer")
     if not isinstance(MatrixMethod, str):
         raise TypeError("The given MatrixMethod must be a string")
-    if not MatrixMethod in ["Random"]:
+    if not MatrixMethod in ["RandomMixedStates", "RandomPureStates"]:
         raise ValueError("The given MatrixMethod is not a valid method")
-    if MatrixMethod == "Random":
-        return SetOfRandomDensityMatrices(NumberOfMatrices,MatrixDimension)
+    if MatrixMethod == "RandomMixedStates":
+        return SetOfRandomDensityMatricesMixed(NumberOfMatrices,MatrixDimension)
+    if MatrixMethod == "RandomPureStates":
+        return SetOfRandomDensityMatricesPure(NumberOfMatrices, MatrixDimension)
     raise ValueError("The SetOfMatrices function has not worked")
 
 def SetOfProbabilities (ProbabilitiesMethod, NumberOfMatrices):
@@ -68,3 +81,15 @@ def SetOfProbabilities (ProbabilitiesMethod, NumberOfMatrices):
         return SetOfEqualProbabilities(NumberOfMatrices)
     raise ValueError("The SetOfMatrices function has not worked")
 
+def GramMatrix(NumberOfMatrices, MyDensityMatrices):
+    def Overlap (braDenistyMatrix, ketDensityMatrix):
+        braEigenValues, braEigenVectors = np.linalg.eigh(braDenistyMatrix)
+        ketEigenValues, ketEigenVectors = np.linalg.eigh(ketDensityMatrix)
+        return np.vdot(braEigenVectors[:, np.argmax(braEigenValues)], ketEigenVectors[:, np.argmax(ketEigenValues)])
+    GramMatrix = []
+    for iMatrix in range(NumberOfMatrices):
+        GramRow = []
+        for jMatrix in range(NumberOfMatrices):
+            GramRow.append(Overlap(MyDensityMatrices[iMatrix],MyDensityMatrices[jMatrix]))
+        GramMatrix.append(GramRow)
+    return picos.Constant(GramMatrix)

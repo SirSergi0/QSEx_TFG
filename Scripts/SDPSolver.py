@@ -14,7 +14,7 @@ import DensityMatricesAndPriorsClass
 def SolveSDP(Conditions):
     if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
         raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
-    MyDenisityMatrices     = Conditions.getDesityMatrices()
+    MyDensityMatrices      = Conditions.getDensityMatrices()
     MyPriorsPropbabilities = Conditions.getPriorProbabilities()
     NumberOfMatrices       = Conditions.getNumberOfMatrices()
     NumberOfDimensions     = Conditions.getMatrixDimension()
@@ -23,13 +23,13 @@ def SolveSDP(Conditions):
 
     POVMlist = []
     for iPOVM in range(NumberOfMatrices):
-        POVM = picos.HermitianVariable(f"POVM_{iPOVM}", MyDenisityMatrices[iPOVM].shape)
+        POVM = picos.HermitianVariable(f"POVM_{iPOVM}", MyDensityMatrices[iPOVM].shape)
         POVMlist.append(POVM)
 
     SuccessProbability = 0
 
     for iPOVM in range(NumberOfMatrices):
-        SuccessProbability += MyPriorsPropbabilities[iPOVM]*picos.trace(POVMlist[iPOVM]*MyDenisityMatrices[iPOVM])
+        SuccessProbability += MyPriorsPropbabilities[iPOVM]*picos.trace(POVMlist[iPOVM]*MyDensityMatrices[iPOVM])
 
     MySDP.set_objective("max", SuccessProbability)
 
@@ -46,15 +46,13 @@ def SolveSDP(Conditions):
 def SolveSDPDual(Conditions):
     if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
         raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
-    MyDensityMatrices     = Conditions.getDesityMatrices()
+    MyDensityMatrices      = Conditions.getDensityMatrices()
     MyPriorsPropbabilities = Conditions.getPriorProbabilities()
     NumberOfMatrices       = Conditions.getNumberOfMatrices()
 
-    MySDP = picos.Problem()
-
-    LagrangeMultiplierY = picos.HermitianVariable("LagrangeMultiplier", MyDensityMatrices[0].shape)
-
-    ErrorProbability = picos.trace(LagrangeMultiplierY)
+    MySDP                  = picos.Problem()
+    LagrangeMultiplierY    = picos.HermitianVariable("LagrangeMultiplier", MyDensityMatrices[0].shape)
+    ErrorProbability       = picos.trace(LagrangeMultiplierY)
 
     MySDP.set_objective("min", ErrorProbability)
     

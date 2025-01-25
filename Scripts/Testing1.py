@@ -2,7 +2,7 @@
 #                                                                                                      #
 #  Project:  Physics TFG                                                                               #
 #  Author:   Sergio Castañeiras Morales                                                                #
-#  Date:     03/01/2025                                                                                #
+#  Date:     24/01/2025                                                                                #
 #  Purpose:  Testing                                                                                   #
 #                                                                                                      #
 ########################################################################################################
@@ -10,20 +10,25 @@
 import QSExSetUp
 import picos
 import numpy as np
+from scipy.linalg import sqrtm
 
 NumberOfMatrices = 3
 MatrixDimension  = 2
-MatrixGenerationMethod = "Random"
+MatrixGenerationMethod = "RandomPureStates"
 ProbabliltiesGenerationMethod = "Equal"
 
 Conditions = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod)
 
 print(Conditions)
 
-DensityMatrices = Conditions.getDesityMatrices()
+DensityMatrices = Conditions.getDensityMatrices()
 
 for iMatix in range(len(DensityMatrices)):
     print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
+"""
+print("------------------------\n\
+Computing the primal SDP\n\
+------------------------")
 
 Solution = QSExSetUp.SDPSolver.SolveSDP(Conditions)
 
@@ -31,12 +36,34 @@ print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
 
-print("The found POVMs are:\n")
+print("------------------------\n\
+Computing the Dual SDP\n\
+------------------------")
 
-# POVMsum = picos.Constant([[0 for iDimension in range(MatrixDimension)] for jDimension in range(MatrixDimension)])
+Solution = QSExSetUp.SDPSolver.SolveSDPDual(Conditions)
 
-for iPOVM in range(len(Solution['POVMs'])):
-    # POVMsum +=Solution['POVMs'][iPOVM]
-    print(f"POVM_{iPOVM}:\n",Solution['POVMs'][iPOVM])
+print("The given problem has been:\n", Solution['SDPSolution'])
 
-# print("POVMs Sum:\n",POVMsum)
+print("The success probability is: ", round(Solution['SDPSolution'],4))
+"""
+print("----------------------\n\
+Pretty Good Measurement\n\
+-----------------------")
+
+GramMatrix = Conditions.getGramMatrix()
+
+GramEigenValues, GraEigenVectors = np.linalg.eigh(GramMatrix)
+
+SquareRoot = picos.Constant(sqrtm(GramMatrix))
+
+SquareRootDiagonal = np.diagonal(SquareRoot.value)
+
+sum = 0
+for iElement in SquareRootDiagonal:
+    sum += abs(iElement)**2
+
+print(SquareRoot)
+
+print(SquareRootDiagonal)
+
+print(sum)
