@@ -12,16 +12,14 @@ import picos
 import numpy as np
 from scipy.linalg import sqrtm
 
-NumberOfMatrices = 3
-MatrixDimension  = 2
-MatrixGenerationMethod = "RandomPureStates"
+NumberOfMatrices              = 3
+MatrixDimension               = 2
+MatrixGenerationMethod        = "RandomPureStates"
 ProbabliltiesGenerationMethod = "Equal"
-
-Conditions = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod)
+Conditions                    = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod)
+DensityMatrices               = Conditions.getDensityMatrices()
 
 print(Conditions)
-
-DensityMatrices = Conditions.getDensityMatrices()
 
 for iMatix in range(len(DensityMatrices)):
     print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
@@ -50,15 +48,17 @@ print("----------------------\n\
 Pretty Good Measurement\n\
 -----------------------")
 
-GramMatrix = Conditions.getGramMatrixWithPriors()
-
-SquareRoot = picos.Constant(sqrtm(GramMatrix))
-
+GramMatrix         = Conditions.getGramMatrixWithPriors()
+SquareRoot         = picos.Constant(sqrtm(GramMatrix))
 SquareRootDiagonal = np.diagonal(SquareRoot.value)
+
+sumSquare = 0
+for iElement in SquareRootDiagonal:
+    sumSquare += abs(iElement)**2
 
 sum = 0
 for iElement in SquareRootDiagonal:
-    sum += abs(iElement)**2
+    sum += abs(iElement)
 
 print("The GramMatrix is:\n",GramMatrix)
 
@@ -66,4 +66,5 @@ print("The square of the squareRoot Matrix is:\n", SquareRoot)
 
 print("Computing G-S^2=0?:\n", GramMatrix-(SquareRoot*SquareRoot))
 
-print("The sum of the diagonalSquare is:", sum)
+print("The sum of the diagonal is:", sum)
+print("The sum of the diagonalSquare is:", sumSquare)
