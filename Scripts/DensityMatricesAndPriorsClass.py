@@ -12,7 +12,7 @@ import numpy as np
 import picos
 
 class DensityMaticesAndPriors:
-    def __init__(self, NumberOfMatrices, MatrixDimension, MatrixConstructionMethod, ProbabilitiesContructionMethod = "Equal"):
+    def __init__(self, NumberOfMatrices, MatrixDimension, MatrixConstructionMethod, ProbabilitiesContructionMethod = "Equal", seedState = None, involutionalMatrix = None):
         if not isinstance(MatrixDimension,int):
             raise TypeError("The given MatrixDimension must be an Integer")
         if not isinstance(NumberOfMatrices,int):
@@ -26,7 +26,7 @@ class DensityMaticesAndPriors:
         self.MatrixConstructionMethod       = MatrixConstructionMethod
         self.ProbabilitiesContructionMethod = ProbabilitiesContructionMethod
         self.PriorProbabilities             = UsefullFunctions.SetOfProbabilities(ProbabilitiesContructionMethod,NumberOfMatrices)
-        self.DensityMatrices                = UsefullFunctions.SetOfMatrices(MatrixConstructionMethod, NumberOfMatrices, MatrixDimension)
+        self.DensityMatrices                = UsefullFunctions.SetOfMatrices(MatrixConstructionMethod, NumberOfMatrices, MatrixDimension, seedState, involutionalMatrix)
 
     def to_dict(self):
         return {

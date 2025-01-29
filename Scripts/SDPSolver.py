@@ -11,7 +11,7 @@ import picos
 import numpy as np
 import DensityMatricesAndPriorsClass
 
-def SolveSDP(Conditions):
+def SolveSDPMinimumError(Conditions):
     if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
         raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
     MyDensityMatrices      = Conditions.getDensityMatrices()
@@ -43,7 +43,7 @@ def SolveSDP(Conditions):
 
     return {'SDPSolution' : MySDP, 'POVMs' : POVMlist}
 
-def SolveSDPDual(Conditions):
+def SolveSDPDualMinimumError(Conditions):
     if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
         raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
     MyDensityMatrices      = Conditions.getDensityMatrices()
@@ -62,3 +62,5 @@ def SolveSDPDual(Conditions):
     MySDP.solve(solver="cvxopt")
 
     return {'SDPSolution' : MySDP }
+
+

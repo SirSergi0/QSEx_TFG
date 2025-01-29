@@ -21,45 +21,9 @@ sigmaX                        = picos.Constant([[0,1],[1,0]])
 Conditions                    = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod, seedState = initialState, involutionalMatrix = sigmaX)
 DensityMatrices               = Conditions.getDensityMatrices()
 
+print(Conditions)
+
 for iMatix in range(len(DensityMatrices)):
     print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
 
-print("------------------------\n\
-Computing the primal SDP\n\
-------------------------")
 
-Solution = QSExSetUp.SDPSolver.SolveSDPMinimumError(Conditions)
-
-print("The given problem has been:\n", Solution['SDPSolution'])
-
-print("The success probability is: ", round(Solution['SDPSolution'],4))
-
-print("------------------------\n\
-Computing the Dual SDP\n\
-------------------------")
-
-Solution = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
-
-print("The given problem has been:\n", Solution['SDPSolution'])
-
-print("The success probability is: ", round(Solution['SDPSolution'],4))
-
-print("-----------------------\n\
-Pretty Good Measurement\n\
------------------------")
-
-GramMatrix         = Conditions.getGramMatrixWithPriors()
-SquareRoot         = picos.Constant(sqrtm(GramMatrix))
-SquareRootDiagonal = np.diagonal(SquareRoot.value)
-
-sumSquare = 0
-for iElement in SquareRootDiagonal:
-    sumSquare += abs(iElement)**2
-
-print("The GramMatrix is:\n",GramMatrix)
-
-print("The square of the squareRoot Matrix is:\n", SquareRoot)
-
-print("Computing G-S^2=0?:\n", GramMatrix-(SquareRoot*SquareRoot))
-
-print("The sum of the diagonalSquare is:", sumSquare)
