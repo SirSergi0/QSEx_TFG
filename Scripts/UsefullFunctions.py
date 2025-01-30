@@ -95,8 +95,9 @@ def SetOfMatrices (MatrixMethod, NumberOfMatrices, MatrixDimension, seedState, i
         raise TypeError("The given NumberOfMatices must be an Integer")
     if not isinstance(MatrixMethod, str):
         raise TypeError("The given MatrixMethod must be a string")
-    if not MatrixMethod in ["RandomMixedStates", "RandomPureStates", "GroupGeneratedStates"]:
-        raise ValueError("The given MatrixMethod is not a valid method")
+    ValidMethods = ["RandomMixedStates", "RandomPureStates", "GroupGeneratedStates"]
+    if not MatrixMethod in ValidMethods:
+        raise ValueError(f"The given MatrixMethod is not a valid method, the valid methods are: {ValidMethods}")
     if MatrixMethod == "RandomMixedStates":
         return SetOfRandomDensityMatricesMixed(NumberOfMatrices,MatrixDimension)
     if MatrixMethod == "RandomPureStates":
@@ -140,6 +141,6 @@ def GramMatrixWithPriors(NumberOfMatrices, MyDensityMatrices, priorProbabilities
     for iMatrix in range(NumberOfMatrices):
         GramRow = []
         for jMatrix in range(NumberOfMatrices):
-            GramRow.append(Overlap(MyDensityMatrices[iMatrix],MyDensityMatrices[jMatrix])*priorProbabilities[iMatrix]*priorProbabilities[jMatrix])
+            GramRow.append(Overlap(MyDensityMatrices[iMatrix],MyDensityMatrices[jMatrix])*np.sqrt(priorProbabilities[iMatrix])*np.sqrt(priorProbabilities[jMatrix]))
         GramMatrix.append(GramRow)
     return picos.Constant(GramMatrix)

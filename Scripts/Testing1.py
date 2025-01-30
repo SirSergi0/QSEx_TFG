@@ -12,14 +12,16 @@ import picos
 import numpy as np
 from scipy.linalg import sqrtm
 
-NumberOfMatrices              = 3
+NumberOfMatrices              = 5
 MatrixDimension               = 2
 MatrixGenerationMethod        = "GroupGeneratedStates"
 ProbabliltiesGenerationMethod = "Equal"
-initialState                  = picos.Constant([1,0])
+initialState                  = picos.Constant([1/np.sqrt(2),1j/np.sqrt(2)])
 sigmaX                        = picos.Constant([[0,1],[1,0]])
 Conditions                    = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod, seedState = initialState, involutionalMatrix = sigmaX)
 DensityMatrices               = Conditions.getDensityMatrices()
+
+print(Conditions)
 
 for iMatix in range(len(DensityMatrices)):
     print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
@@ -56,10 +58,10 @@ sumSquare = 0
 for iElement in SquareRootDiagonal:
     sumSquare += abs(iElement)**2
 
-print("The GramMatrix is:\n",GramMatrix)
+print("The GramMatrix with priors is         :\n",GramMatrix)
 
 print("The square of the squareRoot Matrix is:\n", SquareRoot)
 
-print("Computing G-S^2=0?:\n", GramMatrix-(SquareRoot*SquareRoot))
+print("Computing G-S^2=0?                    :\n", GramMatrix-(SquareRoot*SquareRoot))
 
-print("The sum of the diagonalSquare is:", sumSquare)
+print("The sum of the diagonalSquare is      :", sumSquare)
