@@ -65,3 +65,15 @@ print("The square of the squareRoot Matrix is:\n", SquareRoot)
 print("Computing G-S^2=0?                    :\n", GramMatrix-(SquareRoot*SquareRoot))
 
 print("The sum of the diagonalSquare is      :", sumSquare)
+
+print("----------------------------\n\
+Computing the Zero Error SDP\n\
+----------------------------")
+
+Solution = QSExSetUp.SDPSolver.SolveSDPZeroError(Conditions)
+
+print("The given problem has been  :\n", Solution['SDPSolution'])
+
+print("The POVMs are               :\n", Solution['POVMs'])
+
+print("Uncertainity probability is :\n", round(Solution['SDPSolution'],4))
