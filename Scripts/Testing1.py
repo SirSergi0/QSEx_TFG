@@ -77,3 +77,8 @@ print("The given problem has been  :\n", Solution['SDPSolution'])
 print("The POVMs are               :\n", Solution['POVMs'])
 
 print("Uncertainity probability is :\n", round(Solution['SDPSolution'],4))
+
+for iElement, iPOVM in enumerate(Solution['POVMs']):
+    print(f"POVM {iElement}:")
+    print(iPOVM)
+
