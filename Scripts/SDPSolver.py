@@ -10,14 +10,17 @@
 import picos
 import numpy as np
 import DensityMatricesAndPriorsClass
+import GramGeneratedStates
 
 def SolveSDPMinimumError(Conditions):
-    if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
-        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
+    if not isinstance(Conditions,(DensityMatricesAndPriorsClass.DensityMaticesAndPriors,GramGeneratedStates.GramGeneratedStatesClass)):
+        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors or GramGeneratedStates.GramGeneratedStatesClass")
     MyDensityMatrices      = Conditions.getDensityMatrices()
     MyPriorsPropbabilities = Conditions.getPriorProbabilities()
     NumberOfMatrices       = Conditions.getNumberOfMatrices()
     NumberOfDimensions     = Conditions.getMatrixDimension()
+    
+    print(Conditions)
 
     MySDP = picos.Problem()
 
@@ -38,14 +41,16 @@ def SolveSDPMinimumError(Conditions):
 
     I = np.eye(NumberOfDimensions) 
     MySDP.add_constraint(sum(POVMlist) == picos.Constant(I))
+    
+    print(MySDP)
 
     MySDP.solve(solver="cvxopt")
 
     return {'SDPSolution' : MySDP, 'POVMs' : POVMlist}
 
 def SolveSDPDualMinimumError(Conditions):
-    if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
-        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
+    if not isinstance(Conditions,(DensityMatricesAndPriorsClass.DensityMaticesAndPriors,GramGeneratedStates.GramGeneratedStatesClass)):
+        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors or GramGeneratedStates.GramGeneratedStatesClass")
     MyDensityMatrices      = Conditions.getDensityMatrices()
     MyPriorsPropbabilities = Conditions.getPriorProbabilities()
     NumberOfMatrices       = Conditions.getNumberOfMatrices()
@@ -64,35 +69,21 @@ def SolveSDPDualMinimumError(Conditions):
     return {'SDPSolution' : MySDP }
 
 def SolveSDPZeroError(Conditions):
-    if not isinstance(Conditions,DensityMatricesAndPriorsClass.DensityMaticesAndPriors):
-        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors")
+    if not isinstance(Conditions,(DensityMatricesAndPriorsClass.DensityMaticesAndPriors,GramGeneratedStates.GramGeneratedStatesClass)):
+        raise TypeError("The given conditions must be a DensityMatricesAndPriorsClass.DensityMaticesAndPriors or GramGeneratedStates.GramGeneratedStatesClass")
     MyDensityMatrices      = Conditions.getDensityMatrices()
     MyPriorsPropbabilities = Conditions.getPriorProbabilities()
     NumberOfMatrices       = Conditions.getNumberOfMatrices()
     NumberOfDimensions     = Conditions.getMatrixDimension()
-
     MySDP                  = picos.Problem()
-    
-    POVMlist = []
-    for iPOVM in range(NumberOfMatrices):
-        POVM = picos.HermitianVariable(f"POVM_{iPOVM}", MyDensityMatrices[iPOVM].shape)
-        POVMlist.append(POVM)
-
+    POVMlist               = MyDensityMatrices
     UncertainPOVM          = picos.HermitianVariable(f"UncertainPOVM", MyDensityMatrices[0].shape)
-
     UncertainProbability   = 0
 
     for iElement in range(NumberOfMatrices):
         UncertainProbability += MyPriorsPropbabilities[iElement]*picos.trace(UncertainPOVM*MyDensityMatrices[iElement])
 
     MySDP.set_objective("min", UncertainProbability)
-
-    I = np.eye(NumberOfDimensions) 
-    MySDP.add_constraint(sum(POVMlist) + UncertainPOVM == picos.Constant(I))
-    
-    for iPOVM in range(NumberOfMatrices):
-        MySDP.add_constraint(picos.trace(MyDensityMatrices[iPOVM] * POVMlist[iPOVM]) == 0)
-        MySDP.add_constraint(POVMlist[iPOVM] >> 0)
 
     MySDP.add_constraint(UncertainPOVM >> 0)
     

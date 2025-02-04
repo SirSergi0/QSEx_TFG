@@ -11,6 +11,7 @@ import numpy as np
 import picos
 import qiskit
 from scipy.linalg import expm
+from scipy.linalg import sqrtm
 
 def Hermitian(matrix, SilentMode = True):
     if not isinstance(matrix,(picos.expressions.exp_affine.AffineExpression,
@@ -38,7 +39,7 @@ def SetOfRandomDensityMatricesMixed(NumberOfMatrices, MatrixDimension):
     if not isinstance(MatrixDimension,int):
         raise TypeError("The given MatrixDimension must be an Integer")
     if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
+        raise TypeError("The given NumberOfMatrices must be an Integer")
     def RandomDensityMatrixMixed(Dimension):
         return picos.Constant(qiskit.quantum_info.random_density_matrix(Dimension).data)
     return [RandomDensityMatrixMixed(MatrixDimension) for iDensityMatrix in range(NumberOfMatrices)]
@@ -47,7 +48,7 @@ def SetOfRandomDensityMatricesPure (NumberOfMatrices, MatrixDimension):
     if not isinstance(MatrixDimension,int):
         raise TypeError("The given MatrixDimension must be an Integer")
     if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
+        raise TypeError("The given NumberOfMatrices must be an Integer")
     def RandomDensityMatrixPure(Dimension):
         randomState         = qiskit.quantum_info.random_statevector(Dimension)
         randomDensityMatrix = np.outer(randomState.data, np.conj(randomState.data))
@@ -78,21 +79,21 @@ def setOfGropGeneratedDensityMatrices(seedState, groupSize, involutionalMatrix):
 
 def SetOfRandomProbabilities (NumberOfMatrices):
     if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
+        raise TypeError("The given NumberOfMatrices must be an Integer")
     priorProbabilities = np.random.rand(NumberOfMatrices)
     priorProbabilities /= sum(priorProbabilities)
     return priorProbabilities
 
 def SetOfEqualProbabilities (NumberOfMatrices):
     if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
+        raise TypeError("The given NumberOfMatrices must be an Integer")
     return np.array([1/NumberOfMatrices for iMatrix in range (NumberOfMatrices)])
 
 def SetOfMatrices (MatrixMethod, NumberOfMatrices, MatrixDimension, seedState, involutionalMatrix):
     if not isinstance(MatrixDimension,int):
         raise TypeError("The given MatrixDimension must be an Integer")
     if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
+        raise TypeError("The given NumberOfMatrices must be an Integer")
     if not isinstance(MatrixMethod, str):
         raise TypeError("The given MatrixMethod must be a string")
     ValidMethods = ["RandomMixedStates", "RandomPureStates", "GroupGeneratedStates"]
@@ -108,7 +109,7 @@ def SetOfMatrices (MatrixMethod, NumberOfMatrices, MatrixDimension, seedState, i
 
 def SetOfProbabilities (ProbabilitiesMethod, NumberOfMatrices):
     if not isinstance(NumberOfMatrices,int):
-        raise TypeError("The given NumberOfMatices must be an Integer")
+        raise TypeError("The given NumberOfMatrices must be an Integer")
     if not isinstance(ProbabilitiesMethod, str):
         raise TypeError("The given Method must be a string")
     if not ProbabilitiesMethod in ["Random","Equal"]:
@@ -144,3 +145,15 @@ def GramMatrixWithPriors(NumberOfMatrices, MyDensityMatrices, priorProbabilities
             GramRow.append(Overlap(MyDensityMatrices[iMatrix],MyDensityMatrices[jMatrix])*np.sqrt(priorProbabilities[iMatrix])*np.sqrt(priorProbabilities[jMatrix]))
         GramMatrix.append(GramRow)
     return picos.Constant(GramMatrix)
+
+def SquareRootMeasurement(NumberOfMatrices, MyDensityMatrices ):
+    return picos.Constant(sqrtm(GramMatrix(NumberOfMatrices,MyDensityMatrices)))
+
+def SquareRootMeasurementSuccessPorbability(NumberOfMatrices, MyDensityMatrices, priorProbabilities):
+    SquareRoot         = picos.Constant(sqrtm(GramMatrixWithPriors(NumberOfMatrices, MyDensityMatrices, priorProbabilities)))
+    SquareRootDiagonal = np.diagonal(SquareRoot.value)
+    sumSquare          = 0
+    for iElement in SquareRootDiagonal: sumSquare += abs(iElement)**2
+    return sumSquare
+
+
