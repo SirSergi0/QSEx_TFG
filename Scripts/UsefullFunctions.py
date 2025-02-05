@@ -72,7 +72,7 @@ def setOfGropGeneratedDensityMatrices(seedState, groupSize, involutionalMatrix):
     def groupGenerateStateDensityMatrix(seedState, groupSize, elementNumber, involutionalMatrix):
         if not isinstance(elementNumber, int): raise TyperError("The given value of the elementNumber must be an integer.")
         if elementNumber%groupSize == 0: return picos.Constant(seedState*seedState.H)
-        state = picos.Constant(expm(1j*involutionalMatrix*np.pi*(elementNumber%groupSize)/groupSize))*seedState
+        state = picos.Constant(expm(1j*involutionalMatrix*2*np.pi*(elementNumber%groupSize)/groupSize))*seedState
         if not np.allclose(state.value, seedState.value): return picos.Constant(state*state.H)
         raise ValueError(f"The given seed state is an eigen state of the given matrix.")
     return [groupGenerateStateDensityMatrix(seedState,groupSize,iElement, involutionalMatrix) for iElement in range(groupSize)]

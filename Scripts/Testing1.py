@@ -12,12 +12,12 @@ import picos
 import numpy as np
 from scipy.linalg import sqrtm
 
-NumberOfMatrices              = 4
+NumberOfMatrices              = 3
 MatrixDimension               = 3
 MatrixGenerationMethod        = "GroupGeneratedStates"
 ProbabliltiesGenerationMethod = "Equal"
-initialState                  = picos.Constant([1,0,0])
-sigmaX                        = picos.Constant([[0,1,0],[1,0,0],[0,0,1]])
+initialState                  = picos.Constant([1,0])
+sigmaX                        = picos.Constant([[0,1],[1,0]])
 print(len(sigmaX.shape))
 Conditions                    = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod, seedState = initialState, involutoryMatrix = sigmaX)
 DensityMatrices               = Conditions.getDensityMatrices()
