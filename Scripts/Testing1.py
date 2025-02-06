@@ -12,8 +12,8 @@ import picos
 import numpy as np
 from scipy.linalg import sqrtm
 
-NumberOfMatrices              = 3
-MatrixDimension               = 3
+NumberOfMatrices              = 2
+MatrixDimension               = 2
 MatrixGenerationMethod        = "GroupGeneratedStates"
 ProbabliltiesGenerationMethod = "Equal"
 initialState                  = picos.Constant([1,0])
@@ -78,19 +78,4 @@ print("The given problem has been  :\n", Solution['SDPSolution'])
 print("The POVMs are               :\n", Solution['POVMs'])
 
 print("Uncertainity probability is :\n", round(Solution['SDPSolution'],4))
-
-print("The probability of perfect exclussion is:\n", round(1-float(Solution['SDPSolution']),4))
-
-
-UnknownPOVM = Solution["UncertainPOVM"]
-
-print("We do not now what is going on if the POVM is:\n",UnknownPOVM)
-
-for iElement, iPOVM in enumerate(Solution['POVMs']):
-    print(f"POVM {iElement}:")
-    print(iPOVM)
-    UnknownPOVM += iPOVM
-    print(f"DensityMatrices{iElement}:\n",picos.trace(DensityMatrices[iElement]*iPOVM))
-
-print("Does the sum equal the identity?\n",UnknownPOVM)
 

@@ -108,7 +108,7 @@ def GetGramDensityMatrices(GramMatrix, NumberOfStates):
     return States
 
 def SquareRootMeasurementSuccessPorbability(SquareRoot):
-    SquareRootDiagonal = np.diagonal(SquareRoot.value)
+    SquareRootDiagonal = np.diagonal(SquareRoot)
     sumSquare          = 0
     for iElement in SquareRootDiagonal: sumSquare += abs(iElement)**2
     return float(sumSquare)

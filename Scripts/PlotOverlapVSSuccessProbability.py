@@ -9,7 +9,9 @@
 
 import QSExSetUp
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
+############################## Zn Plot ##############################
 FirstGroup                    = 2
 LastGroup                     = 10
 MatrixGenerationMethod        = "Zn"
@@ -18,19 +20,28 @@ Acuracy                       = 100
 
 colors = [plt.cm.rainbow(i / (LastGroup-FirstGroup)) for i in range(LastGroup+1-FirstGroup)]
 
-for i,iGroup in enumerate(range(FirstGroup,LastGroup+1)):
+for i, iGroup in enumerate(tqdm(range(FirstGroup, LastGroup + 1), desc="Calculating...")):
     NumberOfMatrices              = iGroup
     MatrixDimension               = iGroup
     Overlap                       = 0
-    SuccesProbabilityList         = []
+    SuccesProbabilitySRM          = []
+    SuccesProbabilitySDP          = []
     OverlapsList                  = []
 
     for iPoint in range (1,Acuracy):
-        Overlap += 1/Acuracy
-        Conditions = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod, Overlap = Overlap)
-        SuccesProbabilityList.append(Conditions.getSRMSuccessProbability())
+        Overlap     += 1/Acuracy
+        Conditions  = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,
+                                                                             MatrixDimension,
+                                                                             MatrixGenerationMethod, 
+                                                                             ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod, 
+                                                                             Overlap = Overlap)
+        Solution    = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
+        SuccesProbabilitySRM.append(Conditions.getSRMSuccessProbability())
+        SuccesProbabilitySDP.append(round(Solution['SDPSolution'],8))
         OverlapsList.append(Overlap)
-    plt.plot(OverlapsList, SuccesProbabilityList, label = f'{MatrixGenerationMethod[0]}{iGroup}', color = colors[i])
+    if i == 0: plt.scatter(OverlapsList, SuccesProbabilitySDP, label = "SDP",marker = ".", color = "grey")
+    else     : plt.scatter(OverlapsList, SuccesProbabilitySDP,marker = ".", color = "grey")
+    plt.plot(OverlapsList, SuccesProbabilitySRM, label = f'SRM{MatrixGenerationMethod[0]}{iGroup}', color = colors[i])
 
 plt.xlabel("Overlap")
 plt.ylabel("Success Probability")
@@ -38,3 +49,37 @@ plt.title(f"Group generated {MatrixGenerationMethod}")
 plt.legend()
 plt.savefig(f"../Plots/OverlapVSSucessProbability{MatrixGenerationMethod}from{FirstGroup}to{LastGroup}.pdf")
 
+############################ SDP vs SRM #################################
+#
+# Group                         = 3
+# MatrixGenerationMethod        = "Zn"
+# ProbabliltiesGenerationMethod = "Equal"
+# Acuracy                       = 100
+# NumberOfMatrices              = Group
+# MatrixDimension               = Group
+# Overlap                       = 0
+# SuccesProbabilitySRM          = []
+# SuccesProbabilitySDP          = []
+# OverlapsList                  = []
+#
+# for iPoint in range (1,Acuracy):
+#     Overlap     += 1/Acuracy
+#     Conditions  = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,
+#                                                                          MatrixDimension,
+#                                                                          MatrixGenerationMethod, 
+#                                                                          ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod, 
+#                                                                          Overlap = Overlap)
+#     Solution    = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
+#     SuccesProbabilitySRM.append(Conditions.getSRMSuccessProbability())
+#     OverlapsList.append(Overlap)
+#     SuccesProbabilitySDP.append(round(Solution['SDPSolution'],8))
+#
+# plt.plot(OverlapsList, SuccesProbabilitySRM, label = "SRM")
+# plt.scatter(OverlapsList, SuccesProbabilitySDP, label = "SDP",marker = "2", color = "black")
+# plt.xlabel("Overlap")
+# plt.ylabel("Success Probability")
+# plt.title(f"SDP vs SRM {MatrixGenerationMethod}{Group}")
+# plt.legend()
+# plt.savefig(f"../Plots/OverlapVSSucessProbabilitySDPvsSRM{MatrixGenerationMethod}{Group}.pdf")
+#
+#

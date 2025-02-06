@@ -62,6 +62,9 @@ class GramGeneratedStatesClass:
 
     def getSRMSuccessProbability(self):
         return self.to_dict()['SquareRootSuccessProbability']
+
+    def getGramMatrix(self):
+        return self.to_dict()['GramMatrix']
     
     def __repr__(self):
         PrintingText = "The working paramaters are:\n"

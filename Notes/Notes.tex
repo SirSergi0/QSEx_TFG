@@ -265,7 +265,7 @@ The basis we knew the gram matrix decompose in \emoji{star-struck} (the Fourier'
 \begin{align}
 G=\begin{pmatrix}
  1 & \sum_{k=0}^{n-1}|c_k|^2e^{i2\pi k/n} & \sum_{k=0}^{n-1}|c_k|^2e^{i4\pi k/n}  & \hdots &  \sum_{k=0}^{n-1}|c_k|^2e^{-i2\pi k/n} \\
-  \sum_{k=0}^{n-1}|c_k|^2e^{-i2\pi k/n} & 1 & \sum_{k=0}^{n-1}|c_k|^2e^{-i2\pi k/n} & \hdots & \sum_{k=0}^{n-1}|c_k|^2e^{-i4\pi k/n} \\
+  \sum_{k=0}^{n-1}|c_k|^2e^{-i2\pi k/n} & 1 & \sum_{k=0}^{n-1}|c_k|^2e^{i2\pi k/n} & \hdots & \sum_{k=0}^{n-1}|c_k|^2e^{-i4\pi k/n} \\
    \sum_{k=0}^{n-1}|c_k|^2e^{-i4\pi k/n} &  \sum_{k=0}^{n-1}|c_k|^2e^{-i2\pi k/n}  & 1 & \hdots & \sum_{k=0}^{n-1}|c_k|^2e^{-i6\pi k/n} \\
    \vdots & \vdots & \vdots & \ddots & \vdots \\
   \sum_{k=0}^{n-1}|c_k|^2e^{i2\pi k/n} &\sum_{k=0}^{n-1}|c_k|^2e^{i4\pi k/n}  & \sum_{k=0}^{n-1}|c_k|^2e^{i6\pi k/n}  & \hdots &  1 
@@ -273,7 +273,13 @@ G=\begin{pmatrix}
 \end{align}
 \begin{multicols}{2}
 \begin{observation}
-We can immediately see the gram matrix is completely determined by the decomposition of $\ket{\psi}$ in the basis of eigenvectors of $A$ i.e. $\mathcal{U}$ but the statement $\braket{\mathcal{U}^{j}}_{\psi} =\braket{\mathcal{U}}_{\psi}$ still remains untrue in general. \par 
+We can immediately see the gram matrix is completely determined by the decomposition of $\ket{\psi}$ in the basis of eigenvectors of $A$ i.e. $\mathcal{U}$ but the statement $\braket{\mathcal{U}^{j}}_{\psi} =\braket{\mathcal{U}}_{\psi}$ still remains untrue in general. Regarding that $G_{i,j} =  \braket{\mathcal{U}^{-i+j}}_\psi $ one may find,
+\begin{align}
+G_{j,k}=\braket{\mathcal{U}^{-j+k}}_\psi= \sum_{\ell=0}^{n-1}|c_\ell|^2e^{i2\pi \ell(k-j)/n}\\
+G=\sum_{j,k,\ell=0}^{n-1}|c_\ell|^2e^{i2\pi \ell(k-j)/n}\ket{a_k}\bra{a_j}
+\end{align}
+
+\par 
 An interesting case can be $\ket{\psi}=\ket{a_t}$ for a given $t\in\{0,..,n-1\}$. In this case we can see that 
 \begin{align}
 U^j\ket{\psi}&=U^j\ket{a_t}\\&=e^{i2\pi t/n}\ket{a_t}\\&=e^{i2\pi t/n}\ket{\psi}
@@ -297,8 +303,36 @@ Still we need to get rid off the global phase in each entry to get the result ex
 \textbf{Question} Which is the criteria to do this? Why can we choose $\ket{\psi}$ to be an eigenket of $A$ arbitrarily? Regarding the previous example we had our state pointing in the $z$ direction (i.e. not an eigenket of $\sigma_x$) which would explain the inconsistency.
 \end{observation}
 \begin{observation}
-Let us analyse the case of the group generated ensemble of $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}$. We will denote 
+Let us analyse the case of the group generated ensemble of $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}$. We will denote $\mathcal{U},\tilde{\mathcal{U}}\in\mathcal{H}^4$ our generators that fulfil $\mathcal{U}^2=\tilde{\mathcal{U}}^2=\mathbb{I}_d$; $[\mathcal{U},\tilde{\mathcal{U}}]=0$ and $\mathcal{U}\neq\tilde{\mathcal{U}}$. From a given seed state $\ket{\psi}$ one gets the following group generated set $\{\ket{\psi},\mathcal{U}\ket{\psi},\tilde{\mathcal{U}}\ket{\psi},\mathcal{U}\tilde{\mathcal{U}}\ket{\psi}\}$. Hence the gram matrix is,
+\begin{align}
+G=\begin{pmatrix}
+1 & \braket{\mathcal{U}}_\psi & \braket{\tilde{\mathcal{U}}}_\psi &  \braket{\mathcal{U}\tilde{\mathcal{U}}}_\psi \\
+\braket{\mathcal{U}^\dagger}_\psi & 1 &  \braket{\mathcal{U}^\dagger\tilde{\mathcal{U}}}_\psi & \braket{\tilde{\mathcal{U}}}_\psi \\
+ \braket{\tilde{\mathcal{U}}^\dagger}_\psi &  \braket{\mathcal{U}\tilde{\mathcal{U}}^\dagger}_\psi & 1 & \braket{\mathcal{U}^\dagger}_\psi \\
+\braket{\mathcal{U}^\dagger\tilde{\mathcal{U}}^\dagger}_\psi & \braket{\tilde{\mathcal{U}}^\dagger}_\psi & \braket{\mathcal{U}}_\psi &  1
+\end{pmatrix}
+\end{align}
+since,
+\begin{align}
+\mathcal{U}^\dagger=\mathcal{U}^{-1}=\mathcal{U}\hspace{0.5cm}\tilde{\mathcal{U}}^\dagger=\tilde{\mathcal{U}}^{-1}=\tilde{\mathcal{U}}
+\end{align}
+we can write,
+\begin{align}
+G=\begin{pmatrix}
+1 & \braket{\mathcal{U}}_\psi & \braket{\tilde{\mathcal{U}}}_\psi &  \braket{\mathcal{U}\tilde{\mathcal{U}}}_\psi \\
+\braket{\mathcal{U}}_\psi & 1 &  \braket{\mathcal{U}\tilde{\mathcal{U}}}_\psi & \braket{\tilde{\mathcal{U}}}_\psi \\
+ \braket{\tilde{\mathcal{U}}}_\psi &  \braket{\mathcal{U}\tilde{\mathcal{U}}}_\psi & 1 & \braket{\mathcal{U}}_\psi \\
+\braket{\mathcal{U}\tilde{\mathcal{U}}}_\psi & \braket{\tilde{\mathcal{U}}}_\psi & \braket{\mathcal{U}}_\psi &  1
+\end{pmatrix}
+\end{align}
+The expected result \emoji{smiling-face-with-smiling-eyes}.
 \end{observation}
+
+\begin{observation}
+\textbf{It is a rearrangement of the clay table!!!!!!}
+\end{observation}
+
+
 \begin{observation}\label{ObsZnZm}
 Let us analyse the case the case $\mathbb{Z}/n\mathbb{Z}\times\mathbb{Z}/m\mathbb{Z}$ in order to do so let $\mathcal{U}_n$ and $\mathcal{U}_m$ two unitary operators such that $\mathcal{U}_n^n=\mathbb{I}_d$, $\mathcal{U}_m^m=\mathbb{I}_d$ respectively, and $[U_n,U_m]=0$. Here we distinguish two cases $n=m$ and $n\neq m$. Since $[U_n,U_m]=0$ we know there exists a basis $\{\ket{u}_i\}_{i=0}^{nm-1}$ where both unitary operators are diagonal. Taking into account the group representations are equivalent up to isomorphism we can consider one representation and extend it to any other representation. Here we might consider,
 \begin{align}

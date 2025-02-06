@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.4.17)  5 FEB 2025 23:35
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.4.17)  6 FEB 2025 18:34
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Notes.tex
@@ -1251,13 +1251,17 @@ LaTeX Font Warning: Font shape `TU/AppleColorEmoji(0)/m/it' undefined
 (Font)              using `TU/AppleColorEmoji(0)/m/n' instead on input line 231
 .
 
-[3<./luatex.94dofI/1.png>] [4<./luatex.94dofI/2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+[3<./luatex.6rlFF7/1.png>]
+Overfull \vbox (40.34816pt too high) has occurred while \output is active []
+
+
+[4<./luatex.6rlFF7/2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
 []\TU/lmr/m/it/12 Now our set of states is $\OT1/cmr/m/n/12 
  =
  []
 
-[5<./luatex.94dofI/3.png>] [6] (./Notes.bbl) [7]
+[5<./luatex.6rlFF7/3.png>] [6<./luatex.6rlFF7/4.png>] (./Notes.bbl) [7]
 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./Notes.aux)
@@ -1269,21 +1273,24 @@ L3 programming layer <2024-02-20>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `Notes.out' has not changed.
 (rerunfilecheck)             Checksum: 28F845A9BC69495C49CED7228B986493;98.
 )
 
 Here is how much of LuaTeX's memory you used:
- 33882 strings out of 476447
+ 33888 strings out of 476447
  125129,1977958 words of node,token memory allocated
- 647 words of node memory still in use:
-   9 hlist, 2 vlist, 2 rule, 4 glue, 4 kern, 1 glyph, 28 attribute, 63 glue_spec
-, 16 attribute_list, 2 write nodes
-   avail lists: 1:1,2:2780,3:344,4:48,5:773,6:40,7:6792,8:39,9:1993,10:15,11:375
+ 817 words of node memory still in use:
+   9 hlist, 2 vlist, 2 rule, 6 glue, 4 kern, 16 sub_mlist, 1 glyph, 64 attribute
+, 63 glue_spec, 34 attribute_list, 2 write nodes
+   avail lists: 1:1,2:2726,3:328,4:48,5:877,6:40,7:6626,8:40,9:2031,10:15,11:297
 
  55154 multiletter control sequences out of 65536+600000
  91 fonts using 8603919 bytes
- 99i,17n,102p,668b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,102p,668b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.ot
 f></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.
 otf></System/Library/Fonts/Apple Color Emoji.ttc></usr/local/texlive/2024/texmf-
@@ -1304,10 +1311,10 @@ dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Notes.pdf (8 pages, 295250 bytes).
+Output written on Notes.pdf (8 pages, 334322 bytes).
 
-PDF statistics: 235 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
- 66 named destinations out of 1000 (max. 131072)
+PDF statistics: 242 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 72 named destinations out of 1000 (max. 131072)
  24 words of extra memory for PDF output out of 10000 (max. 100000000)
 
