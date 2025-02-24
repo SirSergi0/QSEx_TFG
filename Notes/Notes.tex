@@ -26,6 +26,7 @@
 \usepackage{multicol}
 \useunder{\uline}{\ul}{}
 
+\DeclareMathOperator{\tr}{tr}
 
 %%%%%%%%%%%%%%% CODELISTINGS %%%%%%%%%%%%%%%%
 \usepackage{listings}
@@ -372,6 +373,48 @@ G_{n_1,n_2,...,n_k}=\begin{pmatrix}
   G_{n_1,n_2,...,n_{k-1}}e^{i2\pi t/n_k} & G_{n_1,n_2,...,n_{k-1}}e^{i4\pi t/n_k}  & \hdots &  G_{n_1,n_2,...,n_{k-1}} 
 \end{pmatrix}.
 \end{align}
+
+\begin{multicols}{2}
+\begin{observation}
+Let us write the SDP for unambiguous discrimination. Given a set of states $\{\rho_i=\ket{\psi_i}\bra{\psi_i}\}_{i=1}^{n}$, each of them with a prior probability of $\{\eta_i\}_{i=1}^{n}$ one may define the unambiguous SDP as,
+\begin{align}
+P_S=\max_{\{E_i\}}\sum_{i=1}^{n}&\eta_i\tr{(\rho_iE_i)}\\
+\text{s.t.}\hspace{0.5cm}E_i\geq&0\\
+\mathbb{I}_d-\sum_{i=1}^{n}E_i\geq&0\\
+\tr(\rho_iE_j)=&0\hspace{0.5cm}\forall j\neq i
+\end{align}
+\end{observation}
+However if we decompose the gram Matrix into $G=X^\dagger X$, one may find,
+\begin{align}
+X=&\sum_{i,j}\braket{\omega_i|\psi_j}\ket{\omega_i}\bra{\omega_j}\\
+X^\dagger=&\sum_{i,j}\braket{\psi_j|\omega_i}\ket{\omega_j}\bra{\omega_i}
+\end{align}
+since 
+\begin{align}
+X^\dagger X=&\left(\sum_{i,j}\braket{\psi_j|\omega_i}\ket{\omega_j}\bra{\omega_i}\right)\left(\sum_{k,l}\braket{\omega_k|\psi_l}\ket{\omega_k}\bra{\omega_l}\right)\\
+=&\sum_{i,j,k,l}\braket{\omega_k|\psi_l}\braket{\psi_j|\omega_i}\ket{\omega_j}\braket{\omega_i|\omega_k}\bra{\omega_l}\\
+=&\sum_{i,j,k,l}\braket{\omega_k|\psi_l}\braket{\psi_j|\omega_i}\ket{\omega_j}\bra{\omega_l}\delta_{ik}\\
+=&\sum_{i,j,l}\braket{\omega_i|\psi_l}\braket{\psi_j|\omega_i}\ket{\omega_j}\bra{\omega_l}\\
+=&\sum_{j,l}\left(\bra{\psi_l}\left(\sum_{i}\ket{\omega_{i}}\bra{\omega_j}\right)\ket{\psi_j}\ket{\omega_j}\bra{\omega_l}\right)\\
+=&\sum_{j,l}\braket{\psi_l|\psi_j}\ket{\omega_j}\bra{\omega_l}\\
+=&G
+\end{align}
+Since $X^{-1}X=\mathbb{I}_d$ it is immediate that the vectors formed by the rows of $X^{-1}$ denoted as $\ket{\chi_i}$ and the column vectors of $X$ (which are $\ket{\psi_i}$ expressed in the $\ket{\omega_{i}}$ base) fulfil $\braket{\chi_j|\psi_i}=\delta_{i,j}$. Hence, one might deduce the SDP constrain $\tr(\rho_iE_j)=0\hspace{0.5cm}\forall j\neq i$ can be eliminated by taking $E_j=\gamma_j\ket{\chi_j}\bra{\chi_j}$ for a certain values $\gamma_j\geq0$\footnote{The constrain of $\gamma_j\geq 0$ is given by the positive-definition of $E_j$ since is a POVM.} given that $\rho_i=\ket{\psi_i}\bra{\psi_i}$. We can also notice that,
+\begin{align}
+\sum_{i=1}^{n}E_i=&\sum_{i=1}^{n}\gamma_i\ket{\chi_i}\bra{\chi_i}\\
+=&(X^{-1})^\dagger\Gamma_DX^{-1}\implies\\
+\Gamma_D=&X^\dagger\left(\sum_{i=1}^{n}E_i\right)X
+\end{align}
+where $\Gamma_D$ is the diagonal matrix such that $\Gamma_{D_{i,j}}=\delta_{i,j}\gamma_i$. Then one might rewrite the constrain $\mathbb{I}_d-\sum_{i=1}^{n}E_i\geq0$ as 
+\begin{align}
+\mathbb{I}_d-\sum_{i=1}^{n}E_i\geq&0\implies\\
+X^\dagger X-X^\dagger\left(\sum_{i=1}^{n}E_i\right)X\geq&0\implies\\
+G-\Gamma_D\geq0
+\end{align}
+the constrain $\gamma_i\geq0$ can be written as $\gamma_D\geq0$. Then we might define a matrix 
+
+
+\end{multicols}
 
 \newpage
 

@@ -8,29 +8,25 @@
 ########################################################################################################
 
 import QSExSetUp
-import picos
-import numpy as np
-from scipy.linalg import sqrtm
-import matplotlib.pyplot as plt
 
 NumberOfMatrices              = 4
 MatrixDimension               = 4
-MatrixGenerationMethod        = "Zn"
+MatrixGenerationMethod        = "ZnEigenValues"
 ProbabliltiesGenerationMethod = "Equal"
-Overlap                       = 0.5
-Conditions = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod, Overlap = Overlap)
+EigenValues                   = [1,1,1,1]
+Conditions                    = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsEigenValues(EigenValues, NumberOfMatrices), ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
 
 print(Conditions)
 
-# print("------------------------\n\
-# Computing the primal SDP\n\
-# ------------------------")
-#
-# Solution = QSExSetUp.SDPSolver.SolveSDPMinimumError(Conditions)
-#
-# print("The given problem has been:\n", Solution['SDPSolution'])
-#
-# print("The success probability is: ", round(Solution['SDPSolution'],4))
+print("------------------------\n\
+Computing the primal SDP\n\
+------------------------")
+
+Solution = QSExSetUp.SDPSolver.SolveSDPMinimumError(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", round(Solution['SDPSolution'],4))
 
 print("------------------------\n\
 Computing the Dual SDP\n\
@@ -52,4 +48,13 @@ print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
 
+print("---------------------------------\n\
+Computing the Dual SDP Zero Error\n\
+---------------------------------")
+
+Solution = QSExSetUp.SDPSolver.SolveSDPDualZeroError(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", round(Solution['SDPSolution'],4))
 

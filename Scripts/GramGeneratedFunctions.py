@@ -10,6 +10,7 @@
 import numpy as np
 import picos
 from scipy.linalg import sqrtm
+import GramGeneratedStates
 
 def Hermitian(matrix, SilentMode = True):
     if not isinstance(matrix,(picos.expressions.exp_affine.AffineExpression,
@@ -69,18 +70,18 @@ def SetOfProbabilities (ProbabilitiesMethod, NumberOfMatrices):
 # Generating functions #
 ########################
 
-def GenerateGramMatrix(NumberOfMatrices, MatrixMethod, Overlap):
+def GenerateGramMatrix(NumberOfMatrices, MatrixMethod, GenerationConditions):
     if not isinstance(NumberOfMatrices,int):
         raise TypeError("The given NumberOfMatrices must be an Integer")
-    ValidMethods = ["Zn"]
+    ValidMethods = ["ZnOverlap", "ZnEigenValues"]
     if not MatrixMethod in ValidMethods:
         raise ValueError(f"The given MatrixMethod is not a valid method, the valid methods are: {ValidMethods}")
-    if not isinstance(Overlap, (float, int)):
-        raise TypeError("The given Overlap must be an Integer or a float")
-    if (Overlap > 1 or Overlap < 0):
-        raise ValueError("The given Overlap must be a number between 0 and 1.")
-    if MatrixMethod == "Zn":
-        return ZnGramMatrix(NumberOfMatrices, Overlap)
+    if not isinstance(GenerationConditions, (GramGeneratedStates.ZnGramMatrixConditionsOverlap,GramGeneratedStates.ZnGramMatrixConditionsEigenValues)):
+        raise TypeError("The GenerationConditions type is not valid")
+    if MatrixMethod == "ZnOverlap":
+        return ZnGramMatrixOverlap(NumberOfMatrices, GenerationConditions)
+    if MatrixMethod == "ZnEigenValues":
+        return ZnGramMatrixEigenValues(GenerationConditions)
 
 def GenerateGramMatrixWithPriors(GramMatrix, priorProbabilities, NumberOfStates):
     GramMatrixWithPriors = np.array(GramMatrix)
@@ -89,21 +90,66 @@ def GenerateGramMatrixWithPriors(GramMatrix, priorProbabilities, NumberOfStates)
             GramMatrixWithPriors[iState][jState] *= (np.sqrt(priorProbabilities[iState])*np.sqrt(priorProbabilities[jState]))
     return picos.Constant(GramMatrixWithPriors)
 
-def ZnGramMatrix (NumberOfStates, Overlap):
-    GramMatrix = []
+def ZnGramMatrixOverlap(NumberOfStates, GenerationConditions):
+    if not isinstance(GenerationConditions, GramGeneratedStates.ZnGramMatrixConditionsOverlap):
+        raise TypeError("The GenerationConditions type is not valid")
+    GramMatrix  = []
+    OverlapList = GenerationConditions.getOverlapList()
+    PhaseList   = GenerationConditions.getPhaseList()
+    n           = GenerationConditions.getN()
+    def ListToMatrixZn (iElement,jElement,n):
+        if abs(iElement-jElement)<n/2: return int(abs(iElement-jElement)-1)
+        return int(n - 1 - abs(iElement-jElement))
     for iState in range(NumberOfStates):
         GramMatrixRow = []
         for jState in range(NumberOfStates):
-            if iState == jState: GramMatrixRow.append(1)
-            else: GramMatrixRow.append(Overlap)
+            if iState == jState:
+                GramMatrixRow.append(1)
+                continue
+            if abs(iState-jState) == n/2:
+                GramMatrixRow.append(OverlapList[ListToMatrixZn(iState,jState,n)])
+                continue
+            if ((iState > jState) and (abs(iState-jState) < n/2)) or ((iState < jState) and (abs(iState-jState) > n/2)):
+                GramMatrixRow.append(OverlapList[ListToMatrixZn(iState,jState,n)]*np.exp(-1j * PhaseList[ListToMatrixZn(iState,jState,n)]))
+                continue
+            GramMatrixRow.append(OverlapList[ListToMatrixZn(iState,jState,n)]*np.exp(1j * PhaseList[ListToMatrixZn(iState,jState,n)]))
         GramMatrix.append(GramMatrixRow)
     return picos.Constant(GramMatrix)
+
+def ZnGramMatrixEigenValues (GenerationConditions):
+    if not isinstance(GenerationConditions, GramGeneratedStates.ZnGramMatrixConditionsEigenValues):
+        print(type(GenerationConditions))
+        raise TypeError("The GenerationConditions type is not valid")
+    def fourierBasisMatrix(n):
+        def foureirVector(baseElement, n):
+            return [np.exp((2j*np.pi*iElement*baseElement)/(n))/(np.sqrt(n)) for iElement in range (n)]
+        fourierMatrixList = []
+        for iBaseElement in range(1,n+1):
+            fourierMatrixList.append(foureirVector(iBaseElement,n))
+        fourierMatrix = picos.Constant(fourierMatrixList)
+        return fourierMatrix.T
+    def diagonalMatrix(diagonal,n):
+        diagonalMatrixList = []
+        for iElement in range(n):
+            diagonalMatrixRow = []
+            for jElement in range(n):
+                if jElement == iElement:
+                    diagonalMatrixRow.append(diagonal[jElement])
+                    continue
+                diagonalMatrixRow.append(0)
+            diagonalMatrixList.append(diagonalMatrixRow)
+        return picos.Constant(diagonalMatrixList)
+    EigenValues  = GenerationConditions.getEigenValues()
+    n            = GenerationConditions.getN()
+    fourierBasis = fourierBasisMatrix(n)
+    return picos.Constant(fourierBasis*diagonalMatrix(EigenValues,n)*fourierBasis.H)
 
 def GetGramDensityMatrices(GramMatrix, NumberOfStates):
     SquareRoot = np.array(sqrtm(GramMatrix))
     States     = []
     for iState in range(NumberOfStates):
         state  = picos.Constant(SquareRoot[:,iState])
+        state /= abs(state)
         States.append(picos.Constant(state*state.H))
     return States
 
