@@ -114,7 +114,7 @@ def ZnGramMatrixOverlap(NumberOfStates, GenerationConditions):
                 continue
             GramMatrixRow.append(OverlapList[ListToMatrixZn(iState,jState,n)]*np.exp(1j * PhaseList[ListToMatrixZn(iState,jState,n)]))
         GramMatrix.append(GramMatrixRow)
-    return picos.Constant(GramMatrix)
+    return 0.5*(picos.Constant(GramMatrix)+picos.Constant(GramMatrix).H)
 
 def ZnGramMatrixEigenValues (GenerationConditions):
     if not isinstance(GenerationConditions, GramGeneratedStates.ZnGramMatrixConditionsEigenValues):
@@ -142,7 +142,8 @@ def ZnGramMatrixEigenValues (GenerationConditions):
     EigenValues  = GenerationConditions.getEigenValues()
     n            = GenerationConditions.getN()
     fourierBasis = fourierBasisMatrix(n)
-    return picos.Constant(fourierBasis*diagonalMatrix(EigenValues,n)*fourierBasis.H)
+    ZnGramMatrix = picos.Constant(fourierBasis*diagonalMatrix(EigenValues,n)*fourierBasis.H)
+    return 0.5*(ZnGramMatrix+ZnGramMatrix.H)
 
 def GetGramDensityMatrices(GramMatrix, NumberOfStates):
     SquareRoot = np.array(sqrtm(GramMatrix))
@@ -159,4 +160,19 @@ def SquareRootMeasurementSuccessPorbability(SquareRoot):
     for iElement in SquareRootDiagonal: sumSquare += abs(iElement)**2
     return float(sumSquare)
 
+def PerfectExlusion(GramMatrix):
+    GramEigenValuesSqrt = []
+    for iEigenValue in (np.linalg.eigvals(np.array(GramMatrix.value))):
+        GramEigenValuesSqrt.append(float(np.sqrt(abs(iEigenValue))))
+    GramEigenValuesSqrt = sorted(GramEigenValuesSqrt, reverse = True)
+    if GramEigenValuesSqrt[0] <= sum(GramEigenValuesSqrt[1:]) : return True
+    return False
 
+def PerfectExlusionLowerBound(Conditions):
+    GramMatrix = Conditions.getGramMatrixWithPriors()
+    GramEigenValuesSqrt = []
+    for iEigenValue in (np.linalg.eigvals(np.array(GramMatrix.value))):
+        GramEigenValuesSqrt.append(float(np.sqrt(abs(iEigenValue))))
+    GramEigenValuesSqrt = sorted(GramEigenValuesSqrt, reverse = True)
+    if GramEigenValuesSqrt[0] <= sum(GramEigenValuesSqrt[1:]) : return 1
+    return 1-((GramEigenValuesSqrt[0] - sum(GramEigenValuesSqrt[1:]))/(Conditions.getNumberOfMatrices()))**2

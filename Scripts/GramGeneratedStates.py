@@ -35,6 +35,7 @@ class GramGeneratedStatesClass:
         self.SquareRootWithPriors           = picos.Constant(sqrtm(self.GramMatrixWithPriors))
         self.DensityMatrices                = GramGeneratedFunctions.GetGramDensityMatrices(self.GramMatrix, self.NumberOfMatrices)
         self.SquareRootSuccessProbability   = GramGeneratedFunctions.SquareRootMeasurementSuccessPorbability(self.SquareRootWithPriors)
+        self.PerfectExlusion                = GramGeneratedFunctions.PerfectExlusion(self.GramMatrixWithPriors)
     def to_dict(self):
         return {
             'NumberOfMatrices'               : self.NumberOfMatrices,
@@ -48,6 +49,7 @@ class GramGeneratedStatesClass:
             'SquareRootWithPriors'           : self.SquareRootWithPriors,
             'DensityMatrices'                : self.DensityMatrices,
             'SquareRootSuccessProbability'   : self.SquareRootSuccessProbability,
+            'PerfectExlusion'                : self.PerfectExlusion
         }
     def __getitem__(self, key):
         return self.to_dict()[key]
@@ -76,6 +78,13 @@ class GramGeneratedStatesClass:
     def getSquareRootMatrix(self):
         return self.to_dict()['SquareRoot']
 
+    def getPerfectExlusion(self):
+        return self.to_dict()['PerfectExlusion']
+
+    def getPerfectExlusionLowerBound(self):
+        if self.getPerfectExlusion(): return 1 
+        return GramGeneratedFunctions.PerfectExlusionLowerBound(self)
+
     def getOverlapsAndPhases(self):
         GramMatrix   = self.getGramMatrix()
         OverlapsList = []
@@ -87,11 +96,11 @@ class GramGeneratedStatesClass:
             if not Phase in PhaseList : PhaseList.append(Phase)
         return OverlapsList, PhaseList
 
-        def __repr__(self):
-            PrintingText = "The working paramaters are:\n"
-            for iVariable in self.to_dict():
-                PrintingText+= f'{iVariable :<30}:{self.to_dict()[iVariable] }\n'
-            return PrintingText
+    def __repr__(self):
+        PrintingText = "The working paramaters are:\n"
+        for iVariable in self.to_dict():
+            PrintingText+= f'{iVariable :<30}:{self.to_dict()[iVariable] }\n'
+        return PrintingText
 
 class ZnGramMatrixConditionsOverlap:
     def __init__(self, OverlapsList, PhaseList, n):

@@ -8,24 +8,20 @@
 ########################################################################################################
 
 import QSExSetUp
-import picos
-import numpy as np
-from scipy.linalg import sqrtm
 
-NumberOfMatrices              = 2
-MatrixDimension               = 2
-MatrixGenerationMethod        = "GroupGeneratedStates"
+NumberOfMatrices              = 3
+MatrixDimension               = 3
+MatrixGenerationMethod        = "ZnEigenValues"
 ProbabliltiesGenerationMethod = "Equal"
-initialState                  = picos.Constant([1,0])
-sigmaX                        = picos.Constant([[0,1],[1,0]])
-print(len(sigmaX.shape))
-Conditions                    = QSExSetUp.DensityMatricesAndPriorsClass.DensityMaticesAndPriors(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, ProbabliltiesGenerationMethod, seedState = initialState, involutoryMatrix = sigmaX)
-DensityMatrices               = Conditions.getDensityMatrices()
+EigenValues                   = [1,2,3]
+EigenValuesNormalized         = [iEigenValue*NumberOfMatrices/sum(EigenValues) for iEigenValue in EigenValues]
+Conditions                    = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsEigenValues(EigenValuesNormalized, NumberOfMatrices), ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
 
 print(Conditions)
 
-for iMatix in range(len(DensityMatrices)):
-    print(f"Matrix number {iMatix}:\n",DensityMatrices[iMatix])
+print("\n####################################\n\
+####### DISCRIMINATION SDP #########\n\
+####################################\n")
 
 print("------------------------\n\
 Computing the primal SDP\n\
@@ -47,35 +43,51 @@ print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
 
-print("-----------------------\n\
-Pretty Good Measurement\n\
------------------------")
-
-GramMatrix         = Conditions.getGramMatrixWithPriors()
-SquareRoot         = picos.Constant(sqrtm(GramMatrix))
-SquareRootDiagonal = np.diagonal(SquareRoot.value)
-
-sumSquare = 0
-for iElement in SquareRootDiagonal:
-    sumSquare += abs(iElement)**2
-
-print("The GramMatrix with priors is         :\n",GramMatrix)
-
-print("The square of the squareRoot Matrix is:\n", SquareRoot)
-
-print("Computing G-S^2=0?                    :\n", GramMatrix-(SquareRoot*SquareRoot))
-
-print("The sum of the diagonalSquare is      :", sumSquare)
-
 print("----------------------------\n\
 Computing the Zero Error SDP\n\
 ----------------------------")
 
 Solution = QSExSetUp.SDPSolver.SolveSDPZeroError(Conditions)
 
-print("The given problem has been  :\n", Solution['SDPSolution'])
+print("The given problem has been:\n", Solution['SDPSolution'])
 
-print("The POVMs are               :\n", Solution['POVMs'])
+print("The success probability is: ", round(Solution['SDPSolution'],4))
 
-print("Uncertainity probability is :\n", round(Solution['SDPSolution'],4))
+print("---------------------------------\n\
+Computing the Dual SDP Zero Error\n\
+---------------------------------")
 
+Solution = QSExSetUp.SDPSolver.SolveSDPDualZeroError(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", round(Solution['SDPSolution'],4))
+
+print("\n####################################\n\
+########## EXCLUSION SDP ###########\n\
+####################################\n")
+
+print("------------------------\n\
+Computing the primal SDP\n\
+------------------------")
+
+Solution = QSExSetUp.SDPSolver.SolveSDPExclusionMinimumError(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", round(Solution['SDPSolution'],4))
+
+for i,iPOVM in enumerate(Solution['POVMs']):
+    print(f"POVM {i}:\n",iPOVM)
+print("Sum of POVM (Identity):\n")
+print(sum(Solution['POVMs']))
+
+# print("------------------------\n\
+# Computing the Dual SDP\n\
+# ------------------------")
+#
+# Solution = QSExSetUp.SDPSolver.SolveSDPExclusionDualMinimumError(Conditions)
+#
+# print("The given problem has been:\n", Solution['SDPSolution'])
+#
+# print("The success probability is: ", round(Solution['SDPSolution'],4))
