@@ -13,7 +13,7 @@ NumberOfMatrices              = 3
 MatrixDimension               = 3
 MatrixGenerationMethod        = "ZnEigenValues"
 ProbabliltiesGenerationMethod = "Equal"
-EigenValues                   = [1,2,3]
+EigenValues                   = [1,1.5,0.5]
 EigenValuesNormalized         = [iEigenValue*NumberOfMatrices/sum(EigenValues) for iEigenValue in EigenValues]
 Conditions                    = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsEigenValues(EigenValuesNormalized, NumberOfMatrices), ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
 
@@ -67,9 +67,9 @@ print("\n####################################\n\
 ########## EXCLUSION SDP ###########\n\
 ####################################\n")
 
-print("------------------------\n\
-Computing the primal SDP\n\
-------------------------")
+print("--------------------------------------\n\
+Computing the primal SDP Minimum Error\n\
+--------------------------------------")
 
 Solution = QSExSetUp.SDPSolver.SolveSDPExclusionMinimumError(Conditions)
 
@@ -77,17 +77,25 @@ print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
 
-for i,iPOVM in enumerate(Solution['POVMs']):
-    print(f"POVM {i}:\n",iPOVM)
-print("Sum of POVM (Identity):\n")
-print(sum(Solution['POVMs']))
-
-# print("------------------------\n\
-# Computing the Dual SDP\n\
-# ------------------------")
+# print("------------------------------------\n\
+# Computing the Dual SDP Minimum Error\n\
+# ------------------------------------")
 #
-# Solution = QSExSetUp.SDPSolver.SolveSDPExclusionDualMinimumError(Conditions)
+# Solution = QSExSetUp.SDPSolver.SolveSDPExlusionDualMinimumError(Conditions)
 #
 # print("The given problem has been:\n", Solution['SDPSolution'])
 #
 # print("The success probability is: ", round(Solution['SDPSolution'],4))
+
+print("-----------------------------------\n\
+Computing the primal SDP Zero Error\n\
+-----------------------------------")
+
+Solution = QSExSetUp.SDPSolver.SolveSDPExclusionZeroError(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", round(Solution['SDPSolution'],4))
+
+print("Minimum Error Probability : ", Conditions.getPerfectExlusionLowerBoundMinimumError())
+print("Zero Error Probability    : ", Conditions.getPerfectExlusionLowerBoundZeroError())

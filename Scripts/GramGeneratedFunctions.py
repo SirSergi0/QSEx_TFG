@@ -168,11 +168,21 @@ def PerfectExlusion(GramMatrix):
     if GramEigenValuesSqrt[0] <= sum(GramEigenValuesSqrt[1:]) : return True
     return False
 
-def PerfectExlusionLowerBound(Conditions):
-    GramMatrix = Conditions.getGramMatrixWithPriors()
+def PerfectExlusionLowerBoundMinimumError(Conditions):
+    GramMatrix          = Conditions.getGramMatrixWithPriors()
     GramEigenValuesSqrt = []
     for iEigenValue in (np.linalg.eigvals(np.array(GramMatrix.value))):
         GramEigenValuesSqrt.append(float(np.sqrt(abs(iEigenValue))))
     GramEigenValuesSqrt = sorted(GramEigenValuesSqrt, reverse = True)
     if GramEigenValuesSqrt[0] <= sum(GramEigenValuesSqrt[1:]) : return 1
     return 1-((GramEigenValuesSqrt[0] - sum(GramEigenValuesSqrt[1:]))/(Conditions.getNumberOfMatrices()))**2
+
+def PerfectExlusionLowerBoundZeroError(Conditions):
+    GramMatrix           = Conditions.getGramMatrixWithPriors()
+    GramEigenValuesSqrt  = []
+    for iEigenValue in (np.linalg.eigvals(np.array(GramMatrix.value))):
+        GramEigenValuesSqrt.append(float(np.sqrt(abs(iEigenValue))))
+    GramEigenValuesSqrt = sorted(GramEigenValuesSqrt, reverse = True)
+    if GramEigenValuesSqrt[0] <= sum(GramEigenValuesSqrt[1:]) : return 1
+    return 1-(sum(GramEigenValuesSqrt)*(GramEigenValuesSqrt[0] - sum(GramEigenValuesSqrt[1:]))/(Conditions.getNumberOfMatrices()))
+

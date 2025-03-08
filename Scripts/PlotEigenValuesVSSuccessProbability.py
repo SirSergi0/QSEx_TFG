@@ -40,22 +40,22 @@ sc = ax.scatter(Overlap_values, Phase_values, SuccessProb_values, c=SuccessProb_
 
 ax.set_xlabel("Overlap")
 ax.set_ylabel("Phase (radians)")
-ax.set_zlabel("Success Probability")
-ax.set_title(f"Z{NumberOfMatrices} - 3D Plot of Overlap vs. Phase vs. Success Probability Minimum Error")
-plt.colorbar(sc, ax=ax, label="success probability")
-plt.savefig(f"../Plots/OverlapVSPhaseVSSuccessProbabilityMinimumErrorZ{NumberOfMatrices}3Dplot.pdf")
+ax.set_zlabel("Discrimination probability")
+# ax.set_title(f"Discrimination - Z{NumberOfMatrices} - 3D Plot of Overlap vs. Phase vs. Success Probability Minimum Error")
+plt.colorbar(sc, ax=ax, label="Discrimination probability")
+plt.savefig(f"../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ{NumberOfMatrices}3Dplot.pdf")
 
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(12, 7))
 
 sc = ax.scatter(Overlap_values, Phase_values, c=SuccessProb_values, cmap='jet', s=50)
 
-plt.colorbar(sc, ax=ax, label="Success Probability")
+plt.colorbar(sc, ax=ax, label="Discrimination probability")
 
 ax.set_xlabel("Overlap")
 ax.set_ylabel("Phase (radians)")
-ax.set_title(f"Z{NumberOfMatrices} - Heat Map Overlap vs. Phase vs. Success Probability Minimum Error")
+# ax.set_title(f"Discrimination - Z{NumberOfMatrices} - Heat Map Overlap vs. Phase vs. Success Probability Minimum Error")
 
-plt.savefig(f"../Plots/OverlapVSPhaseVSSuccessProbabilityMinimumErrorZ{NumberOfMatrices}HeatMap.pdf")
+plt.savefig(f"../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ{NumberOfMatrices}HeatMap.pdf")
 
 # target_phase = 0
 # tolerance = 0.01
@@ -95,22 +95,22 @@ sc = ax.scatter(Overlap_values, Phase_values, SuccessProb_values, c=SuccessProb_
 
 ax.set_xlabel("Overlap")
 ax.set_ylabel("Phase (radians)")
-ax.set_zlabel("Success Probability")
-ax.set_title(f"Z{NumberOfMatrices} - 3D Plot of Overlap vs. Phase vs. Success Probability Zero Error")
-plt.colorbar(sc, ax=ax, label="success probability")
-plt.savefig(f"../Plots/OverlapVSPhaseVSSuccessProbabilityZeroErrorZ{NumberOfMatrices}3Dplot.pdf")
+ax.set_zlabel("Discrimination probability")
+# ax.set_title(f"Z{NumberOfMatrices} - 3D Plot of Overlap vs. Phase vs. Success Probability Zero Error")
+plt.colorbar(sc, ax=ax, label="Discrimination probability")
+plt.savefig(f"../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ{NumberOfMatrices}3Dplot.pdf")
 
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(12, 7))
 
 sc = ax.scatter(Overlap_values, Phase_values, c=SuccessProb_values, cmap='jet', s=50)
 
-plt.colorbar(sc, ax=ax, label="Success Probability")
+plt.colorbar(sc, ax=ax, label="Discrimination probability")
 
 ax.set_xlabel("Overlap")
 ax.set_ylabel("Phase (radians)")
-ax.set_title(f"Z{NumberOfMatrices} - Heat Map Overlap vs. Phase vs. Success Probability Zero Error")
+# ax.set_title(f"Z{NumberOfMatrices} - Heat Map Overlap vs. Phase vs. Success Probability Zero Error")
 
-plt.savefig(f"../Plots/OverlapVSPhaseVSSuccessProbabilityZeroErrorZ{NumberOfMatrices}HeatMap.pdf")
+plt.savefig(f"../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ{NumberOfMatrices}HeatMap.pdf")
 
 # target_phase = 0
 # tolerance = 0.01

@@ -81,9 +81,13 @@ class GramGeneratedStatesClass:
     def getPerfectExlusion(self):
         return self.to_dict()['PerfectExlusion']
 
-    def getPerfectExlusionLowerBound(self):
+    def getPerfectExlusionLowerBoundMinimumError(self):
         if self.getPerfectExlusion(): return 1 
-        return GramGeneratedFunctions.PerfectExlusionLowerBound(self)
+        return GramGeneratedFunctions.PerfectExlusionLowerBoundMinimumError(self)
+
+    def getPerfectExlusionLowerBoundZeroError(self):
+        if self.getPerfectExlusion(): return 1 
+        return GramGeneratedFunctions.PerfectExlusionLowerBoundZeroError(self)
 
     def getOverlapsAndPhases(self):
         GramMatrix   = self.getGramMatrix()
