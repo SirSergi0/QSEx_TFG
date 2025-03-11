@@ -169,7 +169,7 @@ def PerfectExlusion(GramMatrix):
     return False
 
 def PerfectExlusionLowerBoundMinimumError(Conditions):
-    GramMatrix          = Conditions.getGramMatrixWithPriors()
+    GramMatrix          = Conditions.getGramMatrix()
     GramEigenValuesSqrt = []
     for iEigenValue in (np.linalg.eigvals(np.array(GramMatrix.value))):
         GramEigenValuesSqrt.append(float(np.sqrt(abs(iEigenValue))))
@@ -178,7 +178,7 @@ def PerfectExlusionLowerBoundMinimumError(Conditions):
     return 1-((GramEigenValuesSqrt[0] - sum(GramEigenValuesSqrt[1:]))/(Conditions.getNumberOfMatrices()))**2
 
 def PerfectExlusionLowerBoundZeroError(Conditions):
-    GramMatrix           = Conditions.getGramMatrixWithPriors()
+    GramMatrix           = Conditions.getGramMatrix()
     GramEigenValuesSqrt  = []
     for iEigenValue in (np.linalg.eigvals(np.array(GramMatrix.value))):
         GramEigenValuesSqrt.append(float(np.sqrt(abs(iEigenValue))))

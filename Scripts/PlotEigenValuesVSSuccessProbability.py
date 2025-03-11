@@ -20,7 +20,7 @@ MatrixDimension               = 3
 MatrixGenerationMethod        = "ZnEigenValues"
 ProbabliltiesGenerationMethod = "Equal"
 IterationsMinimumError        = 50000
-IterationsZeroError           = 5000
+IterationsZeroError           = 50000
 DataMinimumError              = []
 DataZeroError                 = []
 

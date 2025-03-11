@@ -13,8 +13,9 @@ NumberOfMatrices              = 3
 MatrixDimension               = 3
 MatrixGenerationMethod        = "ZnEigenValues"
 ProbabliltiesGenerationMethod = "Equal"
-EigenValues                   = [1,1.5,0.5]
+EigenValues                   = [1,2,10]
 EigenValuesNormalized         = [iEigenValue*NumberOfMatrices/sum(EigenValues) for iEigenValue in EigenValues]
+print(EigenValuesNormalized)
 Conditions                    = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsEigenValues(EigenValuesNormalized, NumberOfMatrices), ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
 
 print(Conditions)
@@ -77,15 +78,15 @@ print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
 
-# print("------------------------------------\n\
-# Computing the Dual SDP Minimum Error\n\
-# ------------------------------------")
-#
-# Solution = QSExSetUp.SDPSolver.SolveSDPExlusionDualMinimumError(Conditions)
-#
-# print("The given problem has been:\n", Solution['SDPSolution'])
-#
-# print("The success probability is: ", round(Solution['SDPSolution'],4))
+print("------------------------------------\n\
+Computing the Dual SDP Minimum Error\n\
+------------------------------------")
+
+Solution = QSExSetUp.SDPSolver.SolveSDPExlusionDualMinimumError(Conditions)
+
+print("The given problem has been:\n", Solution['SDPSolution'])
+
+print("The success probability is: ", 1 - round(Solution['SDPSolution'],4))
 
 print("-----------------------------------\n\
 Computing the primal SDP Zero Error\n\
@@ -96,6 +97,8 @@ Solution = QSExSetUp.SDPSolver.SolveSDPExclusionZeroError(Conditions)
 print("The given problem has been:\n", Solution['SDPSolution'])
 
 print("The success probability is: ", round(Solution['SDPSolution'],4))
+
+print("---Correct results---")
 
 print("Minimum Error Probability : ", Conditions.getPerfectExlusionLowerBoundMinimumError())
 print("Zero Error Probability    : ", Conditions.getPerfectExlusionLowerBoundZeroError())

@@ -142,7 +142,7 @@ def SolveSDPExclusionMinimumError(Conditions):
     for iPOVM in range(NumberOfMatrices):
         ErrorProbability += MyPriorsPropbabilities[iPOVM]*picos.trace(POVMlist[iPOVM]*MyDensityMatrices[iPOVM])
 
-    MySDP.set_objective("max", 1-ErrorProbability)
+    MySDP.set_objective("max", 1 - ErrorProbability)
 
     for iPOVM in range(NumberOfMatrices):
         MySDP.add_constraint(POVMlist[iPOVM]>>0)
@@ -162,12 +162,12 @@ def SolveSDPExlusionDualMinimumError(Conditions):
 
     MySDP                  = picos.Problem()
     LagrangeMultiplierY    = picos.HermitianVariable("LagrangeMultiplier", MyDensityMatrices[0].shape)
-    ErrorProbability       = picos.trace(LagrangeMultiplierY)
 
-    MySDP.set_objective("min",1 - ErrorProbability)
+    MySDP.set_objective("max", picos.trace(LagrangeMultiplierY))
     
     for iContrain in range(NumberOfMatrices):
-        MySDP.add_constraint(LagrangeMultiplierY - MyPriorsPropbabilities[iContrain]*MyDensityMatrices[iContrain]>>0)
+        MySDP.add_constraint(MyPriorsPropbabilities[iContrain]*MyDensityMatrices[iContrain]-LagrangeMultiplierY >> 0)
+    MySDP.add_constraint(LagrangeMultiplierY >> 0)
 
     MySDP.solve(solver="mosek")
 
@@ -195,7 +195,7 @@ def SolveSDPExclusionZeroError(Conditions):
     for iPOVM in range(NumberOfMatrices):
         ErrorProbability += MyPriorsPropbabilities[iPOVM]*picos.trace(UnkownPOVM*MyDensityMatrices[iPOVM])
 
-    MySDP.set_objective("min", ErrorProbability)
+    MySDP.set_objective("max", 1 - ErrorProbability)
 
     for iPOVM in range(NumberOfMatrices):
         MySDP.add_constraint(POVMlist[iPOVM]>>0)
@@ -205,8 +205,7 @@ def SolveSDPExclusionZeroError(Conditions):
     MySDP.add_constraint(sum(POVMlist) + UnkownPOVM == picos.Constant(I))
     
     for iPOVM in range(NumberOfMatrices):
-        for jPOVM in range(NumberOfMatrices):
-            MySDP.add_constraint(picos.trace(POVMlist[iPOVM]*MyDensityMatrices[jPOVM]) == 0)
+        MySDP.add_constraint(picos.trace(POVMlist[iPOVM]*MyDensityMatrices[iPOVM]) == 0)
 
     MySDP.solve(solver="mosek")
 
