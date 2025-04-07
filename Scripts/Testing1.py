@@ -1,4 +1,4 @@
-########################################################################################################
+#######################################################################################################
 #                                                                                                      #
 #  Project:  Physics TFG                                                                               #
 #  Author:   Sergio Castañeiras Morales                                                                #
@@ -11,11 +11,10 @@ import QSExSetUp
 
 NumberOfMatrices              = 3
 MatrixDimension               = 3
-MatrixGenerationMethod        = "ZnEigenValues"
+MatrixGenerationMethod        = "Random"
 ProbabliltiesGenerationMethod = "Equal"
 EigenValues                   = [1,2,10]
 EigenValuesNormalized         = [iEigenValue*NumberOfMatrices/sum(EigenValues) for iEigenValue in EigenValues]
-print(EigenValuesNormalized)
 Conditions                    = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsEigenValues(EigenValuesNormalized, NumberOfMatrices), ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
 
 print(Conditions)
@@ -86,7 +85,7 @@ Solution = QSExSetUp.SDPSolver.SolveSDPExlusionDualMinimumError(Conditions)
 
 print("The given problem has been:\n", Solution['SDPSolution'])
 
-print("The success probability is: ", 1 - round(Solution['SDPSolution'],4))
+print("The success probability is: ", round(Solution['SDPSolution'],4))
 
 print("-----------------------------------\n\
 Computing the primal SDP Zero Error\n\

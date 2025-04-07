@@ -163,11 +163,10 @@ def SolveSDPExlusionDualMinimumError(Conditions):
     MySDP                  = picos.Problem()
     LagrangeMultiplierY    = picos.HermitianVariable("LagrangeMultiplier", MyDensityMatrices[0].shape)
 
-    MySDP.set_objective("max", picos.trace(LagrangeMultiplierY))
+    MySDP.set_objective("min", 1 - picos.trace(LagrangeMultiplierY))
     
     for iContrain in range(NumberOfMatrices):
         MySDP.add_constraint(MyPriorsPropbabilities[iContrain]*MyDensityMatrices[iContrain]-LagrangeMultiplierY >> 0)
-    MySDP.add_constraint(LagrangeMultiplierY >> 0)
 
     MySDP.solve(solver="mosek")
 

@@ -29,13 +29,15 @@ class GramGeneratedStatesClass:
         self.MatrixConstructionMethod       = MatrixConstructionMethod
         self.ProbabilitiesContructionMethod = ProbabilitiesContructionMethod
         self.PriorProbabilities             = GramGeneratedFunctions.SetOfProbabilities(ProbabilitiesContructionMethod,NumberOfMatrices)
-        self.GramMatrix                     = GramGeneratedFunctions.GenerateGramMatrix(NumberOfMatrices,MatrixConstructionMethod, GenerationConditions)
+        GramMatrixAndUnitaryMatrix          = GramGeneratedFunctions.GenerateGramMatrix(NumberOfMatrices,MatrixConstructionMethod, GenerationConditions)
+        self.GramMatrix                     = GramMatrixAndUnitaryMatrix["GramMatrix"]
         self.SquareRoot                     = picos.Constant(sqrtm(self.GramMatrix))
         self.GramMatrixWithPriors           = GramGeneratedFunctions.GenerateGramMatrixWithPriors(self.GramMatrix, self.PriorProbabilities,self.NumberOfMatrices)
         self.SquareRootWithPriors           = picos.Constant(sqrtm(self.GramMatrixWithPriors))
         self.DensityMatrices                = GramGeneratedFunctions.GetGramDensityMatrices(self.GramMatrix, self.NumberOfMatrices)
         self.SquareRootSuccessProbability   = GramGeneratedFunctions.SquareRootMeasurementSuccessPorbability(self.SquareRootWithPriors)
         self.PerfectExlusion                = GramGeneratedFunctions.PerfectExlusion(self.GramMatrixWithPriors)
+        self.UnitaryMatrix                  = GramMatrixAndUnitaryMatrix["UnitaryMatrix"]
     def to_dict(self):
         return {
             'NumberOfMatrices'               : self.NumberOfMatrices,
@@ -49,7 +51,8 @@ class GramGeneratedStatesClass:
             'SquareRootWithPriors'           : self.SquareRootWithPriors,
             'DensityMatrices'                : self.DensityMatrices,
             'SquareRootSuccessProbability'   : self.SquareRootSuccessProbability,
-            'PerfectExlusion'                : self.PerfectExlusion
+            'PerfectExlusion'                : self.PerfectExlusion,
+            'UnitaryMatrix'                  : self.UnitaryMatrix
         }
     def __getitem__(self, key):
         return self.to_dict()[key]
@@ -99,6 +102,9 @@ class GramGeneratedStatesClass:
             if not Overlap in OverlapsList : OverlapsList.append(Overlap)
             if not Phase in PhaseList : PhaseList.append(Phase)
         return OverlapsList, PhaseList
+    
+    def getUnitaryMatrix(self):
+        return self.to_dict()['UnitaryMatrix']
 
     def __repr__(self):
         PrintingText = "The working paramaters are:\n"

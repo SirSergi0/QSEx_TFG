@@ -52,7 +52,7 @@ plt.colorbar(sc, ax=ax, label="Exclusion probability")
 
 ax.set_xlabel("Overlap")
 ax.set_ylabel("Phase (radians)")
-# ax.set_title(f"Z{NumberOfMatrices} - Heat Map Overlap vs. Phase vs. Perfect Exclusion Probability")
+# plt.show()
 plt.savefig(f"../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ{NumberOfMatrices}HeatMap.pdf")
 plt.close()
 
@@ -100,6 +100,6 @@ plt.scatter(Overlap_values1, Phase_values1, c='darkred', label = 'Perfect exclus
 plt.xlabel("Overlap")
 plt.ylabel("Phase (radians)")
 plt.legend()
-# plt.title(f"Z{NumberOfMatrices} - Representation of the perfect exclusion zone")
 plt.savefig(f"../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ{NumberOfMatrices}BinaryHeatMap.pdf")
-
+# plt.show()
+plt.close()
