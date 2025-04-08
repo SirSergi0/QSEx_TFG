@@ -39,7 +39,7 @@
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
+    breakatwhitespace=false,
     breaklines=true,                 
     captionpos=t,                    
     keepspaces=true,                 
@@ -54,9 +54,22 @@
 \lstset{style=mystyle}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{titlesec}
+\usepackage{textcase} % for uppercase handling
 
+% --- Section formatting ---
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries\centering} % font size, bold, centered
+  {\thesection}{1em}{\MakeTextUppercase} % uppercase text
 
+% --- Subsection formatting ---
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\centering}
+  {\thesubsection}{1em}{\MakeTextUppercase}
 
+% --- Roman numerals for numbering ---
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Roman{section}.\roman{subsection}}
 
 \newtheorem{definition}{Definition}
 \newtheorem{observation}{Observation}
@@ -75,8 +88,17 @@
 \newcommand\course{}
 \newcommand\subject{Final Degree Project}
 \newcommand\degree{Bachelor's Degree in Physics}
-\newcommand\documenttitle{Notes: Quantum State Exclusion - Temporal Name -}
+\newcommand\documenttitle{Lower bounds of the success probability in quantum state exclusion for general ensembles}
 \newcommand\NetIDb{Universitat Autònoma de Barcelona}
+\newcommand\AuthorName{Sergio Castañeiras Morales}
+
+\hypersetup{%
+  pdftitle  = \documenttitle,
+  pdfauthor = \AuthorName,
+  pdfsubject= \degree,
+  pdfcreator= \AuthorName,
+}
+
 
 
 \begin{document}
@@ -87,7 +109,7 @@
 		\LARGE \textbf{\uppercase{\documenttitle}}
 		\HRule{2pt} \\ [1.5cm]
 		\normalsize \begin{tabular}{rcl}  % Create a right-left column alignment
-        \textsc{Author} & : & \textsc{Sergio Castañeiras Morales} \\
+        \textsc{Author} & : & \textsc{\AuthorName} \\
         \textsc{Supervisor} & : & \textsc{Ramón Muñoz Tapia} \\
         \textsc{Co-Supervisor} & : & \textsc{Santiago Llorens Fernández}
     \end{tabular}
@@ -105,29 +127,41 @@
 \thispagestyle{empty}
 \end{titlepage}
 
+\thispagestyle{empty}
+\mbox{} 
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill} % Push content to vertical center
+\begin{flushright}
+    \emph{The dumbest people I know are those who know it all.}\\[1em]
+    \textbf{Malcolm S. Forbes}
+\end{flushright}
+\vspace*{\fill} 
+\newpage
 
 \newpage
 \pagestyle{fancyplain}
 \headheight 35pt
 \lhead{\NetIDb}    
-\rhead{\subject}
+\rhead{\degree}
 \cfoot{}
 \rfoot{\small\thepage}
 \headsep 1.5em
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%% DEFINITIONS %%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{multicols}{2}
-[
-\section{Introsuction}
+\begin{multicols}{2}[\begin{center}
+\begin{abstract}
+Given a quantum state known to be prepared from an ensemble of two or more states, quantum state exclusion aims to rule out the possibility that it was prepared in a particular state from the ensemble. Using the known solution for group generated ensembles \cite{MainPaper}, we study this result as a lower bound for randomly generated ensembles via semidefinite programming.
+\end{abstract}
+\end{center}
+Keywords: \emph{SDP, Quantum state exclusion , \textcolor{blue}{Add keywords}}.
 ]
-\begin{definition}\lipsum\cite{Bandyopadhyay2014}
-\end{definition}
+\section{Introduction}
 
-\end{multicols}
-\newpage
+In many real-world scenarios, excluding a certain hypothesis can be more practical than solving the problem entirely. For instance, in disease diagnosis, ruling out potential diseases often serves as the first step in identifying the actual condition. Similarly, when repairing a machine, it is sometimes more efficient to identify the components that are functioning correctly, which narrows down the search for the faulty part.
+
+In this project, we adapt this concept to the quantum domain, focusing on the exclusion of quantum states. Rather than directly determining the exact state of a quantum system, we explore the process of eliminating states from a known ensemble, which may be more suitable or efficient in certain quantum applications.
+
+Given a certain 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%
@@ -137,5 +171,5 @@
 \bibliography{references} 
 %%%%%%%%
 
-
+\end{multicols}
 \end{document}
