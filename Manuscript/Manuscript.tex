@@ -195,7 +195,7 @@ Let $\left\{(\rho_i,\eta_i)\right\}_{i=1}^n$ be a set of $n$ states and $n$ prob
 The quantum mesurement is represented by a \gls{povm} set dennoted as $\left\{\Pi_j\right\}_j$ acting on quantum states' Hilbert space $\mathcal{H}$. 
 
 Hence, the formulation in a \gls{sdp} problem for the \gls{me} protocol for the miminization of the probability of excluding our target state from our hypothesis in the minimum error protocol reads,
-\begin{align*}\label{EquationMinimumError}
+\begin{align*}
 	P_{\text{\gls{me}}}^e=\min_{\Pi_i}&\sum_{i=1}^n\tr{(\Pi \rho_i)},\\
 	\text{subject to }&\sum_{i=1}^n \Pi_i = \mathds{1},\Pi_i\geq0 \hspace{0.5cm}\forall i\in\set{1,...,n}
 \end{align*}
@@ -204,7 +204,7 @@ notice that both conditions $\sum_{i=1}^n \Pi_i = \mathds{1}$ and $\Pi_i\geq0$ s
 
 Similarly the problem can trivially be formulated in an equivalent way in terms of the maximization of the \emph{success probability}, defined as the probabilty of a successfull exclusion form the point of view
 
-\begin{align*}\label{EquationMinimumError}
+\begin{align*}
 	P_{\text{\gls{me}}}^s=\max_{\Pi_i}1-&\sum_{i=1}^n\tr{(\Pi \rho_i)},\\
 	\text{subject to }&\sum_{i=1}^n \Pi_i = \mathds{1},\Pi_i\geq0 \hspace{0.5cm}\forall i\in\set{1,...,n}
 \end{align*}

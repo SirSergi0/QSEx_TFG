@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  8 APR 2025 16:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  8 APR 2025 16:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1165,7 +1165,7 @@ Package hyperref Info: Link coloring OFF on input line 119.
 \@outlinefile=\write4
 \openout4 = `Manuscript.out'.
 
-<GeneralSources/UABLogo.png, id=11, 392.12303pt x 138.01239pt>
+<GeneralSources/UABLogo.png, id=15, 392.12303pt x 138.01239pt>
 File: GeneralSources/UABLogo.png Graphic file (type png)
 <use GeneralSources/UABLogo.png>
 Package pdftex.def Info: GeneralSources/UABLogo.png  used on input line 142.
@@ -1205,30 +1205,6 @@ been already used, duplicate ignored
 l.147 \newpage
                [1] [2]
 
-Package natbib Warning: Citation `MainPaper' on page 3 undefined on input line 
-172.
-
-
-Package natbib Warning: Citation `PhysicsExclusionSource' on page 3 undefined o
-n input line 178.
-
-
-Package natbib Warning: Citation `DiscriminationArticle' on page 3 undefined on
- input line 178.
-
-
-Package natbib Warning: Citation `helstromBook' on page 3 undefined on input li
-ne 178.
-
-
-Package natbib Warning: Citation `OptimalitySRM' on page 3 undefined on input l
-ine 180.
-
-
-Package natbib Warning: Citation `MainPaper' on page 3 undefined on input line 
-188.
-
-
 Package multicol Warning: I moved some lines to the next page.
 (multicol)                Footnotes on page 3 might be wrong on input line 189.
 
@@ -1244,32 +1220,11 @@ Overfull \hbox (2.11281pt too wide) detected at line 201
  []
 
 
-! Package amsmath Error: Multiple \label's: label 'EquationMinimumError' will b
-e lost.
-
-See the amsmath package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.210 \end{align*}
-                  
-? 
-
 Overfull \hbox (21.60577pt too wide) detected at line 210
 []
  []
 
-(./Manuscript.bbl
-Underfull \hbox (badness 6204) in paragraph at lines 10--14
-[]\OT1/cmr/m/n/12 Somshubhro Bandy-opad-hyay, Rahul Jain,
- []
-
-
-Underfull \hbox (badness 6961) in paragraph at lines 10--14
-\OT1/cmr/m/n/12 Jonathan Op-pen-heim, and Christo-pher
- []
-
-)
+(./Manuscript.bbl)
 Using TeX to sort glossary entries---this may take a while
 
 Package multicol Warning: I moved some lines to the next page.
@@ -1281,55 +1236,21 @@ Overfull \hbox (60.43697pt too wide) in paragraph at lines 223--224
 [] 
  []
 
-
-Package natbib Warning: There were undefined citations.
-
 [5] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Manuscript.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-
-! Package natbib Error: Bibliography not compatible with author-year citations.
-
-(natbib)                Press <return> to continue in numerical citation style.
-
-
-See the natbib package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.51 ...mand\NAT@force@numbers{}\NAT@force@numbers
-                                                  
-? 
-)
+(./Manuscript.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Manuscript.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Manuscript.out':
-(rerunfilecheck)             Before: 9814C2D956916ADB9290ECA4E25C967A;103
-(rerunfilecheck)             After:  6A21CCFCD9F192EDEDF6E813B81EEEDE;285.
-
-Package lastpage Warning: Rerun to get the references right on input line 227.
-
+Package rerunfilecheck Info: File `Manuscript.out' has not changed.
+(rerunfilecheck)             Checksum: 6A21CCFCD9F192EDEDF6E813B81EEEDE;285.
  ) 
 Here is how much of TeX's memory you used:
- 33049 strings out of 474116
- 609924 string characters out of 5743682
+ 33050 strings out of 474116
+ 609935 string characters out of 5743682
  1945187 words of memory out of 5000000
- 54788 multiletter control sequences out of 15000+600000
+ 54789 multiletter control sequences out of 15000+600000
  570791 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,103p,2361b,1077s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1349,10 +1270,10 @@ ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Manuscript.pdf (6 pages, 203005 bytes).
+Output written on Manuscript.pdf (6 pages, 202973 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
+ 198 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
  23 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 34 words of extra memory for PDF output out of 10000 (max. 10000000)
 
