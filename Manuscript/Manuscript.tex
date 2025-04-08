@@ -83,8 +83,8 @@
 \setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
 
-\setlength{\parindent}{0.0in}
-\setlength{\parskip}{0.05in}
+%\setlength{\parindent}{0.0in}
+%\setlength{\parskip}{0.05in}
 
 % Edit these as appropriate
 \newcommand\course{}
@@ -99,6 +99,7 @@
   pdfauthor = \AuthorName,
   pdfsubject= \degree,
   pdfcreator= \AuthorName,
+  hidelinks = true,
 }
 
 \usepackage{glossaries}
@@ -114,7 +115,7 @@
 \glsaddall[types=\acronymtype] 
 
 \DeclareMathOperator{\tr}{Tr}
-
+\usetikzlibrary{arrows.meta, positioning}
 
 \begin{document}
 \title{\vspace{4cm} \normalsize 
@@ -170,7 +171,6 @@ Given a quantum state known to be prepared from an ensemble of two or more state
 Keywords: \emph{SDP, Quantum state exclusion , \textcolor{blue}{Add keywords}}.
 ]
 \section{Introduction}
-\vspace{-0.5cm}
 In many real-world scenarios, excluding a certain hypothesis can be more practical than solving the problem entirely. For instance, in disease diagnosis, ruling out potential diseases often serves as the first step in identifying the actual condition. Similarly, when repairing a machine, it is sometimes more efficient to identify the components that are functioning correctly, which narrows down the search for the faulty part.
 
 In this project, we project this idea into the quantum realm by focusing on \gls{qse}. Rather than determining the exact state of a quantum system, we aim to eliminate one or more possible candidates from a known ensemble of states. Notice, this approach can be more suitable or efficient in certain quantum information tasks.
@@ -187,30 +187,67 @@ The exclusion task can be carried out under two main protocols: \emph{Minimum Er
 
 Building on recent results that provide exact solutions for exclusion tasks in group generated ensembles \cite{MainPaper}, this project undertakes a numerical study of such results as lower bounds for more general, randomly generated ensembles. To this end, we employ \gls{sdp} to explore \gls{qse} performance in arbitrary settings. Furthermore, we investigate improved bounds for the general case based on how closely a given ensemble resembles a group-generated one\footnote{The notion of "how close" will be formally defined in Section~\textcolor{blue}{add section}.}.
 
-\vspace{-0.5cm}
 \section{Formulation of the problem}
-\vspace{-0.5cm}
-Let $\left\{(\rho_i,\eta_i)\right\}_{i=1}^n$ be a set of $n$ states and $n$ probabilities, where $\rho_i$ dennotes the density matrix $\rho_i=\ket{\psi_i}\bra{\psi_i}$, and $\eta_i$ dennotes the prior probability in which $\rho_i$ accours. Additionally, let $\rho_j$ be a state belonging to the ensemble be our target state, we aim to develope a proceadure to find $\rho_k\in\left\{\rho_i\right\}_{i=1}^n$ such that $\rho_j\neq\rho_k$.
 
-The quantum mesurement is represented by a \gls{povm} set dennoted as $\left\{\Pi_j\right\}_j$ acting on quantum states' Hilbert space $\mathcal{H}$. 
+Let $\left\{(\rho_i, \eta_i)\right\}_{i=1}^n$ be an ensemble of $n$ quantum states, where each $\rho_i$ denotes a pure-state density matrix, $\rho_i = \ket{\psi_i}\bra{\psi_i}$, and $\eta_i$ represents the prior probability of occurrence of state $\rho_i$. Let $\rho_j$ be the target state from this ensemble. Our goal is to develop a procedure to find another state $\rho_k \in \left\{\rho_i\right\}_{i=1}^n$, such that $\rho_k \neq \rho_j$.
 
-Hence, the formulation in a \gls{sdp} problem for the \gls{me} protocol for the miminization of the probability of excluding our target state from our hypothesis in the minimum error protocol reads,
+Quantum measurements are represented by a set of \glspl{povm}, denoted $\left\{\Pi_i\right\}_{i=1}^n$, acting on the Hilbert space $\mathcal{H}$ of the quantum system.
+
+The goal of the minimum-error (\gls{me}) protocol is miminizing the probability of excluding the target state from our hypothesis. In an \gls{sdp} formulation the problem reads,
 \begin{align*}
-	P_{\text{\gls{me}}}^e=\min_{\Pi_i}&\sum_{i=1}^n\tr{(\Pi \rho_i)},\\
-	\text{subject to }&\sum_{i=1}^n \Pi_i = \mathds{1},\Pi_i\geq0 \hspace{0.5cm}\forall i\in\set{1,...,n}
+	P_{\text{\gls{me}}}^e = \min_{\left\{\Pi_i\right\}} &\sum_{i=1}^n \tr(\Pi_i \rho_i),\\
+	\text{subject to} & \sum_{i=1}^n \Pi_i = \mathds{1}, \Pi_i \geq 0 \quad \forall i \in \{1, \dots, n\}.
 \end{align*}
 
-notice that both conditions $\sum_{i=1}^n \Pi_i = \mathds{1}$ and $\Pi_i\geq0$ stands for the \gls{povm} definition i.e. by demanding possible definitness and a sum equal to the identity we are demanding $\left\{\Pi_j\right\}_j$ to be a set of \gls{povm}s. Notice the $e$ upperindex stands for the \emph{error probability}.
+Note that the conditions $\sum_{i=1}^n \Pi_i = \mathds{1}$ and $\Pi_i \geq 0$ define the \gls{povm} elements, ensuring positivity and completeness. The superscript $e$ in $P_{\text{\gls{me}}}^e$ stands for the \emph{error probability}.
 
-Similarly the problem can trivially be formulated in an equivalent way in terms of the maximization of the \emph{success probability}, defined as the probabilty of a successfull exclusion form the point of view
+Alternatively, the problem can be formulated in terms of the \emph{success probability} $P_{\text{\gls{me}}}^s$, which represents the probability of successful exclusion. This is other perspective is nothing but,
 
 \begin{align*}
-	P_{\text{\gls{me}}}^s=\max_{\Pi_i}1-&\sum_{i=1}^n\tr{(\Pi \rho_i)},\\
-	\text{subject to }&\sum_{i=1}^n \Pi_i = \mathds{1},\Pi_i\geq0 \hspace{0.5cm}\forall i\in\set{1,...,n}
+	P_{\text{\gls{me}}}^s = \max_{\left\{\Pi_i\right\}} &\left(1 - \sum_{i=1}^n \tr(\Pi_i \rho_i)\right),\\
+	\text{subject to} & \sum_{i=1}^n \Pi_i = \mathds{1}, \Pi_i \geq 0 \quad \forall i \in \{1, \dots, n\}.
 \end{align*}
-Since naturally, $P_{\text{\gls{me}}}^s+P_{\text{\gls{me}}}^e = 1$.
 
-Moreover we refere an ensemble as a \emph{group generated ensemble} when it is the outcome of one or more unitary transformations $U_i$ applied onto a seed state such that $U_i$ generates a finite group. For instance if $U_i^n=\mathds{1}$ will lead up a $\mathbb{Z}/n\mathbb{Z}$ group generated ensemble. 
+Naturally, $P_{\text{\gls{me}}}^s + P_{\text{\gls{me}}}^e = 1$.
+
+In the case of the zero-error (\gls{ze}) protocol, the \gls{povm}s must additionally satisfy the unambiguity condition i.e. each measurement operator $\Pi_i$ must be orthogonal to the corresponding state $\rho_i$, in other words,
+
+\begin{equation*}
+\tr(\Pi_i \rho_i) = 0 \quad \forall i \in \{1, \dots, n\}.
+\end{equation*}
+
+An additional inconclusive outcome, denoted by a \gls{povm} element $\Pi_?$ (representing failure to exclude any state), must be introduced to ensure the completeness of the measurement,
+
+\begin{equation*}
+\Pi_? = \mathds{1} - \sum_{i=1}^n \Pi_i.
+\end{equation*}
+
+If the measurement outcome corresponds to $\Pi_?$ (i.e., "?" is observed), the result is inconclusive. The corresponding \gls{sdp} for minimizing the error probability (i.e., the probability of an inconclusive outcome) in the \gls{ze} protocol is:
+
+\begin{align*}
+	P_{\text{\gls{ze}}}^e = \min_{\left\{\Pi_i\right\}} &\sum_{i=1}^n \tr(\Pi_? \rho_i),\\
+	\text{subject to} \quad & \sum_{i=1}^n \Pi_i + \Pi_? = \mathds{1}, \quad \Pi_? \geq 0,\\
+	& \tr(\Pi_i \rho_i) = 0, \quad \Pi_i \geq 0 \quad \forall i \in \{1, \dots, n\}.
+\end{align*}
+
+Similarly, the corresponding success probability is:
+
+\begin{align*}
+	P_{\text{\gls{ze}}}^s = \max_{\left\{\Pi_i\right\}} &\left(1 - \sum_{i=1}^n \tr(\Pi_? \rho_i)\right),\\
+	\text{subject to} \quad & \sum_{i=1}^n \Pi_i + \Pi_? = \mathds{1}, \quad \Pi_? \geq 0,\\
+	& \tr(\Pi_i \rho_i) = 0, \quad \Pi_i \geq 0 \quad \forall i \in \{1, \dots, n\}.
+\end{align*}
+
+Note that this formulation is analogous to the \gls{me} protocol, except for the constraint $\tr(\Pi_i \rho_i) = 0$, which enforces unambiguous discrimination.
+
+Finally, we define a **group-generated ensemble** as one constructed by applying a finite group of unitary transformations to a fixed seed state. For example, let $U$ be a unitary operator such that $U^n = \mathds{1}$. Then the states of the ensemble are given by,
+
+\begin{equation*}
+\rho_i = U^i \rho (U^\dagger)^i, \quad i = 1, \dots, n,
+\end{equation*}
+
+where $\rho$ is the seed state. This forms a $\mathbb{Z}/n\mathbb{Z}$ generated ensemble.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
