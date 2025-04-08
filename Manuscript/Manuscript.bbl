@@ -1,9 +1,32 @@
 \begin{thebibliography}{1}
 
+\bibitem{DiscriminationArticle}
+Joonwoo Bae and Leong-Chuan Kwek.
+\newblock Quantum state discrimination and its applications.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  48(8):083001, January 2015.
+
+\bibitem{PhysicsExclusionSource}
+Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
+  Perry.
+\newblock Conclusive exclusion of quantum states.
+\newblock {\em Phys. Rev. A}, 89:022336, Feb 2014.
+
+\bibitem{OptimalitySRM}
+Nicola Dalla~Pozza and Gianfranco Pierobon.
+\newblock Optimality of square-root measurements in quantum state
+  discrimination.
+\newblock {\em Physical Review A}, 91(4), April 2015.
+
 \bibitem{MainPaper}
 Arnau Diebra, Santiago Llorens, Emili Bagan, Gael Sentís, and Ramon
   Muñoz-Tapia.
 \newblock Quantum state exclusion for group-generated ensembles of pure states,
   2025.
+
+\bibitem{helstromBook}
+Carl~W. Helstrom.
+\newblock {\em Quantum Detection and Estimation Theory}.
+\newblock Academic Press, New York, 1976.
 
 \end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  7 APR 2025 15:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  8 APR 2025 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -778,6 +778,10 @@ Now handling font encoding LYG ...
 ... no UTF-8 mapping file for font encoding LYG
 LaTeX Info: Composite with undeclared \" in encoding LYG on input line 58.
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/braket/braket.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/doublestroke/dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen289
 \WF@size=\dimen290
@@ -897,31 +901,206 @@ Package textcase Info: Defining Legacy names on input line 20.
 \c@PyPackage=\count351
 \c@book=\count352
 
-(./Manuscript.aux)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+Package: glossaries 2023/09/29 v4.53 (NLCT)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks54
+\XKV@tempa@toks=\toks55
+)
+\XKV@depth=\count353
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+Package: mfirstuc 2022/10/14 v2.08 (NLCT)
+\@glsmfirst=\toks56
+\@glsmrest=\toks57
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/datatool/datatool-base.sty
+Package: datatool-base 2019/09/27 v2.32 (NLCT)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/substr/substr.sty
+Package: substr 2009/10/20 v1.2 Handle substrings
+\c@su@anzahl=\count354
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/datatool/datatool-fp.sty
+Package: datatool-fp 2019/09/27 v2.32 (NLCT)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count355
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count356
+\FP@xia=\count357
+\FP@xib=\count358
+\FP@xfa=\count359
+\FP@xfb=\count360
+\FP@rega=\count361
+\FP@regb=\count362
+\FP@regs=\count363
+\FP@times=\count364
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count365
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fp/fp-eval.sty
+Package: fp-eval 1995/04/03
+)))
+\@dtl@toks=\toks58
+\@dtl@tmpcount=\count366
+\dtl@tmplength=\skip78
+\dtl@sortresult=\count367
+\@dtl@numgrpsepcount=\count368
+\@dtl@datatype=\count369
+\dtl@codeA=\count370
+\dtl@codeB=\count371
+\@dtl@foreach@level=\count372
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tracklang/tracklang.sty
+Package: tracklang 2022/12/13 v1.6.1 (NLCT) Track Languages
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/tracklang/tracklang.tex))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/translator/translator.sty
+Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries-english/glossaries-eng
+lish.ldf
+File: glossaries-english.ldf 2014/11/23 v1.0
+)
+\gls@level=\count373
+\@gls@tmpb=\toks59
+\gls@tmplen=\skip79
+\glskeylisttok=\toks60
+\glslabeltok=\toks61
+\glsshorttok=\toks62
+\glslongtok=\toks63
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/styles/glossary-hypern
+av.sty
+Package: glossary-hypernav 2023/09/29 v4.53 (NLCT)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/styles/glossary-list.s
+ty
+Package: glossary-list 2023/09/29 v4.53 (NLCT)
+\glslistdottedwidth=\skip80
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/styles/glossary-long.s
+ty
+Package: glossary-long 2023/09/29 v4.53 (NLCT)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip81
+\LTright=\skip82
+\LTpre=\skip83
+\LTpost=\skip84
+\LTchunksize=\count374
+\LTcapwidth=\dimen308
+\LT@head=\box127
+\LT@firsthead=\box128
+\LT@foot=\box129
+\LT@lastfoot=\box130
+\LT@gbox=\box131
+\LT@cols=\count375
+\LT@rows=\count376
+\c@LT@tables=\count377
+\c@LT@chunks=\count378
+\LT@p@ftn=\toks64
+)
+\glsdescwidth=\skip85
+\glspagelistwidth=\skip86
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/styles/glossary-super.
+sty
+Package: glossary-super 2023/09/29 v4.53 (NLCT)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2020/02/02 v4.1g the supertabular environment
+\c@tracingst=\count379
+\ST@wd=\dimen309
+\ST@rightskip=\skip87
+\ST@leftskip=\skip88
+\ST@parfillskip=\skip89
+\ST@pageleft=\dimen310
+\ST@headht=\dimen311
+\ST@tailht=\dimen312
+\ST@pagesofar=\dimen313
+\ST@pboxht=\dimen314
+\ST@lineht=\dimen315
+\ST@prevht=\dimen316
+\ST@toadd=\dimen317
+\ST@dimen=\dimen318
+\ST@pbox=\box132
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/styles/glossary-tree.s
+ty
+Package: glossary-tree 2023/09/29 v4.53 (NLCT)
+\glstreeindent=\skip90
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/styles/glossary-longra
+gged.sty
+Package: glossary-longragged 2023/09/29 v4.53 (NLCT)
+) (./Manuscript.aux)
 \openout1 = `Manuscript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -959,17 +1138,17 @@ LaTeX Font Info:    ... okay on input line 104.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count353
-\scratchdimen=\dimen308
-\scratchbox=\box127
-\nofMPsegments=\count354
-\nofMParguments=\count355
-\everyMPshowfont=\toks54
-\MPscratchCnt=\count356
-\MPscratchDim=\dimen309
-\MPnumerator=\count357
-\makeMPintoPDFobject=\count358
-\everyMPtoPDFconversion=\toks55
+\scratchcounter=\count380
+\scratchdimen=\dimen319
+\scratchbox=\box133
+\nofMPsegments=\count381
+\nofMParguments=\count382
+\everyMPshowfont=\toks65
+\MPscratchCnt=\count383
+\MPscratchDim=\dimen320
+\MPnumerator=\count384
+\makeMPintoPDFobject=\count385
+\everyMPtoPDFconversion=\toks66
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -979,8 +1158,8 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count359
-Package hyperref Info: Link coloring OFF on input line 104.
+\c@lstlisting=\count386
+Package hyperref Info: Link coloring OFF on input line 119.
 
 (./Manuscript.out) (./Manuscript.out)
 \@outlinefile=\write4
@@ -989,28 +1168,28 @@ Package hyperref Info: Link coloring OFF on input line 104.
 <GeneralSources/UABLogo.png, id=11, 392.12303pt x 138.01239pt>
 File: GeneralSources/UABLogo.png Graphic file (type png)
 <use GeneralSources/UABLogo.png>
-Package pdftex.def Info: GeneralSources/UABLogo.png  used on input line 127.
+Package pdftex.def Info: GeneralSources/UABLogo.png  used on input line 142.
 (pdftex.def)             Requested size: 122.27576pt x 43.0361pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 127
+LaTeX Font Info:    Trying to load font information for U+msa on input line 142
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 127
+LaTeX Font Info:    Trying to load font information for U+msb on input line 142
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+esint on input line 1
-27.
+42.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 12
-7.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 14
+2.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -1023,36 +1202,157 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.132 \newpage
-               [1] [2] (./Manuscript.bbl) [3]
+l.147 \newpage
+               [1] [2]
 
+Package natbib Warning: Citation `MainPaper' on page 3 undefined on input line 
+172.
+
+
+Package natbib Warning: Citation `PhysicsExclusionSource' on page 3 undefined o
+n input line 178.
+
+
+Package natbib Warning: Citation `DiscriminationArticle' on page 3 undefined on
+ input line 178.
+
+
+Package natbib Warning: Citation `helstromBook' on page 3 undefined on input li
+ne 178.
+
+
+Package natbib Warning: Citation `OptimalitySRM' on page 3 undefined on input l
+ine 180.
+
+
+Package natbib Warning: Citation `MainPaper' on page 3 undefined on input line 
+188.
+
+
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 3 might be wrong on input line 189.
+
+
+[3]
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
+01.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+Overfull \hbox (2.11281pt too wide) detected at line 201
+[]
+ []
+
+
+! Package amsmath Error: Multiple \label's: label 'EquationMinimumError' will b
+e lost.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.210 \end{align*}
+                  
+? 
+
+Overfull \hbox (21.60577pt too wide) detected at line 210
+[]
+ []
+
+(./Manuscript.bbl
+Underfull \hbox (badness 6204) in paragraph at lines 10--14
+[]\OT1/cmr/m/n/12 Somshubhro Bandy-opad-hyay, Rahul Jain,
+ []
+
+
+Underfull \hbox (badness 6961) in paragraph at lines 10--14
+\OT1/cmr/m/n/12 Jonathan Op-pen-heim, and Christo-pher
+ []
+
+)
+Using TeX to sort glossary entries---this may take a while
+
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 4 might be wrong on input line 223.
+
+
+[4]
+Overfull \hbox (60.43697pt too wide) in paragraph at lines 223--224
+[] 
+ []
+
+
+Package natbib Warning: There were undefined citations.
+
+[5] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Manuscript.aux)
+(./Manuscript.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+
+! Package natbib Error: Bibliography not compatible with author-year citations.
+
+(natbib)                Press <return> to continue in numerical citation style.
+
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.51 ...mand\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+? 
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `Manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 9814C2D956916ADB9290ECA4E25C967A;103.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Manuscript.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Manuscript.out':
+(rerunfilecheck)             Before: 9814C2D956916ADB9290ECA4E25C967A;103
+(rerunfilecheck)             After:  6A21CCFCD9F192EDEDF6E813B81EEEDE;285.
+
+Package lastpage Warning: Rerun to get the references right on input line 227.
+
  ) 
 Here is how much of TeX's memory you used:
- 26586 strings out of 474116
- 483104 string characters out of 5743682
- 1934187 words of memory out of 5000000
- 48471 multiletter control sequences out of 15000+600000
- 569281 words of font info for 86 fonts, out of 8000000 for 9000
+ 33049 strings out of 474116
+ 609924 string characters out of 5743682
+ 1945187 words of memory out of 5000000
+ 54788 multiletter control sequences out of 15000+600000
+ 570791 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,103p,547b,548s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,103p,2361b,1077s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Manuscript.pdf (4 pages, 106311 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Manuscript.pdf (6 pages, 203005 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
