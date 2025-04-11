@@ -66,12 +66,12 @@
 
 % --- Subsection formatting ---
 \titleformat{\subsection}
-  {\normalfont\large\bfseries\centering}
+  {\normalfont\normalsize\bfseries\centering}
   {\thesubsection}{1em}{\MakeTextUppercase}
 
 % --- Roman numerals for numbering ---
 \renewcommand{\thesection}{\Roman{section}}
-\renewcommand{\thesubsection}{\Roman{section}.\roman{subsection}}
+\renewcommand{\thesubsection}{\Roman{section}.\Roman{subsection}}
 
 \newtheorem{definition}{Definition}
 \newtheorem{observation}{Observation}
@@ -171,6 +171,8 @@ Given a quantum state known to be prepared from an ensemble of two or more state
 Keywords: \emph{SDP, Quantum state exclusion , \textcolor{blue}{Add keywords}}.
 ]
 \section{Introduction}
+Adri guapo
+
 In many real-world scenarios, excluding a certain hypothesis can be more practical than solving the problem entirely. For instance, in disease diagnosis, ruling out potential diseases often serves as the first step in identifying the actual condition. Similarly, when repairing a machine, it is sometimes more efficient to identify the components that are functioning correctly, which narrows down the search for the faulty part.
 
 In this project, we project this idea into the quantum realm by focusing on \gls{qse}. Rather than determining the exact state of a quantum system, we aim to eliminate one or more possible candidates from a known ensemble of states. Notice, this approach can be more suitable or efficient in certain quantum information tasks.
@@ -187,7 +189,7 @@ The exclusion task can be carried out under two main protocols: \gls{me} and \gl
 
 Building on recent results that provide exact solutions for exclusion tasks in group generated ensembles \cite{MainPaper}, this project undertakes a numerical study of such results as lower bounds for more general, randomly generated ensembles. To this end, we employ \gls{sdp} to explore \gls{qse} performance in arbitrary settings. Furthermore, we investigate improved bounds for the general case based on how closely a given ensemble resembles a group generated one\footnote{The notion of "how close" will be formally defined in Section~\textcolor{blue}{add section}.}.
 
-\section{Formulation of the Problem}
+\subsection{Formulation of the Problem}
 
 Let $\left\{(\rho_i, \eta_i)\right\}_{i=1}^n$ be an ensemble of $n$ quantum states, where each $\rho_i$ denotes a pure state density matrix\footnote{This formulation hols true for mixed states but the project will only discuss the pure state scenario.}, i.e., $\rho_i = \ket{\psi_i}\bra{\psi_i}$, and $\eta_i$ represents the prior probability of occurrence of the state $\rho_i$. Let $\rho_j$ be the target state from this ensemble. Our objective is to develop a procedure to identify another state $\rho_k \in \left\{\rho_i\right\}_{i=1}^n$, such that $\rho_k \neq \rho_j$.
 
@@ -239,7 +241,8 @@ The corresponding success probability is naturally given by,
 
 This formulation is analogous to the \gls{me} protocol, with the crucial difference being the constraint $\tr(\Pi_i \rho_i) = 0$, enforcing unambiguous discrimination.
 
-Moreover, let $\mathcal{G} \in \mathbb{C}^{n \times n}$ be the \emph{Gram matrix} of the system, defined as the $n\times n$ positive semidefinite hermitian matrix such that,
+\subsection{Gram matrix formulation}
+Let $\mathcal{G} \in \mathbb{C}^{n \times n}$ be the \emph{Gram matrix} of the system, defined as the $n\times n$ positive semidefinite hermitian matrix such that,
 \begin{equation*}
 	\mathcal{G} =
 	\begin{pmatrix}
@@ -277,6 +280,11 @@ for some matrix $X$ whose columns are the pure states,
 		\mid & \mid &        & \mid
 	\end{pmatrix}.
 \end{align*}
+Notice the diagonal elements of $X$ are,
+\begin{align*}
+	X_{i,i}=\braket{\omega_i|\psi_i}
+\end{align*}
+For an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$. \footnote{It is important to remark that fixing the basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$ fixes the decomposition of $G=X^\dagger X$ and vice versa.}
 
 Let us consider an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$, and define the POVM elements as projectors $\Pi_i = \ket{\omega_i}\bra{\omega_i}$. Then,
 \begin{align*}
@@ -285,20 +293,21 @@ Let us consider an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i
 	&= |X_{i,i}|^2.
 \end{align*}
 
-Therefore, we can reformulate the \gls{sdp} for the \gls{me} protocol as:
+Therefore, we can reformulate the \gls{sdp} for the \gls{me} protocol as,
 \begin{align*}
 	P_{\gls{me}}^e = \min_{X} &\sum_{i=1}^n |X_{i,i}|^2,\\
 	\text{subject to} \quad & X^\dagger X = \mathcal{G}, \quad X \geq 0.
 \end{align*}
 
-Similarly, the success probability becomes:
+Similarly, the success probability becomes, 
 \begin{align*}
 	P_{\gls{me}}^s = \max_{X} &\left(1 - \sum_{i=1}^n |X_{i,i}|^2\right),\\
 	\text{subject to} \quad & X^\dagger X = \mathcal{G}, \quad X \geq 0.
 \end{align*}
 
 This reformulation highlights that if two ensembles $A$ and $B$ share the same Gram matrix, then their exclusion problems, in both \gls{me} and \gls{ze} protocols, are equivalent. That is, the optimal success or error probabilities are identical in both systems. Hence, we focus on the Gram matrix to analyze exclusion problems, rather than relying on explicit state representations.
-\section{Group Generated Ensembles}
+
+\subsection{Group Generated Ensembles}
 
 Given a quantum state $\ket{\psi}$, which we refer to as the \emph{seed state}, we define a \emph{group generated ensemble} as the set of states obtained by applying a group of unitary transformations to $\ket{\psi}$. Specifically, if the ensemble consists of a total of $n$ quantum states, then its elements are of the form,
 \begin{align*}
@@ -314,7 +323,7 @@ For instance, let $U$ be a unitary operator such that $U^n = \mathds{1}$ (i.e., 
 \begin{align*}
 	\left\{ U^i\ket{\psi} \right\}_{i=0}^{n-1}
 \end{align*}
-forms a group generated ensemble based on the cyclic group $\mathbb{Z}_n$. This type of ensemble is of particular interest in our study and will be explored in more detail in subsequent sections.
+forms a group generated ensemble based on the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This type of ensemble is of particular interest in our study and will be explored in more detail in subsequent sections.
 
 Let $U \in SU(n)$ be an $n \times n$ special unitary matrix satisfying $U^n = \mathds{1}$, and let $\ket{\psi}$ be the seed state. The Gram matrix $G$ associated with the ensemble $\left\{U^i\ket{\psi}\right\}_{i=0}^{n-1}$ is nothing but,
 \begin{align*}
@@ -355,7 +364,37 @@ Therefore we may write,
 \end{pmatrix}.
 \end{align}
 
-This confirms the circulant structure of $\mathcal{G}$, where each row is a cyclic permutation of the one above it. In other words the Gram matrix of $\mathbb{Z}/n\mathbb{Z}$ matrices are circulant matrixes. This result is especially useful, as they can be diagonalized by the discrete Fourier basis, which simplifies many tasks.
+This confirms the circulant structure of $\mathcal{G}$, where each row is a cyclic permutation of the one above it. In other words the Gram matrix of $\mathbb{Z}/n\mathbb{Z}$ matrices are circulant matrixes. This result is especially useful, as they can be diagonalized by the discrete Fourier basis, which simplifies many tasks\cite{circulantMatrices}.
+
+Moreover we can compute the Gram matrix of a group generated ensamble by generating the Cayley table, also known as the \emph{multiplication table}, of the group. For instance if we consider the smallest non-commutative group $S_3$ composed by the rotations and symmetries of the triangle. If we denote the identity as $e$, the 3 symmetries as $p$, $q$ and $r$ and $s$ as a rotation, we know the Cayley table to be,
+\begin{table}[H]
+	\centering
+	\caption{Cayley table of the $S_3$ group.}
+	\begin{tabular}{c||c c c c c c}
+		$S_3$ & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\\hline\hline
+		$e$   & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\
+		$p$  & $p$ & $e$ & $s^2$ & s & $q$ & $r$ \\
+		$q$  & $q$ & $s$ & $e$ & $s^2$ & $r$ & $p$ \\
+		$r$  & $r$ & $s^2$ & $s$ & $e$ & $p$ & $q$ \\
+		$s^2$ & $s^2$ & $r$ & $p$ & $q$ & $e$ & $s$ \\
+		$s$ & $s$ & $q$ & $r$ & $p$ & $s^2$ & $e$ 
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Cayley table of the $S_3$ group.}
+    \begin{tabular}{c||c c c c c c}
+        $S_3$ & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\ \hline \hline
+        $e$   & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\
+        $p$   & $p$ & $e$ & $s^2$ & $s$ & $q$ & $r$ \\
+        $q$   & $q$ & $s$ & $e$ & $s^2$ & $r$ & $p$ \\
+        $r$   & $r$ & $s^2$ & $s$ & $e$ & $p$ & $q$ \\
+        $s^2$ & $s^2$ & $r$ & $p$ & $q$ & $e$ & $s$ \\
+        $s$   & $s$ & $q$ & $r$ & $p$ & $s^2$ & $e$
+    \end{tabular}
+\end{table}
+where we enforced the diagonal of the table 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
