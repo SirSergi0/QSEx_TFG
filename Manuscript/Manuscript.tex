@@ -171,8 +171,6 @@ Given a quantum state known to be prepared from an ensemble of two or more state
 Keywords: \emph{SDP, Quantum state exclusion , \textcolor{blue}{Add keywords}}.
 ]
 \section{Introduction}
-Adri guapo
-
 In many real-world scenarios, excluding a certain hypothesis can be more practical than solving the problem entirely. For instance, in disease diagnosis, ruling out potential diseases often serves as the first step in identifying the actual condition. Similarly, when repairing a machine, it is sometimes more efficient to identify the components that are functioning correctly, which narrows down the search for the faulty part.
 
 In this project, we project this idea into the quantum realm by focusing on \gls{qse}. Rather than determining the exact state of a quantum system, we aim to eliminate one or more possible candidates from a known ensemble of states. Notice, this approach can be more suitable or efficient in certain quantum information tasks.
@@ -305,7 +303,7 @@ Similarly, the success probability becomes,
 	\text{subject to} \quad & X^\dagger X = \mathcal{G}, \quad X \geq 0.
 \end{align*}
 
-This reformulation highlights that if two ensembles $A$ and $B$ share the same Gram matrix, then their exclusion problems, in both \gls{me} and \gls{ze} protocols, are equivalent. That is, the optimal success or error probabilities are identical in both systems. Hence, we focus on the Gram matrix to analyze exclusion problems, rather than relying on explicit state representations.
+This reformulation highlights that if two ensembles $A$ and $B$ share the same Gram matrix, then their exclusion problems, in both \gls{me} and \gls{ze} protocols, are equivalent. That is, the optimal success and error probabilities are identical in both systems. Hence, we focus on the Gram matrix to analyze exclusion problems, rather than relying on explicit state representations.
 
 \subsection{Group Generated Ensembles}
 
@@ -319,24 +317,24 @@ where the set of unitary matrices $\{U_i\}_{i=1}^n$ forms a finite group under s
 \end{align*}
 where $\rho = \ket{\psi}\bra{\psi}$ is the density matrix corresponding to the seed state.
 
-For instance, let $U$ be a unitary operator such that $U^n = \mathds{1}$ (i.e., $U$ generates a cyclic group of order $n$). Then, the set of states
+For instance, let $\mathcal{U}$ be a unitary operator such that $\mathcal{U}^n = \mathds{1}$ (i.e., $\mathcal{U}$ generates a cyclic group of order $n$). Then, the set of states
 \begin{align*}
-	\left\{ U^i\ket{\psi} \right\}_{i=0}^{n-1}
+	\left\{ \mathcal{U}^i\ket{\psi} \right\}_{i=0}^{n-1}
 \end{align*}
-forms a group generated ensemble based on the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This type of ensemble is of particular interest in our study and will be explored in more detail in subsequent sections.
+forms a group generated ensemble based on the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This type of ensemble is of particular interest in our study and will be explored in more detail in subsequent section.
 
-Let $U \in SU(n)$ be an $n \times n$ special unitary matrix satisfying $U^n = \mathds{1}$, and let $\ket{\psi}$ be the seed state. The Gram matrix $G$ associated with the ensemble $\left\{U^i\ket{\psi}\right\}_{i=0}^{n-1}$ is nothing but,
+\emph{Example: The $\mathbb{Z}/n\mathbb{Z}$ group generated ensamble}: Let $\mathcal{U} \in U(n)$ be an $n \times n$ unitary matrix satisfying $\mathcal{U}^n = \mathds{1}$, and let $\ket{\psi}$ be the seed state. The Gram matrix $\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}}$ elements associated with the ensemble $\left\{\mathcal{U}^i\ket{\psi}\right\}_{i=0}^{n-1}$ are nothing but,
 \begin{align*}
-	\mathcal{G}_{ij} = \braket{U^i\psi | U^j\psi} = \braket{\psi | U^{j-i} | \psi} = \braket{\mathcal{U}^{j-i}}_{\psi},
+	\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}}_{i,j} = \braket{\mathcal{U}^i\psi | \mathcal{U}^j\psi} = \braket{\psi | \mathcal{U}^{j-i} | \psi} = \braket{\mathcal{U}^{j-i}}_{\psi},
 \end{align*}
 where we use the shorthand notation
 \begin{align*}
-\braket{\mathcal{U}^k}_\psi := \braket{\psi | U^k | \psi}.
+	\braket{\mathcal{U}^k}_\psi := \braket{\psi | \mathcal{U}^k | \psi}.
 \end{align*}
 
-Using this, the Gram matrix $G$ can be expressed as a circulant matrix:
+Using this, the Gram matrix $\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}}$ can be expressed as a circulant matrix,
 \begin{align*}
-	\mathcal{G} = \begin{pmatrix}
+	\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}} = \begin{pmatrix}
  1 & \braket{\mathcal{U}}_{\psi} & \braket{\mathcal{U}^2}_{\psi} & \cdots & \braket{\mathcal{U}^{n-1}}_{\psi} \\
  \braket{\mathcal{U}^{n-1}}_{\psi}^* & 1 & \braket{\mathcal{U}}_{\psi} & \cdots & \braket{\mathcal{U}^{n-2}}_{\psi} \\
  \braket{\mathcal{U}^{n-2}}_{\psi}^* & \braket{\mathcal{U}^{n-1}}_{\psi}^* & 1 & \cdots & \braket{\mathcal{U}^{n-3}}_{\psi} \\
@@ -349,52 +347,77 @@ Note the Gram matrix is Hermitian, as required, since,
 \begin{align*}
     \braket{\mathcal{U}^{-j}}_{\psi} = \braket{\psi | U^{-j} | \psi} = \left(\braket{\psi | U^j | \psi}\right)^* = \braket{\mathcal{U}^j}_{\psi}^*.
 \end{align*}
-Additionally, by using the identity $U^n = \mathds{1}$, we can simplify terms such as,
+Additionally, by using the identity $\mathcal{U}^n = \mathds{1}$, we can simplify terms such as,
 \begin{align*}
-    \braket{\mathcal{U}^{-n+i}}_\psi = \braket{\psi | U^{-n+i} | \psi} = \braket{\psi | U^i | \psi} = \braket{\mathcal{U}^i}_\psi.
+	\braket{\mathcal{U}^{-n+i}}_\psi = \braket{\psi | \mathcal{U}^{-n+i} | \psi} = \braket{\psi | \mathcal{U}^i | \psi} = \braket{\mathcal{U}^i}_\psi.
 \end{align*}
 Therefore we may write,
-\begin{align}
-	\mathcal{G}=\begin{pmatrix}
+\begin{align*}
+	\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}} = \begin{pmatrix}
  1 & \braket{\mathcal{U}}_{\psi} & \braket{\mathcal{U}^{2}}_{\psi} & \hdots &  \braket{\mathcal{U}}_{\psi}^* \\
   \braket{\mathcal{U}}_{\psi}^* & 1 & \braket{\mathcal{U}}_{\psi} & \hdots &  \braket{\mathcal{U}^{2}}_{\psi}^* \\
     \braket{\mathcal{U}^{2}}_{\psi}^* &  \braket{\mathcal{U}}_{\psi}^*  & 1 & \hdots &  \braket{\mathcal{U}^{3}}_{\psi}^* \\
    \vdots & \vdots & \vdots & \ddots & \vdots \\
   \braket{\mathcal{U}}_{\psi} & \braket{\mathcal{U}^{2}}_{\psi}  & \braket{\mathcal{U}^{3}}_{\psi}  & \hdots &  1 
 \end{pmatrix}.
-\end{align}
+\end{align*}
 
 This confirms the circulant structure of $\mathcal{G}$, where each row is a cyclic permutation of the one above it. In other words the Gram matrix of $\mathbb{Z}/n\mathbb{Z}$ matrices are circulant matrixes. This result is especially useful, as they can be diagonalized by the discrete Fourier basis, which simplifies many tasks\cite{circulantMatrices}.
 
-Moreover we can compute the Gram matrix of a group generated ensamble by generating the Cayley table, also known as the \emph{multiplication table}, of the group. For instance if we consider the smallest non-commutative group $S_3$ composed by the rotations and symmetries of the triangle. If we denote the identity as $e$, the 3 symmetries as $p$, $q$ and $r$ and $s$ as a rotation, we know the Cayley table to be,
+Moreover we can compute the Gram matrix of a group generated ensamble by generating the Cayley table, also known as the \emph{multiplication table}, of the group. For instance, let us consider the smallest non-commutative group $S_3$ composed by the rotations and symmetries of the triangle. If we denote the identity as $e$, the 3 symmetries as $p$, $q$ and $s$ and a rotation as $s$, we know the Cayley table to be,
 \begin{table}[H]
 	\centering
 	\caption{Cayley table of the $S_3$ group.}
-	\begin{tabular}{c||c c c c c c}
-		$S_3$ & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\\hline\hline
-		$e$   & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\
-		$p$  & $p$ & $e$ & $s^2$ & s & $q$ & $r$ \\
-		$q$  & $q$ & $s$ & $e$ & $s^2$ & $r$ & $p$ \\
-		$r$  & $r$ & $s^2$ & $s$ & $e$ & $p$ & $q$ \\
-		$s^2$ & $s^2$ & $r$ & $p$ & $q$ & $e$ & $s$ \\
-		$s$ & $s$ & $q$ & $r$ & $p$ & $s^2$ & $e$ 
-	\end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \caption{Cayley table of the $S_3$ group.}
-    \begin{tabular}{c||c c c c c c}
-        $S_3$ & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\ \hline \hline
-        $e$   & $e$ & $p$ & $q$ & $r$ & $s$ & $s^2$ \\
-        $p$   & $p$ & $e$ & $s^2$ & $s$ & $q$ & $r$ \\
-        $q$   & $q$ & $s$ & $e$ & $s^2$ & $r$ & $p$ \\
-        $r$   & $r$ & $s^2$ & $s$ & $e$ & $p$ & $q$ \\
-        $s^2$ & $s^2$ & $r$ & $p$ & $q$ & $e$ & $s$ \\
-        $s$   & $s$ & $q$ & $r$ & $p$ & $s^2$ & $e$
+	\begin{tabular}{c||c c c c c c c}
+        $S_3$ & $e$ & $s$ & $s^2$ & $p$ & $q$ & $r$ \\\hline\hline
+        $e$   & $e$ & $s$ & $s^2$ & $p$ & $q$ & $r$ \\
+        $s^2$ & $s^2$ & $e$ & $s$ & $r$ & $p$ & $q$ \\
+        $s$   & $s$ & $s^2$ & $e$ & $q$ & $r$ & $p$ \\
+        $p$ & $p$ & $r$ & $q$ & $e$ & $s^2$ & $s$ \\
+        $q$ & $q$ & $p$ & $r$ & $s$ & $e$ & $s^2$ \\
+        $r$ & $r$ & $q$ & $p$ & $s^2$ & $s$ & $e$
     \end{tabular}
 \end{table}
-where we enforced the diagonal of the table 
+
+where we have enforced the diagonal elements to be the identity. Subsequently if we identify $S_3$ as a group of unitary matrices \footnote{we think of each element of the group as an unitary matrix and the operation of the group as the matrix product} we immediatelly realize the Gram matrix of the $S_3$ group generated ensamble is the matrix corresponding to the expected values of the Cayley table respect a certain seed state $\ket{\psi}$. In other words the Gram matrix is nothing but,
+\begin{align*}
+	\mathcal{G}^{S_3}_{psi}=\begin{pmatrix}
+        1 & \braket{s}_\psi & \braket{s^2}_\psi & \braket{p}_\psi & \braket{q}_\psi & \braket{r}_\psi \\ 
+        \braket{s^2}_\psi & 1 & \braket{s}_\psi & \braket{r}_\psi & \braket{p}_\psi & \braket{q}_\psi \\
+        \braket{s}_\psi & \braket{s^2}_\psi & 1 & \braket{q}_\psi & \braket{r}_\psi & \braket{p}_\psi \\
+        \braket{p}_\psi & \braket{r}_\psi & \braket{q}_\psi & 1 & \braket{s^2}_\psi & \braket{s}_\psi \\
+        \braket{q}_\psi & \braket{p}_\psi & \braket{r}_\psi & \braket{s}_\psi & 1 & \braket{s^2}_\psi \\
+        \braket{r}_\psi & \braket{q}_\psi & \braket{p}_\psi & \braket{s^2}_\psi & \braket{s}_\psi & 1
+	\end{pmatrix}.
+\end{align*}
+Notice that, $\braket{e}_\psi=1$ since $e$ is the neutral element of the matrix product operation, i.e. $e=\mathds{1}$. Moreover in this particular example we can observe since $\mathcal{G}^{S_3}$ is hermitian we know that,
+\begin{align*}\begin{cases}
+	\braket{p}_{\psi}=&\braket{p}_{\psi}^*\\
+	\braket{q}_{\psi}=&\braket{q}_{\psi}^*\\
+\braket{r}_{\psi}=&\braket{r}_{\psi}^*\end{cases}&\quad \forall \ket{\psi}\in \mathcal{H}\\
+\Updownarrow& \\
+\braket{p}_{\psi},\braket{q}_{\psi},\braket{r}_{\psi}\in&\mathbb{R}\quad \forall \ket{\psi}\in \mathcal{H}
+\end{align*}
+i.e. the unitary matrices corresponding to the triangle symmetries $p$, $q$ and $r$ are hermitian. It is inmediate this procedure can be applied for any group $G$, whic implies that computing the Cayley table is equivalent to computin the Gram matrix of the group generated ensamble.
+
+\subsection{Dual formulation of the problem}
+Somet
+
+\subsection{Previous results}
+Enormous advances have been made in the exclusion task for group generated ensambles. The publication \emph{Quantum state exclusion for group-generated ensembles of pure states}\cite{MainPaper} yields a result of the actual exact success and/or error probabilities for both \gls{me} and \gls{ze} protocols for group generated ensambles. The result reads, let $\mathcal{G}^{G}$ the Gram matrix of the group generated ensamble corresponding to a finite group $G$, let also $\{\lambda_i\}_{i=1}^{|G|}$ be the set of eigenvalues of the Gram matrix where $|G|$ denotes the number of the group's elements. Additionally let us consider the set of eigenvalues $\{\lambda_i\}_{i=1}^{|G|}$ to be an ordered group, such that,
+\begin{align*}
+	i\leq j\quad\forall i,j\in\{1,...,|G|\}\Leftrightarrow \lambda_i\geq\lambda_j \forall i,j\in\{1,...,|G|\}
+\end{align*}
+i.e. the set is ordered from the lowest to highest eigenvalue. Hence, the exclusion probabilities for the minimum error (\gls{me}) protocol are,
+\begin{align*}
+	P_{\gls{me}}^e=&\max\left\{0,\left(\frac{\sqrt{\lambda_{|G|}}-\sum_{i<|G|}\sqrt{\lambda_i}}{|G|}\right)^2\right\}\\
+	P_{\gls{me}}^s=&\min\left\{1,1-\left(\frac{\sqrt{\lambda_{|G|}}-\sum_{i<|G|}\sqrt{\lambda_i}}{|G|}\right)^2\right\}.
+\end{align*}
+Additionally, the results for the zero error (\gls{ze}) protocol are,
+\begin{align*}
+	P_{\gls{ze}}^e=&\max\left\{0,\frac{\sum_{i=1}^{|G|}\sqrt{\lambda_i}\left(\sqrt{\lambda_{|G|}}-\sum_{j<|G|}\sqrt{\lambda_j}\right)}{|G|}\right\}\\
+	P_{\gls{ze}}^s=&\min\left\{1,1-\frac{\sum_{i=1}^{|G|}\sqrt{\lambda_i}\left(\sqrt{\lambda_{|G|}}-\sum_{j<|G|}\sqrt{\lambda_j}\right)}{|G|}\right\}.
+\end{align*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
