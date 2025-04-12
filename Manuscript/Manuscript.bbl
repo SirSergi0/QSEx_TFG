@@ -35,4 +35,15 @@ Carl~W. Helstrom.
 \newblock {\em Quantum Detection and Estimation Theory}.
 \newblock Academic Press, New York, 1976.
 
+\bibitem{mosek_sdp}
+{MOSEK ApS}.
+\newblock {\em Semidefinite Optimization}, 2024.
+\newblock Version 11.0.
+
+\bibitem{GitHub}
+SirSergi0.
+\newblock Qsex\_tfg-temporal\_name-.
+\newblock \url{https://github.com/SirSergi0/QSEx_TFG-Temporal_Name-}, 2025.
+\newblock Accessed: 2025-04-12.
+
 \end{thebibliography}
