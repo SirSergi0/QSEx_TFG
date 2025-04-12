@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  12 APR 2025 20:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  12 APR 2025 22:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,49 +1245,59 @@ been already used, duplicate ignored
                    \relax 
 l.238 \end{align*}
                    [2] [3]
-Overfull \hbox (36.75882pt too wide) detected at line 344
+Overfull \hbox (36.75882pt too wide) detected at line 350
 []
  []
 
 
-Overfull \hbox (1.24432pt too wide) detected at line 363
+Overfull \hbox (1.24432pt too wide) detected at line 369
 []
  []
 
 [4]
-Overfull \hbox (27.02394pt too wide) detected at line 392
+Overfull \hbox (27.02394pt too wide) detected at line 398
 []
  []
 
 
-Overfull \hbox (34.4517pt too wide) detected at line 410
-[]
- []
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 5 might be wrong on input line 429.
 
 
-Overfull \hbox (6.3301pt too wide) detected at line 415
-[]
- []
-
-
-Overfull \hbox (49.40225pt too wide) detected at line 420
-[]
- []
-
-(./Manuscript.bbl [5
+[5
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.8 
-    ])
+l.429 \begin{align*}
+                    ]
+Overfull \hbox (37.71556pt too wide) detected at line 431
+[]
+ []
+
+
+Overfull \hbox (6.3301pt too wide) detected at line 436
+[]
+ []
+
+
+Overfull \hbox (49.40225pt too wide) detected at line 441
+[]
+ []
+
+(./Manuscript.bbl
+
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 6 might be wrong on input line 15.
+
+[6])
 Using TeX to sort glossary entries---this may take a while
 
-Overfull \hbox (60.43697pt too wide) in paragraph at lines 432--433
+Overfull \hbox (60.43697pt too wide) in paragraph at lines 459--460
 [] 
  []
 
-[6] 
+[7] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./Manuscript.aux)
  ***********
@@ -1298,13 +1308,13 @@ Package rerunfilecheck Info: File `Manuscript.out' has not changed.
 (rerunfilecheck)             Checksum: 11931AC0E9A9940D2B7C47F0F585D150;1029.
  ) 
 Here is how much of TeX's memory you used:
- 33119 strings out of 474116
- 611620 string characters out of 5743682
- 1962187 words of memory out of 5000000
- 54843 multiletter control sequences out of 15000+600000
+ 33126 strings out of 474116
+ 611749 string characters out of 5743682
+ 1961187 words of memory out of 5000000
+ 54846 multiletter control sequences out of 15000+600000
  571079 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,17n,103p,2361b,874s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,103p,2361b,906s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1326,10 +1336,10 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Manuscript.pdf (9 pages, 279256 bytes).
+Output written on Manuscript.pdf (10 pages, 288083 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
- 34 named destinations out of 1000 (max. 500000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 38 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -284,7 +284,7 @@ Notice the diagonal elements of $X$ are,
 \end{align*}
 For an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$. \footnote{It is important to remark that fixing the basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$ fixes the decomposition of $G=X^\dagger X$ and vice versa.}
 
-Let us consider an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$, and define the POVM elements as projectors $\Pi_i = \ket{\omega_i}\bra{\omega_i}$. Then,
+Let us consider an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i=1}^n$, and define the POVM elements as projectors $\Pi_i = \ket{\omega_i}\bra{\omega_i}$. Then, the \gls{sdp} formulation for the ensamble $\left\{(\rho_i,\eta_i)\right\}_{i=1}^n$ can be expressed as the following,
 \begin{align*}
 	\tr(\Pi_i \rho_i) &= \tr\left( \ket{\omega_i}\bra{\omega_i} \ket{\psi_i}\bra{\psi_i} \right) \\
 	&= |\braket{\omega_i|\psi_i}|^2 \\
@@ -293,17 +293,23 @@ Let us consider an arbitrary orthonormal basis $\left\{\ket{\omega_i}\right\}_{i
 
 Therefore, we can reformulate the \gls{sdp} for the \gls{me} protocol as,
 \begin{align*}
-	P_{\gls{me}}^e = \min_{X} &\sum_{i=1}^n |X_{i,i}|^2,\\
+	P_{\gls{me}}^e = \min_{X} &\sum_{i=1}^n \frac{|X_{i,i}|^2}{\eta_i},\\
 	\text{subject to} \quad & X^\dagger X = \mathcal{G}, \quad X \geq 0.
 \end{align*}
 
 Similarly, the success probability becomes, 
 \begin{align*}
-	P_{\gls{me}}^s = \max_{X} &\left(1 - \sum_{i=1}^n |X_{i,i}|^2\right),\\
+	P_{\gls{me}}^s = \max_{X} &\left(1 - \sum_{i=1}^n \frac{|X_{i,i}|^2}{\eta_i}\right),\\
 	\text{subject to} \quad & X^\dagger X = \mathcal{G}, \quad X \geq 0.
 \end{align*}
 
 This reformulation highlights that if two ensembles $A$ and $B$ share the same Gram matrix, then their exclusion problems, in both \gls{me} and \gls{ze} protocols, are equivalent. That is, the optimal success and error probabilities are identical in both systems. Hence, we focus on the Gram matrix to analyze exclusion problems, rather than relying on explicit state representations.
+
+Moreover, we remark we are not especially interested in the arbitrary prior probabilities $\eta_i$ scenario, since the result for equal prior probabilities $\eta_i=\frac{1}{n}$ can be easily extended to the previous case, with $n$ as the number of states. This extension can be performed by considering the non-normalized states
+\begin{align*}
+	\ket{\tilde{\psi_i}}=\frac{1}{\sqrt{\eta_i}}\ket{\psi_i}
+\end{align*}
+and reformulate the problem in terms of this new states forgetting about the prior probabilities since they are encoded inside the states. Thus, for simplicity we will consider the equal probabilities case.
 
 \subsection{Group Generated Ensembles}
 
@@ -379,7 +385,7 @@ Moreover we can compute the Gram matrix of a group generated ensamble by generat
     \end{tabular}
 \end{table}
 
-where we have enforced the diagonal elements to be the identity. Subsequently if we identify $S_3$ as a group of unitary matrices \footnote{we think of each element of the group as an unitary matrix and the operation of the group as the matrix product} we immediatelly realize the Gram matrix of the $S_3$ group generated ensamble is the matrix corresponding to the expected values of the Cayley table respect a certain seed state $\ket{\psi}$. In other words the Gram matrix is nothing but,
+where we have enforced the diagonal elements to be the identity. Subsequently if we identify $S_3$ as a group of unitary matrices \footnote{we think of each element of the group as an unitary matrix and the operation of the group as the matrix product.} we immediatelly realize the Gram matrix of the $S_3$ group generated ensamble is the matrix corresponding to the expected values of the Cayley table respect a certain seed state $\ket{\psi}$. In other words the Gram matrix is nothing but,
 \begin{align*}
 	\mathcal{G}^{S_3}_{psi}=\begin{pmatrix}
         1 & \braket{s}_\psi & \braket{s^2}_\psi & \braket{p}_\psi & \braket{q}_\psi & \braket{r}_\psi \\ 
@@ -396,19 +402,34 @@ Notice that, $\braket{e}_\psi=1$ since $e$ is the neutral element of the matrix 
 	\braket{q}_{\psi}=&\braket{q}_{\psi}^*\\
 \braket{r}_{\psi}=&\braket{r}_{\psi}^*\end{cases}&\quad \forall \ket{\psi}\in \mathcal{H}\\
 \Updownarrow& \\
-\braket{p}_{\psi},\braket{q}_{\psi},\braket{r}_{\psi}\in&\mathbb{R}\quad \forall \ket{\psi}\in \mathcal{H}
+\braket{p}_{\psi},\braket{q}_{\psi},\braket{r}_{\psi}\in&\mathbb{R}\quad \forall \ket{\psi}\in \mathcal{H}.
 \end{align*}
-i.e. the unitary matrices corresponding to the triangle symmetries $p$, $q$ and $r$ are hermitian. It is inmediate this procedure can be applied for any group $G$, whic implies that computing the Cayley table is equivalent to computin the Gram matrix of the group generated ensamble.
+Therefore the unitary matrices corresponding to the triangle symmetries $p$, $q$ and $r$ are hermitian. It is inmediate this procedure can be applied for any group $G$, whic implies that computing the Cayley table is equivalent to computin the Gram matrix of the group generated ensamble.
+
+Additionally, we will denote the cardinality of a finite group $G$\footnote{The cardinality of a group is the same as the number elements of the group.}, as $|G|$ which implies that for our case of interest of the prior probabilities scenario we may write $\eta_i=\frac{1}{|G|}$.
 
 \subsection{Dual formulation of the problem}
-Somet
-
-\subsection{Previous results}
-Enormous advances have been made in the exclusion task for group generated ensambles. The publication \emph{Quantum state exclusion for group-generated ensembles of pure states}\cite{MainPaper} yields a result of the actual exact success and/or error probabilities for both \gls{me} and \gls{ze} protocols for group generated ensambles. The result reads, let $\mathcal{G}^{G}$ the Gram matrix of the group generated ensamble corresponding to a finite group $G$, let also $\{\lambda_i\}_{i=1}^{|G|}$ be the set of eigenvalues of the Gram matrix where $|G|$ denotes the number of the group's elements. Additionally let us consider the set of eigenvalues $\{\lambda_i\}_{i=1}^{|G|}$ to be an ordered group, such that,
+Sometimes it is usefull to consider the dual version of each \emph{sdp} problem. The dual version of the exclusion task for the $\left\{\left(\rho_i,\frac{1}{n}\right)\right\}_{i=1}^n$ ensamble for the error probability with the Minimum Error (\gls{me}) protocol is,
 \begin{align*}
-	i\leq j\quad\forall i,j\in\{1,...,|G|\}\Leftrightarrow \lambda_i\geq\lambda_j \forall i,j\in\{1,...,|G|\}
+	\tilde{P}_{\gls{me}}^e=\max_{\Gamma\geq0}&\tr{\Gamma}\\
+	\text{subject to }&\frac{\rho_i}{n}-\Gamma\geq 0\quad\forall i\in\{1,...,n\}
 \end{align*}
-i.e. the set is ordered from the lowest to highest eigenvalue. Hence, the exclusion probabilities for the minimum error (\gls{me}) protocol are,
+where $\tilde{P}$ stands for the dual version of the problem. Naturally, for the success probability the problem reads,
+\begin{align*}
+	\tilde{P}_{\gls{me}}^s=\min_{\Gamma\geq0}&\left(1-\tr{\Gamma}\right)\\
+	\text{subject to }&\frac{\rho_i}{n}-\Gamma\geq 0\quad\forall i\in\{1,...,n\}.
+\end{align*}
+\textcolor{blue}{Add the dual version for the zero error protocol.}
+
+The dual version results specially usefull since if given an POVM anzatz the probabilities of the primal and dual problems coincide, i.e. $P=\tilde P$ we know we have found the optimal measurement. 
+
+The dual version 
+\subsection{Previous results}
+Enormous advances have been made in the exclusion task for group generated ensambles. The publication \emph{Quantum state exclusion for group-generated ensembles of pure states}\cite{MainPaper} yields a result of the actual exact success and/or error probabilities for both \gls{me} and \gls{ze} protocols for group generated ensambles. The result reads, let $\mathcal{G}^{G}$ the Gram matrix of the group generated ensamble $\left\{\left(\rho_i,\frac{1}{|G|}\right)\right\}_{i=1}^{|G|}$ corresponding to a finite group $G$, where $|G|$ denotes the number of the group's elements, let also $\{\lambda_i\}_{i=1}^{|G|}$ be the set of eigenvalues of the Gram matrix. Additionally let us consider the set of eigenvalues $\{\lambda_i\}_{i=1}^{|G|}$ to be an ordered group, such that,
+\begin{align*}
+	i\leq j\quad\forall i,j\in\{1,...,|G|\}\Leftrightarrow \lambda_i\geq\lambda_j \forall i,j\in\{1,...,|G|\},
+\end{align*}
+or equivalently, the set is ordered from the lowest to highest eigenvalue. Hence, the exclusion probabilities for the minimum error (\gls{me}) protocol are,
 \begin{align*}
 	P_{\gls{me}}^e=&\max\left\{0,\left(\frac{\sqrt{\lambda_{|G|}}-\sum_{i<|G|}\sqrt{\lambda_i}}{|G|}\right)^2\right\}\\
 	P_{\gls{me}}^s=&\min\left\{1,1-\left(\frac{\sqrt{\lambda_{|G|}}-\sum_{i<|G|}\sqrt{\lambda_i}}{|G|}\right)^2\right\}.
@@ -418,7 +439,16 @@ Additionally, the results for the zero error (\gls{ze}) protocol are,
 	P_{\gls{ze}}^e=&\max\left\{0,\frac{\sum_{i=1}^{|G|}\sqrt{\lambda_i}\left(\sqrt{\lambda_{|G|}}-\sum_{j<|G|}\sqrt{\lambda_j}\right)}{|G|}\right\}\\
 	P_{\gls{ze}}^s=&\min\left\{1,1-\frac{\sum_{i=1}^{|G|}\sqrt{\lambda_i}\left(\sqrt{\lambda_{|G|}}-\sum_{j<|G|}\sqrt{\lambda_j}\right)}{|G|}\right\}.
 \end{align*}
+For us is crucial to remark one of the results' traitmarks: the probabilities are independent of the group. In other words, given two group generated ensambles $A$ and $B$ for 2 differnt groups $G_A$ and $G_b$ ($G_A\neq G_B$) with the same cardinality, i.e. $|G_A|=|G_B|$, we know that if the respective Gram matrices $\mathcal{G}^{G_A}$ and $\mathcal{G}^{G_b}$ have the same eigenvalues, then the exclusion probability for both protocols \gls{me} and \gls{ze} is the same. This matter is one of the cornersotnes of this project study.
 
+Additionally we do also notice the exstence of some conditions where the exclusion can be performed with no error what so ever. This can be done if,
+\begin{align}\label{equationPerfectExclusionCondition}
+	\lambda_{|G|}\leq \left(\sum_{i=1}^{|G|}\sqrt{\lambda_i}\right)^2.
+\end{align}
+The regime corresponding to this conditions is denoted as the \emph{perfect exclusion zone}. In this project we will prove this results to be a lower bound for the exclusion success probability for the non group generated ensambles. However since the lower bound for the \emph{perfect exclusion zone} it is equal to 1\footnote{The exclusion can always be performed successfully in this context.}, then a perfect exclusion can be performed for a non group generated ensamble if it fulfils the perfect exclusion condition Eq. (\ref{equationPerfectExclusionCondition}). Subsequently, the perfect exclusion regime exists for a general ensamble and at least is comphended by those ensamble that fulfil Eq. (\ref{equationPerfectExclusionCondition}).
+
+\section{Methodology}
+All the code is stored in the GitHub repository \cite{GitHub}. The workflow of the study has been the creation of the Mosek solver \cite{mosek_sdp} to numerically solve the \gls{sdp} bla bla bl bla bla blaa.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%
