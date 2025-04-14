@@ -40,10 +40,14 @@ Carl~W. Helstrom.
 \newblock {\em Semidefinite Optimization}, 2024.
 \newblock Version 11.0.
 
+\bibitem{PICOS}
+Guillaume Sagnol and Maximilian Stahlberg.
+\newblock {PICOS}: A {Python} interface to conic optimization solvers.
+\newblock {\em Journal of Open Source Software}, 7(70):3915, February 2022.
+
 \bibitem{GitHub}
 SirSergi0.
 \newblock Qsex\_tfg-temporal\_name-.
 \newblock \url{https://github.com/SirSergi0/QSEx_TFG-Temporal_Name-}, 2025.
-\newblock Accessed: 2025-04-12.
 
 \end{thebibliography}

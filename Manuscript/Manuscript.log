@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  12 APR 2025 22:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  14 APR 2025 16:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1173,7 +1173,7 @@ Package hyperref Info: Link coloring OFF on input line 120.
 \@outlinefile=\write4
 \openout4 = `Manuscript.out'.
 
-<GeneralSources/UABLogo.png, id=35, 392.12303pt x 138.01239pt>
+<GeneralSources/UABLogo.png, id=43, 392.12303pt x 138.01239pt>
 File: GeneralSources/UABLogo.png Graphic file (type png)
 <use GeneralSources/UABLogo.png>
 Package pdftex.def Info: GeneralSources/UABLogo.png  used on input line 143.
@@ -1250,18 +1250,18 @@ Overfull \hbox (36.75882pt too wide) detected at line 350
  []
 
 
-Overfull \hbox (1.24432pt too wide) detected at line 369
+Overfull \hbox (6.8762pt too wide) detected at line 369
 []
  []
 
 [4]
-Overfull \hbox (27.02394pt too wide) detected at line 398
+Overfull \hbox (25.96838pt too wide) detected at line 398
 []
  []
 
 
 Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 5 might be wrong on input line 429.
+(multicol)                Footnotes on page 5 might be wrong on input line 430.
 
 
 [5
@@ -1269,45 +1269,84 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.429 \begin{align*}
+l.430 \begin{align*}
                     ]
-Overfull \hbox (37.71556pt too wide) detected at line 431
+Overfull \hbox (37.71556pt too wide) detected at line 432
 []
  []
 
 
-Overfull \hbox (6.3301pt too wide) detected at line 436
+Overfull \hbox (6.3301pt too wide) detected at line 437
 []
  []
 
 
-Overfull \hbox (49.40225pt too wide) detected at line 441
+Overfull \hbox (49.40225pt too wide) detected at line 442
 []
+ []
+
+
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 6 might be wrong on input line 458.
+
+
+[6]
+
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 7 might be wrong on input line 483.
+
+
+[7{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}]
+<../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf, i
+d=282, 867.24pt x 505.89pt>
+File: ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.p
+df Graphic file (type pdf)
+<use ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pd
+f>
+Package pdftex.def Info: ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorPro
+babilityZ3HeatMap.pdf  used on input line 496.
+(pdftex.def)             Requested size: 244.55153pt x 161.52386pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 496--497
+ [][] 
  []
 
 (./Manuscript.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 44--47
+[]\OT1/cmr/m/n/12 Guillaume Sag-nol and Max-i-m-il-ian
+ []
 
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 6 might be wrong on input line 8.
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 44--48
+Underfull \hbox (badness 6510) in paragraph at lines 44--47
+\OT1/cmr/m/it/12 of Open Source Soft-ware\OT1/cmr/m/n/12 , 7(70):3915,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--52
 []\OT1/cmr/m/n/12 SirSergi0.  Qsex[]tfg-temporal[]name-.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--48
+Underfull \hbox (badness 10000) in paragraph at lines 49--52
 []$\OT1/cmtt/m/n/12 https : / / github . com / SirSergi0 / QSEx _
  []
 
 )
 Using TeX to sort glossary entries---this may take a while
-[7]
-Overfull \hbox (60.43697pt too wide) in paragraph at lines 462--463
+[8
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.508 ..., nonumberlist, nogroupskip, style=super]
+                                                   <../Plots/DiscriminationOver
+lapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf>]
+Overfull \hbox (60.43697pt too wide) in paragraph at lines 508--509
 [] 
  []
 
-[8] 
+[9] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./Manuscript.aux)
  ***********
@@ -1315,16 +1354,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `Manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 27BA180C338CBF59117809C2BFD4D297;1127.
+(rerunfilecheck)             Checksum: D61C595C6452A1F7632259A0C5B1BDD4;1566.
  ) 
 Here is how much of TeX's memory you used:
- 33141 strings out of 474116
- 611941 string characters out of 5743682
+ 33174 strings out of 474116
+ 612944 string characters out of 5743682
  1961187 words of memory out of 5000000
- 54856 multiletter control sequences out of 15000+600000
- 571248 words of font info for 99 fonts, out of 8000000 for 9000
+ 54878 multiletter control sequences out of 15000+600000
+ 571585 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,17n,103p,2361b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,103p,2361b,1062s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1346,11 +1385,12 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Manuscript.pdf (11 pages, 297886 bytes).
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on Manuscript.pdf (12 pages, 1434868 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
- 42 named destinations out of 1000 (max. 500000)
- 74 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 452 PDF objects out of 1000 (max. 8388607)
+ 292 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
