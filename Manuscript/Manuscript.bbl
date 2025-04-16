@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{DiscriminationArticle}
 Joonwoo Bae and Leong-Chuan Kwek.
@@ -11,6 +11,11 @@ Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
   Perry.
 \newblock Conclusive exclusion of quantum states.
 \newblock {\em Phys. Rev. A}, 89:022336, Feb 2014.
+
+\bibitem{CayleyTable}
+Prof. Cayley.
+\newblock On the theory of groups.
+\newblock {\em American Journal of Mathematics}, 11(2):139--157, 1889.
 
 \bibitem{OptimalitySRM}
 Nicola Dalla~Pozza and Gianfranco Pierobon.
@@ -30,10 +35,20 @@ Arnau Diebra, Santiago Llorens, Emili Bagan, Gael Sentís, and Ramon
 \newblock Quantum state exclusion for group-generated ensembles of pure states,
   2025.
 
+\bibitem{haarMeasure}
+Alfréd Haar.
+\newblock Der {Maßbegriff} in der {Theorie} der kontinuierlichen {Gruppen}.
+\newblock {\em Annals of Mathematics}, 34(1):147--169, 1933.
+
 \bibitem{helstromBook}
 Carl~W. Helstrom.
 \newblock {\em Quantum Detection and Estimation Theory}.
 \newblock Academic Press, New York, 1976.
+
+\bibitem{UnitaryMatricesGeneration}
+Francesco Mezzadri.
+\newblock How to generate random matrices from the classical compact groups,
+  2007.
 
 \bibitem{mosek_sdp}
 {MOSEK ApS}.
