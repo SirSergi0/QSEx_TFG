@@ -593,6 +593,8 @@ This case is particularly interesting since it is the only ensemble that allows 
 
 First of all, let us present some results for the Quantum State Discrimination (\gls{qsd}) task, in order to motivate the problem and discuss the advantages and disadvantages respect its counterpart, the \gls{qsd}, the main object of study for this project. In Figure (\ref{FigureQSDMEZ3ZHeatmap}) we can find a heatmap of the average successfull discrimination probability for the minimum error \gls{me} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble. The probabilities are represented in terms of the modolus of the overlap ($x$-axis) and the phase ($y$-axis) that completely determine the Gram matrix of the ensemble, as discussed previousl. Additionally we present the case for equal prior probabilities since the results can be easily generaliced to arbitrary prior probabilities as discussed in section (\ref{sectionGramMatrixFormulation}) Gram Matrix Formulation. The prior probabilities scenario will the standard procedure for all the project.
 
+The colorless region comprehends the overlap values $c$ (i.e. $c=overlap\cdot e^{i phase}$) such that $\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}$ has negative eigenvalues values. The matrix generated in this region are no Gram matrices \emph{per se} since positive semi-definiteness is required as discussed in section (\ref{sectionGramMatrixFormulation}) Gram Matrix Formulation.
+
 \begin{figure}[H]
 	\centering
 	\label{FigureQSDMEZ3ZHeatmap}
@@ -603,9 +605,7 @@ First of all, let us present some results for the Quantum State Discrimination (
 	\caption{Representation of the probability of successfull discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble with Minimum Error (\gls{me}) protocol.}
 \end{figure}
 
-The colorless region comprehends the overlap values $c$ (i.e. $c=overlap\cdot e^{i phase}$) such that $\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}$ has negative eigenvalues values. The matrix generated in this region are no Gram matrices \emph{per se} since positive semi-definiteness is required as discussed in section (\ref{sectionGramMatrixFormulation}) Gram Matrix Formulation.
-
-In this conditions we know the known as \gls{srm} \footnote{a.k.a. pretty good measurement.} to be optimal, i.e. the result of the \gls{sdp} is the same as the \gls{srm}. This measurement is the one obtained by the decomposition of the Gram matrix the square root of an hermitian matrix $S$ as the following,
+In this conditions we know the known as \gls{srm} \footnote{Also known as \emph{pretty good measurement}.} to be optimal, i.e. the result of the \gls{sdp} is the same as the \gls{srm}. This measurement is the one obtained by the decomposition of the Gram matrix the square root of an hermitian matrix $S$ as the following,
 \begin{align*}
 	\mathcal{G}=S^\dagger S=S^2.
 \end{align*}
@@ -631,7 +631,42 @@ We observe both limit scenarios are preserved in this protocol too as expected. 
 	P^s_{\gls{me}}\sim P^s_{\gls{ze}}\sim 1-\sum_{\gls{povm}}\tr{(\Pi_i\rho_i)}.
 \end{align*}
 
-Nevertheless, in the \gls{ze} case we enforce $\tr{(\Pi_i\rho_i)}=0$ for all the \glspl{povm} except one. Thus, the system is more constrained in the \gls{ze} protocol, then the optimization of the probability cannot be performed up to the same point as in the \gls{me} protocol. Hence, the probabilities for 
+Nevertheless, in the \gls{ze} case we enforce $\tr{(\Pi_i\rho_i)}=0$ for all the \glspl{povm} except one. Thus, the system is more constrained in the \gls{ze} protocol, then the optimization of the probability cannot be performed up to the same point as in the \gls{me} protocol. Hence, the success probabilities for \gls{me} are greater than the ones obtained with the \gls{ze} protocol.
+
+We compare both protocols as well as the outcome of the \gls{srm} in Figure (\ref{FigureQSDMEZESRM}).
+
+\begin{figure}[H]
+	\centering
+	\label{FigureQSDMEZESRM}
+	\includegraphics[width=0.5\textwidth, trim={0cm 0cm 0cm 0cm}, clip]{../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf}
+	\caption{Representation of the probability of successfull discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble with Zero Error (\gls{ze}) Minimum Error (\gls{me}) protocols and the Square Root Measurement (\gls{srm}).}
+\end{figure}
+
+We observe perfect discrimination in not possible unless we impose orthogonality (i.e. overlap $= 0$), the trivial ensemble. This result is the main difference between the discrimination and exclusion task and the main motivation in the reserch on quantum state exclusion \gls{qse}.
+
+In contrast, in Figure (\ref{FigureQSEMEZ3ZHeatmap}) we present the results for the Quantum State Exclusion (\gls{qse}) for the $\mathbb{Z}/3\mathbb{Z}$ for the \gls{me} protocol in an analogously to Figure (\ref{FigureQSDMEZ3ZHeatmap}).
+
+\begin{figure}[H]
+	\centering
+	\label{FigureQSEMEZ3ZHeatmap}
+	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf}
+		\put(60,25){$G<0$}
+		\put(60,55){$G<0$}
+	\end{overpic}
+	\caption{Representation of the probability of successfull exclusion for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble with Minimum Error (\gls{me}) protocol.}
+\end{figure}
+
+We observe perfect exclussion can be performed in esembles such that perfect discrimination is not possible, particularly ensembles that fulfil Eq. (\ref{equationPerfectExclusionCondition}). This regime is highlighted in Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}), where both regimes are clearly distinguished.
+
+\begin{figure}[H]
+	\centering
+	\label{FigureQSEMEZ3ZPerfectExclusion}
+	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 2.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf}
+		\put(60,25){$G<0$}
+		\put(60,60){$G<0$}
+	\end{overpic}
+	\caption{Representation of the perfect exclusion zone for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble with Minimum Error (\gls{me}) protocol.}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
