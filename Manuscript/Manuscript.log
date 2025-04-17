@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  16 APR 2025 22:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  18 APR 2025 01:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1268,12 +1268,12 @@ been already used, duplicate ignored
                    \relax 
 l.242 \end{align*}
                    [2] [3]
-Overfull \hbox (36.75882pt too wide) detected at line 362
+Overfull \hbox (36.75882pt too wide) detected at line 361
 []
  []
 
 
-Overfull \hbox (6.8762pt too wide) detected at line 381
+Overfull \hbox (1.24432pt too wide) detected at line 380
 []
  []
 
@@ -1282,67 +1282,50 @@ Overfull \hbox (25.96838pt too wide) detected at line 419
 []
  []
 
+
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 5 might be wrong on input line 443.
+
+
 [5
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.434 \begin{align*}
+l.443 \begin{align*}
                     ]
-Overfull \hbox (37.71556pt too wide) detected at line 453
+Overfull \hbox (7.6634pt too wide) detected at line 470
 []
  []
 
 
-Overfull \hbox (6.3301pt too wide) detected at line 458
+Overfull \hbox (50.73557pt too wide) detected at line 476
 []
  []
 
-
-Overfull \hbox (49.40225pt too wide) detected at line 463
-[]
- []
-
-[6]
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 7 might be wrong on input line 522.
-
-
-[7]
+[6] [7] [8{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super
+-ts1.enc}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 539.
-
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 8 might be wrong on input line 546.
-
-
-[8{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 592.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 592.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 592.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 592.
-
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 9 might be wrong on input line 595.
-
+(hyperref)                removing `\gls' on input line 570.
 
 [9]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 634.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 634.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 634.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 634.
+
 <../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf, i
 d=357, 867.24pt x 505.89pt>
 File: ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.p
@@ -1350,59 +1333,64 @@ df Graphic file (type pdf)
 <use ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pd
 f>
 Package pdftex.def Info: ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorPro
-babilityZ3HeatMap.pdf  used on input line 601.
+babilityZ3HeatMap.pdf  used on input line 645.
 (pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
 
-Overfull \hbox (4.99956pt too wide) in paragraph at lines 604--605
+Overfull \hbox (4.99956pt too wide) in paragraph at lines 648--649
  [][] 
  []
 
-<../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMap.pd
-f, id=372, 867.24pt x 505.89pt>
-File: ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatM
-ap.pdf Graphic file (type pdf)
-<use ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMa
-p.pdf>
-Package pdftex.def Info: ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabil
-ityZeroErrorZ3HeatMap.pdf  used on input line 623.
-(pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
 
-Overfull \hbox (4.99956pt too wide) in paragraph at lines 626--627
- [][] 
- []
+Package multicol Warning: I moved some lines to the next page.
+(multicol)                Footnotes on page 10 might be wrong on input line 661
+.
 
 [10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.629 W
-       e observe both limit scenarios are preserved in this protocol too as ...
- <../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf>]
+l.661 
+       <../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap
+.pdf>]
+<../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMap.pd
+f, id=426, 867.24pt x 505.89pt>
+File: ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatM
+ap.pdf Graphic file (type pdf)
+<use ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMa
+p.pdf>
+Package pdftex.def Info: ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabil
+ityZeroErrorZ3HeatMap.pdf  used on input line 665.
+(pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
+
+Overfull \hbox (4.99956pt too wide) in paragraph at lines 668--669
+ [][] 
+ []
+
 <../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf,
- id=444, 462.52798pt x 346.89601pt>
+ id=446, 462.52798pt x 346.89601pt>
 File: ../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0
 .pdf Graphic file (type pdf)
 <use ../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.
 pdf>
 Package pdftex.def Info: ../Plots/DiscriminationOverlapVSSucessProbabilitySDPvs
-SRMZnOverlap3Phase0.pdf  used on input line 641.
+SRMZnOverlap3Phase0.pdf  used on input line 684.
 (pdftex.def)             Requested size: 244.55153pt x 183.41467pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 641--642
+Overfull \hbox (5.0pt too wide) in paragraph at lines 684--685
  [][] 
  []
 
-<../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf, id=457,
+<../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf, id=453,
  867.24pt x 505.89pt>
 File: ../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf Gra
 phic file (type pdf)
 <use ../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf>
 Package pdftex.def Info: ../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabili
-tyZ3HeatMap.pdf  used on input line 652.
+tyZ3HeatMap.pdf  used on input line 695.
 (pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
 
-Overfull \hbox (4.99956pt too wide) in paragraph at lines 655--656
+Overfull \hbox (4.99956pt too wide) in paragraph at lines 698--699
  [][] 
  []
 
@@ -1411,27 +1399,40 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.660 
+l.703 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.660 
-       <../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3Hea
-tMap.pdf> <../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3P
-hase0.pdf>]
+l.703 
+       <../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phas
+e0.pdf> <../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3He
+atMap.pdf>]
+<../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf, id=545, 86
+7.24pt x 505.89pt>
+File: ../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf Graphi
+c file (type pdf)
+<use ../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf>
+Package pdftex.def Info: ../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ
+3HeatMap.pdf  used on input line 707.
+(pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
+
+Overfull \hbox (4.99956pt too wide) in paragraph at lines 710--711
+ [][] 
+ []
+
 <../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf, id=
-550, 722.7pt x 505.89pt>
+551, 722.7pt x 505.89pt>
 File: ../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf
  Graphic file (type pdf)
 <use ../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf>
 
 Package pdftex.def Info: ../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZone
-Z3BinaryHeatMap.pdf  used on input line 664.
+Z3BinaryHeatMap.pdf  used on input line 719.
 (pdftex.def)             Requested size: 244.55153pt x 177.82845pt.
 
-Overfull \hbox (4.99956pt too wide) in paragraph at lines 667--668
+Overfull \hbox (4.99956pt too wide) in paragraph at lines 722--723
  [][] 
  []
 
@@ -1440,7 +1441,27 @@ Underfull \hbox (badness 7468) in paragraph at lines 16--19
 []\OT1/cmr/m/n/12 Prof. Cay-ley.  On the the-ory of
  []
 
-
+[12
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.25 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.25 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.25 
+      <../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf> <
+../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf> <../Plots/E
+xlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 59--62
 []\OT1/cmr/m/n/12 Guillaume Sag-nol and Max-i-m-il-ian
  []
@@ -1455,28 +1476,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--67
 []$\OT1/cmtt/m/n/12 https : / / github . com / SirSergi0 / QSEx _
  []
 
-) [12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.679 \section*{List of abbreviations}
-                                      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.679 \section*{List of abbreviations}
-                                       <../Plots/ExlusionOverlapVSPhaseVSMinimu
-mErrorProbabilityZ3HeatMap.pdf> <../Plots/ExlusionOverlapVSPhaseVSPerfectExclus
-sionZoneZ3BinaryHeatMap.pdf>]
+)
 Using TeX to sort glossary entries---this may take a while
 
-Overfull \hbox (60.43697pt too wide) in paragraph at lines 681--682
+Overfull \hbox (60.43697pt too wide) in paragraph at lines 737--737
 [] 
  []
 
-[13] 
+[13]
+Overfull \hbox (49.68698pt too wide) in paragraph at lines 737--738
+[] 
+ []
+
+[14] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./Manuscript.aux)
  ***********
@@ -1484,16 +1496,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `Manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: BE507820D648178573850E381AA1ED2A;2345.
+(rerunfilecheck)             Checksum: B8659F37098170BCC5E4B31B8546D0E2;2345.
  ) 
 Here is how much of TeX's memory you used:
- 33511 strings out of 474116
- 620005 string characters out of 5743682
- 1963187 words of memory out of 5000000
- 55184 multiletter control sequences out of 15000+600000
+ 33517 strings out of 474116
+ 620499 string characters out of 5743682
+ 1958187 words of memory out of 5000000
+ 55190 multiletter control sequences out of 15000+600000
  571585 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,17n,103p,2361b,920s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,103p,2361b,1097s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1517,10 +1529,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
 texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Manuscript.pdf (16 pages, 4493472 bytes).
+Output written on Manuscript.pdf (17 pages, 5454735 bytes).
 PDF statistics:
- 771 PDF objects out of 1000 (max. 8388607)
- 443 compressed objects within 5 object streams
+ 821 PDF objects out of 1000 (max. 8388607)
+ 458 compressed objects within 5 object streams
  74 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 182 words of extra memory for PDF output out of 10000 (max. 10000000)
 
