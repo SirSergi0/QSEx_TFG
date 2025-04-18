@@ -158,6 +158,9 @@
 \end{flushright}
 \vspace*{\fill} 
 \newpage
+\thispagestyle{empty}
+\mbox{} 
+\newpage
 
 \newpage
 \pagestyle{fancyplain}
@@ -643,8 +646,8 @@ The colorless regions correspond to parameters where $\mathcal{G}^{\mathbb{Z}/3\
 	\centering
 	\label{FigureQSDMEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf}
-		\put(60,25){$G<0$}
-		\put(60,55){$G<0$}
+		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for minimum error (\gls{me}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
 \end{figure}
@@ -663,8 +666,8 @@ Figure (\ref{FigureQSDZEZ3ZHeatmap}) shows results for the Zero Error (\gls{ze})
 	\centering
 	\label{FigureQSDZEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMap.pdf}
-		\put(60,25){$G<0$}
-		\put(60,55){$G<0$}
+		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for zero-error (\gls{ze}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
 \end{figure}
@@ -682,22 +685,22 @@ Figure (\ref{FigureQSDMEZESRM}) compares the performance of the ME, ZE, and SRM 
 	\centering
 	\label{FigureQSDMEZESRM}
 	\includegraphics[width=0.5\textwidth]{../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf}
-	\caption{Comparison of successful discrimination probabilities for ME, ZE, and SRM protocols in a $\mathbb{Z}/3\mathbb{Z}$ ensemble.}
+	\caption{Comparison of successful discrimination probabilities for ME, ZE, and SRM protocols in a $\mathbb{Z}/3\mathbb{Z}$ ensemble impossing phase=$0$.}
 \end{figure}
 
 As expected, perfect discrimination is only achieved when the overlap is zero (orthogonal states), and the \gls{srm} success probability matches the one obtained from the numerical \gls{sdp}. This highlights the motivation behind the study of \gls{qse}, which allows for perfect exclusion in cases where discrimination is impossible.
-
-Figure (\ref{FigureQSEMEZ3ZHeatmap}) presents the ME protocol results for the \gls{qse} task, analogous to Figure (\ref{FigureQSDMEZ3ZHeatmap}).
 
 \begin{figure}[H]
 	\centering
 	\label{FigureQSEMEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf}
-		\put(60,25){$G<0$}
-		\put(60,55){$G<0$}
+		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for minimum error (\gls{me}) quantum state exclusion in a $\mathbb{Z}/3\mathbb{Z}$ ensemble.}
 \end{figure}
+
+Figure (\ref{FigureQSEMEZ3ZHeatmap}) presents the ME protocol results for the \gls{qse} task, analogous to Figure (\ref{FigureQSDMEZ3ZHeatmap}).
 
 The ZE protocol for \gls{qse} is shown in Figure (\ref{FigureQSEZEZ3ZHeatmap}).
 
@@ -705,25 +708,114 @@ The ZE protocol for \gls{qse} is shown in Figure (\ref{FigureQSEZEZ3ZHeatmap}).
 	\centering
 	\label{FigureQSEZEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf}
-		\put(60,25){$G<0$}
-		\put(60,55){$G<0$}
+		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for zero-error (\gls{ze}) quantum state exclusion in a $\mathbb{Z}/3\mathbb{Z}$ ensemble.}
 \end{figure}
-
-Again, the ZE protocol yields lower probabilities due to its constraints and the limit case scenarios match with the previos discussion in Section (\ref{sectionLimitCaseScenarios}). However, crucially, perfect exclusion is possible even when perfect discrimination is not. Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) highlights the regions where perfect exclusion is achieved, even outside the perfect discrimination regime.
 
 \begin{figure}[H]
 	\centering
 	\label{FigureQSEMEZ3ZPerfectExclusion}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 2.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf}
-		\put(60,25){$G<0$}
-		\put(60,60){$G<0$}
+		\put(70,27){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+		\put(70,60){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Perfect exclusion zone for a $\mathbb{Z}/3\mathbb{Z}$ ensemble under the minimum error (\gls{me}) protocol.}
 \end{figure}
 
+Again, the ZE protocol yields lower probabilities due to its constraints and the limit case scenarios match with the previos discussion in Section (\ref{sectionLimitCaseScenarios}). However, crucially, perfect exclusion is possible even when perfect discrimination is not, in this regime seems to correspond to the ensembles such that the modulus of the overlap between two ensembles do not overtakes $\frac{1}{2}$. Nevertheless, this description is purely observational, we will give a better description in Section (\ref{sectionPerfectExclusionRegimeAndGeneralEnsembles}). Notice Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) highlights the regions where perfect exclusion is achieved, even outside the perfect discrimination regime.
+
 This property of \gls{qse} is a major motivation for its study. For example, in a regime where perfect exclusion is possible, having access to multiple copies of a target state enables hybrid exclusion-discrimination protocols that can outperform purely discriminative strategies. Even partial information, such as the exclusion of a single quantum state, has value in certain quantum information theories. These features make \gls{qse} a fertile ground for further theoretical and applied research.
+
+\subsection{The perfect exclusion regime and general ensembles}\label{sectionPerfectExclusionRegimeAndGeneralEnsembles}
+
+Although the $Overlap modulus - phase$ spectrum might seem as the most intuituve representation, the spectrum of Gram's matrix eigenvalues results the most appropriate representation for the perfect exclusion zone as well as the discussion and its comparison for general ensembles. Carrying on with the previos discussion, one can check the two \gls{dof} now appear as two of the eigenvalues. In the Figure (\ref{FigureQSEMEZ3ZEigenValues}) the results for the exclusion task under the \gls{me} protocol for the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble are represented. The axis represent two of the eigenvalues of the Gram matrix and a heatmap presents the probability for a perfect exclusion in the given conditions.
+
+\begin{figure}[H]
+	\centering
+	\label{FigureQSEMEZ3ZEigenValues}
+	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3.pdf}
+		\put(20,25){\footnotesize{Perfect exclusion}}
+		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+	\end{overpic}
+	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+\end{figure}
+
+The order in eigenvalues is obviated in the representation, i.e. we can find conditions such that $\lambda_i>\lambda_j$ and others conditions such that $\lambda_i<\lambda_j$ for $i,j\in\{1,2,3\}$
+
+Notice the missing eigenvalue is determined by the other two via,
+\begin{align*}
+	\lambda_3=3-\lambda_1-\lambda_2.
+\end{align*}
+Since the Gram matrix is a positive semidefinite matrix we know that $\lambda_3\geq0$, the limit case scenario $\lambda_3=0$ defines the line,
+\begin{align*}
+\lambda_2=3-\lambda_1,
+\end{align*}
+that constraints the possible eigenvalues to only reach values under this line. Otherwise the remaining value would be negative leading up to non-valid Gram matrices as discussed in the previos plots. Naturally, we also know $\lambda_1,\lambda_2>0$, then the region $\Omega$ where the system leads up to consistent Gram matrices is,
+\begin{align*}
+	\Omega=\left\{(\lambda_1,\lambda_2)\in\mathbb{R}^2\left|\lambda_1\geq0,\lambda_2\geq0,\lambda_1+\lambda_2\leq3\right.\right\}.
+\end{align*}
+This region $\Omega$ is depicted in the Figure (\ref{FigureQSEMEZ3ZEigenValues}) as boottom left triangle, where our system is recluded. Inside this region we can find the perfect exclusion zone, i.e. the eigenvalues such that Eq.(\ref{equationPerfectExclusionCondition}) is fulfilled. In particular,if we set $\lambda_i$ with $i\in\{1,2,3\}$ to be the greatest eigenvalues and denote $\lambda_j,\lambda_k$ as the remaining 2 eigenvalues, we know perfect exclusion to be archived if,
+\begin{align*}
+	\sqrt{\lambda_i}\leq \sqrt{\lambda_j}+\sqrt{\lambda_k}.
+\end{align*}
+With a little bit of algebra and recalling that $\lambda_3=3-\lambda_1-\lambda_2$ we can derive the regime of perfect exclusion denoted as $\Delta$ comprehends the eigenvalues such that,
+\begin{align*}
+	(\lambda_1,\lambda_2&)\in \Delta\\
+	\Updownarrow& \\
+	4\lambda_1^2 + 4\lambda_2^2 + 4\lambda_1\lambda_2 - &12\lambda_1 - 12\lambda_i + 9 \leq 0
+\end{align*}
+Figure (\ref{FigurePerfectExclusionZ3Z}) shows the $\Delta$ region. It is inmediate that this region corresponds to the colorless perfect exclusion regime in Figure (\ref{FigureQSEMEZ3ZEigenValues}).
+\begin{figure}[H]
+	\centering
+	\label{FigurePerfectExclusionZ3Z}
+	\begin{overpic}[width=0.5\textwidth, trim={1.8cm 0.8cm 2cm 2cm}, clip]{GeneralSources/PerfectExclusionZoneZ3Z.pdf}
+	\end{overpic}
+	\caption{Plot of the $\Delta$ region.}
+\end{figure}
+
+Naturally we can prove the perfect exclusion zone to be a subset of valid Gram matrixes i.e. $\Delta\subset \Omega$.Then the non-perfect exclusion regime is the remaining part of the triangle i.e.,
+\begin{align*}
+	\text{Non-perfect exclusion regime}=\Omega\setminus \Delta.
+\end{align*}
+The limit case scenarios corresponding to $\lambda_i=3$ and $\lambda_j,\lambda_k=0$ are situated in the vertex of the triangle\footnote{Remember this case correspond to sets with the same state repeated 3 times discussed in Section (\ref{sectionLimitCaseScenarios})}. Then the cases corresponding to the edges are those with one state repeated 2 times and one different from the other 2. This ensembles can also be underestood as a limit case scenario systems.
+
+In practice this scenario is entirely equivalent to a 2 quantum states exclusion (\gls{qse}) system. Nevertheless we know this to be equivalent to a 2 quantum states discrimination system (\gls{qsd}), therefore perfect discrimination/exclusion cannot be archived unless the states are orthogonal. This last case corresponds to the intersection of the elipse $\Delta$ with the triangles edges, this can be described as the ensembles with associated Gram matrices whose eigenvalues $\lambda_i,\lambda_j,\lambda_k$ are,
+\begin{align*}
+	\lambda_i=&\lambda_j=\frac{3}{2}\\
+	\lambda_k=&0.
+\end{align*}
+
+Additionally, we observe that no ensembles seem to have a lower exclusion success probability $P_{\gls{me}}^s$ under $\frac{1}{3}$ as expected from the discussion in Section (\ref{sectionLimitCaseScenarios}).
+
+Hence the results for the \gls{ze} protocol in \gls{qse} for a $\mathbb{Z}/3\mathbb{Z}$ ensemble are presented in Figure (\ref{FigureQSEZEZ3ZEigenValues}).
+
+\begin{figure}[H]
+	\centering
+	\label{FigureQSEZEZ3ZEigenValues}
+	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf}
+		\put(20,25){\footnotesize{Perfect exclusion}}
+		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+	\end{overpic}
+	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{ze} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+\end{figure}
+
+The result is consistent with all the previos observations and we can also observe the worst case scenario to tend to a 0 successfull exclusion probability as expected. Also, the probabilities remain with lower values than the ones obtained with the Minimum Error (\gls{me}) protocol.
+
+Hence, we present the result for randomly generated ensembles in Figure (\ref{FigureQSEMEGenericEigenValues}).
+
+\begin{figure}[H]
+	\centering
+	\label{FigureQSEMEGenericEigenValues}
+	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevalueRandom3.pdf}
+		\put(20,25){\footnotesize{Perfect exclusion}}
+		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
+	\end{overpic}
+	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a generic ensemble.}
+\end{figure}
+
+A remarcable feature is that each ensemble has been checked to not have a successfull exclusion probability that overtakes the value from the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble pointing this value to be this a lower bound for the general case scenario.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%

@@ -24,6 +24,7 @@ EigenValue0                   = []
 EigenValue1                   = []
 SDPMinimumErrorList           = []
 LowerBound                    = []
+LowerBoundZE                  = []
 
 for iIteration in tqdm(range(IterationsRandomSets),"Computing points for the Minimum Error plot"):
     EigenValues             = np.random.rand(NumberOfMatrices)
@@ -36,30 +37,41 @@ for iIteration in tqdm(range(IterationsRandomSets),"Computing points for the Min
     EigenValue1.append(EigenValuesNormalized[1])
     SDPMinimumErrorList.append(SDPMinimumError)
     LowerBound.append(Conditions.getPerfectExlusionLowerBoundMinimumError())
+    LowerBoundZE.append(Conditions.getPerfectExlusionLowerBoundZeroError())
     DataMinimumError.append((EigenValuesNormalized[0],EigenValuesNormalized[1],SDPMinimumError,Conditions.getPerfectExlusionLowerBoundMinimumError()))
 
 fig, ax = plt.subplots(figsize=(12, 7))
 sc = ax.scatter(EigenValue0, EigenValue1, c=LowerBound, cmap='jet', s=50)
 plt.colorbar(sc, ax=ax, label="Exclusion probability")
 
-ax.set_xlabel("$\lambda_0$")
-ax.set_ylabel("$\lambda_1$")
+ax.set_xlabel("$\lambda_1$")
+ax.set_ylabel("$\lambda_2$")
 
 plt.savefig(f"../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ{NumberOfMatrices}.pdf")
+plt.close()
+
+fig, ax = plt.subplots(figsize=(12, 7))
+sc = ax.scatter(EigenValue0, EigenValue1, c=LowerBoundZE, cmap='jet', s=50)
+plt.colorbar(sc, ax=ax, label="Exclusion probability")
+
+ax.set_xlabel("$\lambda_1$")
+ax.set_ylabel("$\lambda_2$")
+
+plt.savefig(f"../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ{NumberOfMatrices}ZeroError.pdf")
 plt.close()
 
 fig, ax = plt.subplots(figsize=(12, 7))
 sc = ax.scatter(EigenValue0, EigenValue1, c=SDPMinimumErrorList, cmap='jet', s=50)
 plt.colorbar(sc, ax=ax, label="Exclusion probability")
 
-ax.set_xlabel("$\lambda_0$")
-ax.set_ylabel("$\lambda_1$")
+ax.set_xlabel("$\lambda_1$")
+ax.set_ylabel("$\lambda_2$")
 
 plt.savefig(f"../Plots/ExclusionEignevalueRandom{NumberOfMatrices}.pdf")
 plt.close()
 
 for iEnsamble in DataMinimumError:
-    if round(iEnsamble[2],10)<round(iEnsamble[3],10):
+    if round(iEnsamble[2],10)<round(iEnsamble[3],6):
         raise ValueError(f"Something went wrong, {iEnsamble}")
 
 fig = plt.figure(figsize=(10, 7))
