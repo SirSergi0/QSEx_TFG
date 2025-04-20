@@ -7,6 +7,69 @@
 #                                                                                                      #
 ########################################################################################################
 
+# import QSExSetUp
+# import matplotlib.pyplot as plt
+# from tqdm import tqdm
+# import numpy as np
+# from mpl_toolkits.mplot3d import Axes3D
+#
+#
+# ############################ SDP vs SRM #################################
+#
+# Group                         = 3
+# MatrixGenerationMethod        = "ZnOverlap"
+# ProbabliltiesGenerationMethod = "Equal"
+# Acuracy                       = 100
+# PhaseList                     = [1]
+# OverlapLimit                  = 1
+# NumberOfMatrices              = Group
+# MatrixDimension               = Group
+# Overlap                       = 0
+# SuccesProbabilitySRM          = []
+# SuccesProbabilityMinimumError = []
+# SuccesProbabilityZeroError    = []
+# OverlapsList                  = []
+#
+# for iPoint in tqdm(range(1,Acuracy),"Computing the points"):
+#     Overlap     += OverlapLimit/Acuracy
+#     OverlapList = [Overlap]
+#     GenerationConditions = QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsOverlap(OverlapList, PhaseList, NumberOfMatrices)
+#     Conditions  = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,
+#                                                                          MatrixDimension,
+#                                                                          MatrixGenerationMethod, GenerationConditions, 
+#                                                                          ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
+#     SolutionMinimumError = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
+#     SolutionZeroError    = QSExSetUp.SDPSolver.SolveSDPDualZeroError(Conditions)
+#
+#     SuccesProbabilitySRM.append(Conditions.getSRMSuccessProbability())
+#     OverlapsList.append(Overlap)
+#     SuccesProbabilityMinimumError.append(round(SolutionMinimumError['SDPSolution'],8))
+#     SuccesProbabilityZeroError.append(round(SolutionZeroError['SDPSolution'],8))
+#
+# Overlap     = 1
+# OverlapList = [Overlap]
+# GenerationConditions = QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsOverlap(OverlapList, PhaseList, NumberOfMatrices)
+# Conditions  = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,
+#                                                                      MatrixDimension,
+#                                                                      MatrixGenerationMethod, GenerationConditions, 
+#                                                                      ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
+# SolutionMinimumError = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
+# SolutionZeroError    = QSExSetUp.SDPSolver.SolveSDPDualZeroError(Conditions)
+# SuccesProbabilitySRM.append(Conditions.getSRMSuccessProbability())
+# OverlapsList.append(Overlap)
+# SuccesProbabilityMinimumError.append(round(SolutionMinimumError['SDPSolution'],8))
+# SuccesProbabilityZeroError.append(round(SolutionZeroError['SDPSolution'],8))
+#
+# plt.plot(OverlapsList, SuccesProbabilitySRM, label = "SRM", color = "darkorange")
+# plt.scatter(OverlapsList, SuccesProbabilityMinimumError, label = "Minimum Error SDP",marker = "o", color = "mediumslateblue")
+# plt.scatter(OverlapsList, SuccesProbabilityZeroError, label = "Zero Error SDP",marker = "o", color = "forestgreen")
+# plt.xlabel("Overlap")
+# plt.ylabel("Discrimination probability")
+# # plt.title(f"SDP vs SRM Zn{Group}")
+# plt.legend(loc = 3)
+# plt.savefig(f"../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRM{MatrixGenerationMethod}{Group}Phase{PhaseList[0]}.pdf")
+# print(f"../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRM{MatrixGenerationMethod}{Group}Phase{PhaseList[0]}.pdf")
+
 import QSExSetUp
 import matplotlib.pyplot as plt
 from tqdm import tqdm
@@ -20,12 +83,13 @@ Group                         = 3
 MatrixGenerationMethod        = "ZnOverlap"
 ProbabliltiesGenerationMethod = "Equal"
 Acuracy                       = 100
-PhaseList                     = [1]
+PhaseList                     = [0]
 OverlapLimit                  = 1
 NumberOfMatrices              = Group
 MatrixDimension               = Group
 Overlap                       = 0
-SuccesProbabilitySRM          = []
+SuccesProbabilityME           = []
+SuccesProbabilityZE           = []
 SuccesProbabilityMinimumError = []
 SuccesProbabilityZeroError    = []
 OverlapsList                  = []
@@ -38,10 +102,11 @@ for iPoint in tqdm(range(1,Acuracy),"Computing the points"):
                                                                          MatrixDimension,
                                                                          MatrixGenerationMethod, GenerationConditions, 
                                                                          ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
-    SolutionMinimumError = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
-    SolutionZeroError    = QSExSetUp.SDPSolver.SolveSDPDualZeroError(Conditions)
+    SolutionMinimumError = QSExSetUp.SDPSolver.SolveSDPExclusionMinimumError(Conditions)
+    SolutionZeroError    = QSExSetUp.SDPSolver.SolveSDPExclusionZeroError(Conditions)
 
-    SuccesProbabilitySRM.append(Conditions.getSRMSuccessProbability())
+    SuccesProbabilityME.append(Conditions.getPerfectExlusionLowerBoundMinimumError())
+    SuccesProbabilityZE.append(Conditions.getPerfectExlusionLowerBoundZeroError())
     OverlapsList.append(Overlap)
     SuccesProbabilityMinimumError.append(round(SolutionMinimumError['SDPSolution'],8))
     SuccesProbabilityZeroError.append(round(SolutionZeroError['SDPSolution'],8))
@@ -53,22 +118,25 @@ Conditions  = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMat
                                                                      MatrixDimension,
                                                                      MatrixGenerationMethod, GenerationConditions, 
                                                                      ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
-SolutionMinimumError = QSExSetUp.SDPSolver.SolveSDPDualMinimumError(Conditions)
-SolutionZeroError    = QSExSetUp.SDPSolver.SolveSDPDualZeroError(Conditions)
-SuccesProbabilitySRM.append(Conditions.getSRMSuccessProbability())
+SolutionMinimumError = QSExSetUp.SDPSolver.SolveSDPExclusionMinimumError(Conditions)
+SolutionZeroError    = QSExSetUp.SDPSolver.SolveSDPExclusionZeroError(Conditions)
+SuccesProbabilityME.append(Conditions.getPerfectExlusionLowerBoundMinimumError())
+SuccesProbabilityZE.append(Conditions.getPerfectExlusionLowerBoundZeroError())
 OverlapsList.append(Overlap)
 SuccesProbabilityMinimumError.append(round(SolutionMinimumError['SDPSolution'],8))
 SuccesProbabilityZeroError.append(round(SolutionZeroError['SDPSolution'],8))
 
-plt.plot(OverlapsList, SuccesProbabilitySRM, label = "SRM", color = "darkorange")
+plt.plot(OverlapsList, SuccesProbabilityME, label = "Minimum Error analytical result", color = "purple")
+plt.plot(OverlapsList, SuccesProbabilityZE, label = "Zero Error analytical result", color = "darkorange")
 plt.scatter(OverlapsList, SuccesProbabilityMinimumError, label = "Minimum Error SDP",marker = "o", color = "mediumslateblue")
 plt.scatter(OverlapsList, SuccesProbabilityZeroError, label = "Zero Error SDP",marker = "o", color = "forestgreen")
 plt.xlabel("Overlap")
-plt.ylabel("Discrimination probability")
+plt.ylabel("Exclusion probability")
 # plt.title(f"SDP vs SRM Zn{Group}")
 plt.legend(loc = 3)
-plt.savefig(f"../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRM{MatrixGenerationMethod}{Group}Phase{PhaseList[0]}.pdf")
-print(f"../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRM{MatrixGenerationMethod}{Group}Phase{PhaseList[0]}.pdf")
+plt.savefig(f"../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRM{MatrixGenerationMethod}{Group}Phase{PhaseList[0]}.pdf")
+
+
 ############################ 3D Zn #################################
 #
 # import QSExSetUp

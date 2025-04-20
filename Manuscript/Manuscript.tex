@@ -520,7 +520,7 @@ Thus, the success and error probabilities for both the \gls{me} protocol is,
 
 The intuition behind this result is clear. If there is no physical way to distinguish between states, the exclusion must be made randomly, with uniform probability. This observation also extends naturally to \gls{qsd}.
 
-Since this is a limiting case scenario, the success probability for either \gls{qse} or \gls{qsd} must be strictly greater than $\frac{n-1}{n}$ (i.e., the error probability must be less than $\frac{1}{n}$). Notice this result holds only for the \gls{me} protocol. Otherwise, since the exclusion cannot be accomplished without ambiguity, the successfull exclusion probability for the \gls{ze} protocol is 0 for either \gls{qse} or \gls{qsd} (i.e., the error exclusion probability is 1), 
+Since this is a limiting case scenario, the success probability for \gls{qse} must be strictly greater than $\frac{n-1}{n}$ (i.e., the error probability must be less than $\frac{1}{n}$) and for \gls{qsd} the success probabilities must be strictly greater than $\frac{1}{n}$ (i.e., the error probability must be less than $\frac{n-1}{n}$)\footnote{In this case scenario the discrimination task is the counterpart of the exclusion task.}. Notice this result holds only for the \gls{me} protocol. Otherwise, since the exclusion cannot be accomplished without ambiguity, the successfull exclusion probability for the \gls{ze} protocol is 0 for either \gls{qse} or \gls{qsd} (i.e., the error exclusion probability is 1), 
 \begin{align*}
 	P_{\gls{ze}}^e =& 1,\\
 	P_{\gls{ze}}^s =& 0.
@@ -638,38 +638,42 @@ This scenario is particularly interesting as it is the only ensemble with a smal
 
 We first present results for the Quantum State Discrimination (\gls{qsd}) task to motivate the problem and highlight contrasts with the Quantum State Exclusion (\gls{qse}) task, which is the focus of this study.
 
-Figure (\ref{FigureQSDMEZ3ZHeatmap}) shows a heatmap of the average successful discrimination probability under the Minimum Error (\gls{me}) protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble. Probabilities are shown as functions of the modulus ($x$-axis) and phase ($y$-axis) of the overlap $c$, which fully determine the Gram matrix. We assume equal prior probabilities, as generalization to arbitrary priors is discussed in Section (\ref{sectionGramMatrixFormulation}). Note, equal priors are presuposed throughout this work unless stated otherwise.
-
-The colorless regions correspond to parameters where $\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}$ is not positive semi-definite, and leading up yo non-valid Gram matrices, since positive semi-definition is inherent to a Gram matrix.
-
 \begin{figure}[H]
 	\centering
-	\label{FigureQSDMEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf}
 		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for minimum error (\gls{me}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\label{FigureQSDMEZ3ZHeatmap}
 \end{figure}
 
-In these conditions, the \gls{srm}\footnote{Also known as the Pretty Good Measurement.} is optimal, i.e. the result of the \gls{sdp} matches the one obtained from the \gls{srm}. In particular, the \gls{srm} is obtained from the square root decomposition of the Gram matrix,
+Figure (\ref{FigureQSDMEZ3ZHeatmap}) shows a heatmap of the average successful discrimination probability under the Minimum Error (\gls{me}) protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble. Probabilities are shown as functions of the modulus ($x$-axis) and phase ($y$-axis) of the overlap $c$, which fully determine the Gram matrix. We assume equal prior probabilities, as generalization to arbitrary priors is discussed in Section (\ref{sectionGramMatrixFormulation}). Note, equal priors are presuposed throughout this work unless stated otherwise.
+
+The colorless regions correspond to parameters where $\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}$ is not positive semi-definite, and leading up yo non-valid Gram matrices, since positive semi-definition is inherent to a Gram matrix.
+
+In these conditions, the \gls{srm}\footnote{Also known as the Pretty Good Measurement.} is optimal, i.e. the result of the \gls{sdp} matches the one obtained from the \gls{sdp} in \gls{me} protocol. In particular, the \gls{srm} is obtained from the square root decomposition of the Gram matrix,
 \begin{align*}
 	\mathcal{G} = S^\dagger S = S^2
 \end{align*}
-and is the standard in \gls{qsd} under the \gls{me} protocol \cite{OptimalitySRM}.
+and is the standard in \gls{qsd} under the \gls{me} protocol \cite{OptimalitySRM}. From section (\ref{sectionGramMatrixFormulation}) we know the success probability for a successful discrimination with \gls{srm} reeds,
+\begin{align*}
+	P_{\gls{srm}}^s=\frac{1}{n}\sum_{i=0}^nS_{i,i}^2
+\end{align*}
+were $S_{i,i}$ denotes the diagonal elements of $S$ and $n$ the number of quantum states\footnote{In this case we are taking $n=3$.}.
 
 As expected, no ensemble yields a success probability below $1/3$, consistent with the discussion in Section (\ref{sectionLimitCaseScenarios}). Moreover, as the modulus of the overlap approaches zero, the success probability approaches one, corresponding to orthogonal states, again matching expectations.
 
-Figure (\ref{FigureQSDZEZ3ZHeatmap}) shows results for the Zero Error (\gls{ze}) protocol under the same conditions.
+Figure (\ref{FigureQSDZEZ3ZHeatmap}) shows analogous results for the Zero Error (\gls{ze}) protocol under the same conditions.
 
 \begin{figure}[H]
 	\centering
-	\label{FigureQSDZEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMap.pdf}
 		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for zero-error (\gls{ze}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\label{FigureQSDZEZ3ZHeatmap}
 \end{figure}
 
 Both limiting behaviors remain valid. However, the \gls{ze} success probabilities are lower than those of the \gls{me} protocol. This is explained by the stricter constraints imposed in the \gls{ze} scenario, where $\tr(\Pi_i\rho_i) = 0$ is enforced for all POVM elements except one. Notice both probabilities are computed in a completely symmetric way,
@@ -683,63 +687,86 @@ Figure (\ref{FigureQSDMEZESRM}) compares the performance of the ME, ZE, and SRM 
 
 \begin{figure}[H]
 	\centering
-	\label{FigureQSDMEZESRM}
 	\includegraphics[width=0.5\textwidth]{../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf}
 	\caption{Comparison of successful discrimination probabilities for ME, ZE, and SRM protocols in a $\mathbb{Z}/3\mathbb{Z}$ ensemble impossing phase=$0$.}
+	\label{FigureQSDMEZESRM}
 \end{figure}
 
 As expected, perfect discrimination is only achieved when the overlap is zero (orthogonal states), and the \gls{srm} success probability matches the one obtained from the numerical \gls{sdp}. This highlights the motivation behind the study of \gls{qse}, which allows for perfect exclusion in cases where discrimination is impossible.
 
+Figure (\ref{FigureQSEMEZ3ZHeatmap}) presents the ME protocol results for the \gls{qse} task, analogous to Figure (\ref{FigureQSDMEZ3ZHeatmap}). Furthermore the results of the ZE protocol for \gls{qse} are shown in Figure (\ref{FigureQSEZEZ3ZHeatmap}).
+
 \begin{figure}[H]
 	\centering
-	\label{FigureQSEMEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf}
 		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for minimum error (\gls{me}) quantum state exclusion in a $\mathbb{Z}/3\mathbb{Z}$ ensemble.}
+	\label{FigureQSEMEZ3ZHeatmap}
 \end{figure}
 
-Figure (\ref{FigureQSEMEZ3ZHeatmap}) presents the ME protocol results for the \gls{qse} task, analogous to Figure (\ref{FigureQSDMEZ3ZHeatmap}).
-
-The ZE protocol for \gls{qse} is shown in Figure (\ref{FigureQSEZEZ3ZHeatmap}).
 
 \begin{figure}[H]
 	\centering
-	\label{FigureQSEZEZ3ZHeatmap}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf}
 		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Heatmap of the success probability for zero-error (\gls{ze}) quantum state exclusion in a $\mathbb{Z}/3\mathbb{Z}$ ensemble.}
+	\label{FigureQSEZEZ3ZHeatmap}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\label{FigureQSEMEZ3ZPerfectExclusion}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 2.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf}
 		\put(70,27){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(70,60){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
-	\caption{Perfect exclusion zone for a $\mathbb{Z}/3\mathbb{Z}$ ensemble under the minimum error (\gls{me}) protocol.}
+	\caption{Perfect exclusion zone for a $\mathbb{Z}/3\mathbb{Z}$ ensemble in terms of the overlap's modulus and phase.}
+	\label{FigureQSEMEZ3ZPerfectExclusion}
 \end{figure}
 
-Again, the ZE protocol yields lower probabilities due to its constraints and the limit case scenarios match with the previos discussion in Section (\ref{sectionLimitCaseScenarios}). However, crucially, perfect exclusion is possible even when perfect discrimination is not, in this regime seems to correspond to the ensembles such that the modulus of the overlap between two ensembles do not overtakes $\frac{1}{2}$. Nevertheless, this description is purely observational, we will give a better description in Section (\ref{sectionPerfectExclusionRegimeAndGeneralEnsembles}). Notice Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) highlights the regions where perfect exclusion is achieved, even outside the perfect discrimination regime.
+Again, the ZE protocol yields lower probabilities due to its constraints and the limit case scenarios match with the previos discussion in Section (\ref{sectionLimitCaseScenarios}). However, crucially, perfect exclusion is possible even when perfect discrimination is not, in this regime seems to correspond to the ensembles such that the modulus of the overlap between two ensembles do not overtakes $\frac{1}{2}$. Nevertheless, this description is purely observational, we will give a better description in Section (\ref{sectionPerfectExclusionRegimeAndGeneralEnsembles}). 
+
+Notice Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) highlights the regions where perfect exclusion is achieved, even outside the perfect discrimination regime.
 
 This property of \gls{qse} is a major motivation for its study. For example, in a regime where perfect exclusion is possible, having access to multiple copies of a target state enables hybrid exclusion-discrimination protocols that can outperform purely discriminative strategies. Even partial information, such as the exclusion of a single quantum state, has value in certain quantum information theories. These features make \gls{qse} a fertile ground for further theoretical and applied research.
 
-\subsection{The perfect exclusion regime and general ensembles}\label{sectionPerfectExclusionRegimeAndGeneralEnsembles}
-
-Although the $Overlap modulus - phase$ spectrum might seem as the most intuituve representation, the spectrum of Gram's matrix eigenvalues results the most appropriate representation for the perfect exclusion zone as well as the discussion and its comparison for general ensembles. Carrying on with the previos discussion, one can check the two \gls{dof} now appear as two of the eigenvalues. In the Figure (\ref{FigureQSEMEZ3ZEigenValues}) the results for the exclusion task under the \gls{me} protocol for the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble are represented. The axis represent two of the eigenvalues of the Gram matrix and a heatmap presents the probability for a perfect exclusion in the given conditions.
+In Figure (\ref{FigureQSEMEZESRM}) we present de dependency on the modulus of the overlap in the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble impossing the phase being equal to 0. The result is analogous to Figure (\ref{FigureQSDMEZESRM}) but in the exclusion task. The existence existence of the perfect exclusion zone appears in overlap values between 0 and $\frac{1}{2}$. 
 
 \begin{figure}[H]
 	\centering
-	\label{FigureQSEMEZ3ZEigenValues}
+	\includegraphics[width=0.5\textwidth]{../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf}
+	\caption{Plot of the successful exclusion probabilities for the \gls{sdp} results for the \gls{me}, \gls{ze} protocols in a $\mathbb{Z}/3\mathbb{Z}$ ensemble impossing phase=$0$ as well as the results given by the analytical expressions.}
+	\label{FigureQSEMEZESRM}
+\end{figure}
+
+We highlight the good performance of the \gls{me} protocol up to limit values were the result tends to $\frac{2}{3}$ when the ensemble is made of indistingible states (i.e. the same state). Naturally everything matches with the previos observations and discussions. 
+
+Moreover, the results in \gls{qse} are substancially better, the exclusion can be performed with higher precission than the discrimination. This observations is expected. Let us suppose we perform a correct guess in the discrimination of our target state, then if we know to which state is correlated our target state, we know which states is not correlated to, in other words
+\begin{align*}
+	\text{correct discrimination}\Rightarrow\text{correct exclusion}.
+\end{align*}
+However, let us suppose we perform a correct guess in the exclusion task, still we are ignoring which is our target state, then,
+\begin{align*}
+	\text{correct exclusion}\nRightarrow\text{correct discrimination}.
+\end{align*}
+Hence, archiving a correct outcome in the discrimination task implies a correct outcome in the exclusion task but the reciprocal is untrue. This trivial discussion explains the differences in the results and reinforces the potential of \gls{qse}.
+
+
+\subsection{The perfect exclusion regime and general ensembles}\label{sectionPerfectExclusionRegimeAndGeneralEnsembles}
+
+Although the \emph{Overlap modulus - phase} spectrum might seem as the most intuituve representation, the spectrum of Gram's matrix eigenvalues results the most appropriate representation for the perfect exclusion zone as well as the discussion and its comparison for general ensembles. Carrying on with the previos discussion, one can check the two \gls{dof} now appear as two of the eigenvalues. In the Figure (\ref{FigureQSEMEZ3ZEigenValues}) the results for the exclusion task under the \gls{me} protocol for the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble are represented. The axis represent two of the eigenvalues of the Gram matrix and a heatmap presents the probability for a perfect exclusion in the given conditions.
+
+\begin{figure}[H]
+	\centering
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3.pdf}
 		\put(20,25){\footnotesize{Perfect exclusion}}
 		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\label{FigureQSEMEZ3ZEigenValues}
 \end{figure}
 
 The order in eigenvalues is obviated in the representation, i.e. we can find conditions such that $\lambda_i>\lambda_j$ and others conditions such that $\lambda_i<\lambda_j$ for $i,j\in\{1,2,3\}$
@@ -769,17 +796,17 @@ With a little bit of algebra and recalling that $\lambda_3=3-\lambda_1-\lambda_2
 Figure (\ref{FigurePerfectExclusionZ3Z}) shows the $\Delta$ region. It is inmediate that this region corresponds to the colorless perfect exclusion regime in Figure (\ref{FigureQSEMEZ3ZEigenValues}).
 \begin{figure}[H]
 	\centering
-	\label{FigurePerfectExclusionZ3Z}
 	\begin{overpic}[width=0.5\textwidth, trim={1.8cm 0.8cm 2cm 2cm}, clip]{GeneralSources/PerfectExclusionZoneZ3Z.pdf}
 	\end{overpic}
 	\caption{Plot of the $\Delta$ region.}
+	\label{FigurePerfectExclusionZ3Z}
 \end{figure}
 
 Naturally we can prove the perfect exclusion zone to be a subset of valid Gram matrixes i.e. $\Delta\subset \Omega$.Then the non-perfect exclusion regime is the remaining part of the triangle i.e.,
 \begin{align*}
 	\text{Non-perfect exclusion regime}=\Omega\setminus \Delta.
 \end{align*}
-The limit case scenarios corresponding to $\lambda_i=3$ and $\lambda_j,\lambda_k=0$ are situated in the vertex of the triangle\footnote{Remember this case correspond to sets with the same state repeated 3 times discussed in Section (\ref{sectionLimitCaseScenarios})}. Then the cases corresponding to the edges are those with one state repeated 2 times and one different from the other 2. This ensembles can also be underestood as a limit case scenario systems.
+The limit case scenarios corresponding to $\lambda_i=3$ and $\lambda_j,\lambda_k=0$ are located in the vertex of the triangle\footnote{Remember this case correspond to sets with the same state repeated 3 times discussed in Section (\ref{sectionLimitCaseScenarios})}. Then the cases corresponding to the edges are those with one state repeated 2 times and one different from the other 2. This ensembles can also be underestood as a limit case scenario systems.
 
 In practice this scenario is entirely equivalent to a 2 quantum states exclusion (\gls{qse}) system. Nevertheless we know this to be equivalent to a 2 quantum states discrimination system (\gls{qsd}), therefore perfect discrimination/exclusion cannot be archived unless the states are orthogonal. This last case corresponds to the intersection of the elipse $\Delta$ with the triangles edges, this can be described as the ensembles with associated Gram matrices whose eigenvalues $\lambda_i,\lambda_j,\lambda_k$ are,
 \begin{align*}
@@ -787,35 +814,52 @@ In practice this scenario is entirely equivalent to a 2 quantum states exclusion
 	\lambda_k=&0.
 \end{align*}
 
-Additionally, we observe that no ensembles seem to have a lower exclusion success probability $P_{\gls{me}}^s$ under $\frac{1}{3}$ as expected from the discussion in Section (\ref{sectionLimitCaseScenarios}).
+Additionally, we observe that no ensembles seem to have a lower exclusion success probability $P_{\gls{me}}^s$ under $\frac{2}{3}$ as expected from the discussion in Section (\ref{sectionLimitCaseScenarios}).
 
 Hence the results for the \gls{ze} protocol in \gls{qse} for a $\mathbb{Z}/3\mathbb{Z}$ ensemble are presented in Figure (\ref{FigureQSEZEZ3ZEigenValues}).
 
+The result is consistent with all the previos observations and we can also observe the worst case scenario to tend to a 0 successfull exclusion probability as expected. Also, the probabilities remain with lower values than the ones obtained with the Minimum Error (\gls{me}) protocol.
+
 \begin{figure}[H]
 	\centering
-	\label{FigureQSEZEZ3ZEigenValues}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf}
 		\put(20,25){\footnotesize{Perfect exclusion}}
 		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{ze} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\label{FigureQSEZEZ3ZEigenValues}
 \end{figure}
-
-The result is consistent with all the previos observations and we can also observe the worst case scenario to tend to a 0 successfull exclusion probability as expected. Also, the probabilities remain with lower values than the ones obtained with the Minimum Error (\gls{me}) protocol.
 
 Hence, we present the result for randomly generated ensembles in Figure (\ref{FigureQSEMEGenericEigenValues}).
 
+A remarcable feature is that each ensemble has been checked to not have a successfull exclusion probability that overtakes the value from the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble pointing this value to be this a lower bound for the general case scenario.
+
 \begin{figure}[H]
 	\centering
-	\label{FigureQSEMEGenericEigenValues}
 	\begin{overpic}[width=0.5\textwidth, trim={2.3cm 0.8cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevalueRandom3.pdf}
 		\put(20,25){\footnotesize{Perfect exclusion}}
 		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
 	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a generic ensemble.}
+	\label{FigureQSEMEGenericEigenValues}
 \end{figure}
 
-A remarcable feature is that each ensemble has been checked to not have a successfull exclusion probability that overtakes the value from the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble pointing this value to be this a lower bound for the general case scenario.
+\begin{figure}[H]
+	\centering
+	\begin{overpic}[width=0.5\textwidth, trim={6.5cm 2cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevalueRandom33D.pdf}
+	\end{overpic}
+	\caption{3D Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a group-generated and generic ensembles.}
+	\label{FigureQSEMEGenericEigenValues3D}
+\end{figure}
+
+In Figure (\ref{FigureQSEMEGenericEigenValues3D}) we present a 3D plot for the comparison of the success probability for exclusion for ensembles of 3 states between generic and group-generated ensembles. The $x$ and $y$ axis representing de eigenvalues of the Gram matrix are analogous to previos figures. Nevertheless the $z$ axis shows the success probability for exclusion insted of the previos heatmaps. Here we can observe how the randomly generated states raise the probabilities over the group-generated values. The generation of unitary matrices that fill $U(n)$ ensures the Gram matrices we are generating comprehend the entire set of possible Gram matrices homogeniously.
+
+
+\section*{Acknowledgements}
+
+I am grateful to Dr. Ramón Muñoz Tapia for allowing me to be one of his pupils and for presenting this project. I am also deeply grateful to Dr. Santiago Llorens Fernández for being the lighthouse that illuminates my path throughout this journey.
+
+I would like to acknowledge my mother and sister for their unconditional support, and my father for the values he taught me. Additionally, I would like to thank my friends Francisco Montaño, David Muñoz and Manel Martin for listening to my monologues about my excitement for Quantum State Exclusion.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%

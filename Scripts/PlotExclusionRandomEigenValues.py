@@ -18,7 +18,7 @@ NumberOfMatrices              = 3
 MatrixDimension               = 3
 MatrixGenerationMethod        = "Random"
 ProbabliltiesGenerationMethod = "Equal"
-IterationsRandomSets          = 50000
+IterationsRandomSets          = 10000
 DataMinimumError              = []
 EigenValue0                   = []
 EigenValue1                   = []
@@ -40,39 +40,39 @@ for iIteration in tqdm(range(IterationsRandomSets),"Computing points for the Min
     LowerBoundZE.append(Conditions.getPerfectExlusionLowerBoundZeroError())
     DataMinimumError.append((EigenValuesNormalized[0],EigenValuesNormalized[1],SDPMinimumError,Conditions.getPerfectExlusionLowerBoundMinimumError()))
 
-fig, ax = plt.subplots(figsize=(12, 7))
-sc = ax.scatter(EigenValue0, EigenValue1, c=LowerBound, cmap='jet', s=50)
-plt.colorbar(sc, ax=ax, label="Exclusion probability")
-
-ax.set_xlabel("$\lambda_1$")
-ax.set_ylabel("$\lambda_2$")
-
-plt.savefig(f"../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ{NumberOfMatrices}.pdf")
-plt.close()
-
-fig, ax = plt.subplots(figsize=(12, 7))
-sc = ax.scatter(EigenValue0, EigenValue1, c=LowerBoundZE, cmap='jet', s=50)
-plt.colorbar(sc, ax=ax, label="Exclusion probability")
-
-ax.set_xlabel("$\lambda_1$")
-ax.set_ylabel("$\lambda_2$")
-
-plt.savefig(f"../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ{NumberOfMatrices}ZeroError.pdf")
-plt.close()
-
-fig, ax = plt.subplots(figsize=(12, 7))
-sc = ax.scatter(EigenValue0, EigenValue1, c=SDPMinimumErrorList, cmap='jet', s=50)
-plt.colorbar(sc, ax=ax, label="Exclusion probability")
-
-ax.set_xlabel("$\lambda_1$")
-ax.set_ylabel("$\lambda_2$")
-
-plt.savefig(f"../Plots/ExclusionEignevalueRandom{NumberOfMatrices}.pdf")
-plt.close()
-
-for iEnsamble in DataMinimumError:
-    if round(iEnsamble[2],10)<round(iEnsamble[3],6):
-        raise ValueError(f"Something went wrong, {iEnsamble}")
+# fig, ax = plt.subplots(figsize=(12, 7))
+# sc = ax.scatter(EigenValue0, EigenValue1, c=LowerBound, cmap='jet', s=50)
+# plt.colorbar(sc, ax=ax, label="Exclusion probability")
+#
+# ax.set_xlabel("$\lambda_1$")
+# ax.set_ylabel("$\lambda_2$")
+#
+# plt.savefig(f"../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ{NumberOfMatrices}.pdf")
+# plt.close()
+#
+# fig, ax = plt.subplots(figsize=(12, 7))
+# sc = ax.scatter(EigenValue0, EigenValue1, c=LowerBoundZE, cmap='jet', s=50)
+# plt.colorbar(sc, ax=ax, label="Exclusion probability")
+#
+# ax.set_xlabel("$\lambda_1$")
+# ax.set_ylabel("$\lambda_2$")
+#
+# plt.savefig(f"../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ{NumberOfMatrices}ZeroError.pdf")
+# plt.close()
+#
+# fig, ax = plt.subplots(figsize=(12, 7))
+# sc = ax.scatter(EigenValue0, EigenValue1, c=SDPMinimumErrorList, cmap='jet', s=50)
+# plt.colorbar(sc, ax=ax, label="Exclusion probability")
+#
+# ax.set_xlabel("$\lambda_1$")
+# ax.set_ylabel("$\lambda_2$")
+#
+# plt.savefig(f"../Plots/ExclusionEignevalueRandom{NumberOfMatrices}.pdf")
+# plt.close()
+#
+# for iEnsamble in DataMinimumError:
+#     if round(iEnsamble[2],10)<round(iEnsamble[3],6):
+#         raise ValueError(f"Something went wrong, {iEnsamble}")
 
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(111, projection='3d')
@@ -87,6 +87,7 @@ ax.set_zlabel('Exclusion probability')
 
 ax.legend()
 
+plt.savefig(f"../Plots/ExclusionEignevalueRandom{NumberOfMatrices}3D.pdf")
 plt.show()
 plt.close()
 
