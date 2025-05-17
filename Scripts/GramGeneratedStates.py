@@ -29,6 +29,7 @@ class GramGeneratedStatesClass:
         self.MatrixConstructionMethod       = MatrixConstructionMethod
         self.ProbabilitiesContructionMethod = ProbabilitiesContructionMethod
         self.PriorProbabilities             = GramGeneratedFunctions.SetOfProbabilities(ProbabilitiesContructionMethod,NumberOfMatrices)
+        self.GramGeneratingConditions       = GenerationConditions
         GramMatrixAndUnitaryMatrix          = GramGeneratedFunctions.GenerateGramMatrix(NumberOfMatrices,MatrixConstructionMethod, GenerationConditions)
         self.GramMatrix                     = GramMatrixAndUnitaryMatrix["GramMatrix"]
         self.SquareRoot                     = picos.Constant(sqrtm(self.GramMatrix))
@@ -52,7 +53,8 @@ class GramGeneratedStatesClass:
             'DensityMatrices'                : self.DensityMatrices,
             'SquareRootSuccessProbability'   : self.SquareRootSuccessProbability,
             'PerfectExlusion'                : self.PerfectExlusion,
-            'UnitaryMatrix'                  : self.UnitaryMatrix
+            'UnitaryMatrix'                  : self.UnitaryMatrix,
+            'GramGeneratingConditions'       : self.GramGeneratingConditions
         }
     def __getitem__(self, key):
         return self.to_dict()[key]
@@ -105,6 +107,42 @@ class GramGeneratedStatesClass:
     
     def getUnitaryMatrix(self):
         return self.to_dict()['UnitaryMatrix']
+    
+    def getGramGeneratingConditions(self):
+        return self.to_dict()['GramGeneratingConditions']
+    
+    def variationUnitaryGramMatrix(self, epsilon):
+        if not isinstance (epsilon, (int, float)):
+            raise TypeError("The given value of 'epsilon' must be an integer or a float.")
+        def diagonalMatrix(diagonal,n):
+            diagonalMatrixList = []
+            for iElement in range(n):
+                diagonalMatrixRow = []
+                for jElement in range(n):
+                    if jElement == iElement:
+                        diagonalMatrixRow.append(diagonal[jElement])
+                        continue
+                    diagonalMatrixRow.append(0)
+                diagonalMatrixList.append(diagonalMatrixRow)
+            return picos.Constant(diagonalMatrixList)
+        def modifyUnitaryEigenvalue(U, epsilon):
+            eigvals, eigvecs    = np.linalg.eig(U)
+            index               = np.random.randint(len(eigvals))
+            eigvals[index]      = np.exp(1j * np.angle(eigvals[index]) + epsilon)
+            D_new               = np.diag(eigvals)
+            U_new               = eigvecs @ D_new @ np.linalg.inv(eigvecs)
+            return picos.Constant(U_new)
+        DiagonalMatrix                      = diagonalMatrix((self.getGramGeneratingConditions()).getEigenValues(),(self.getGramGeneratingConditions()).getN())
+        ModifiedUnitaryMatrix               = modifyUnitaryEigenvalue(self.getUnitaryMatrix(),epsilon)
+        self.GramMatrix                     = picos.Constant(ModifiedUnitaryMatrix*DiagonalMatrix*ModifiedUnitaryMatrix.H)
+        self.MatrixConstructionMethod       = "Random"
+        self.SquareRoot                     = picos.Constant(sqrtm(self.GramMatrix))
+        self.GramMatrixWithPriors           = GramGeneratedFunctions.GenerateGramMatrixWithPriors(self.GramMatrix, self.PriorProbabilities,self.NumberOfMatrices)
+        self.SquareRootWithPriors           = picos.Constant(sqrtm(self.GramMatrixWithPriors))
+        self.DensityMatrices                = GramGeneratedFunctions.GetGramDensityMatrices(self.GramMatrix, self.NumberOfMatrices)
+        self.SquareRootSuccessProbability   = GramGeneratedFunctions.SquareRootMeasurementSuccessPorbability(self.SquareRootWithPriors)
+        self.UnitaryMatrix                  = ModifiedUnitaryMatrix
+        self.PerfectExlusion                = GramGeneratedFunctions.PerfectExlusion(self.GramMatrixWithPriors)
 
     def __repr__(self):
         PrintingText = "The working paramaters are:\n"

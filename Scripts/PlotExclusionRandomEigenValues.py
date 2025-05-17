@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from tqdm import tqdm
 import mpltern
+import picos
 
 NumberOfMatrices              = 3
 MatrixDimension               = 3
@@ -30,6 +31,8 @@ for iIteration in tqdm(range(IterationsRandomSets),"Computing points for the Min
     EigenValues             = np.random.rand(NumberOfMatrices)
     EigenValuesNormalized   = [iEigenValue*NumberOfMatrices/sum(EigenValues) for iEigenValue in EigenValues]
     Conditions              = QSExSetUp.GramGeneratedStates.GramGeneratedStatesClass(NumberOfMatrices,MatrixDimension,MatrixGenerationMethod, QSExSetUp.GramGeneratedStates.ZnGramMatrixConditionsEigenValues(EigenValuesNormalized, NumberOfMatrices), ProbabilitiesContructionMethod = ProbabliltiesGenerationMethod)
+    print("UwU\n",Conditions.getGramMatrix())
+    print("Yay\n",picos.trace(Conditions.getGramMatrix()))
     if Conditions.getPerfectExlusion():
         continue
     SDPMinimumError = round(QSExSetUp.SDPSolver.SolveSDPExclusionMinimumError(Conditions)['SDPSolution'],8)
