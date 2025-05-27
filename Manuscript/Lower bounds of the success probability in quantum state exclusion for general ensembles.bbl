@@ -1,0 +1,98 @@
+\begin{thebibliography}{10}
+
+\bibitem{DiscriminationArticle}
+Joonwoo Bae and Leong-Chuan Kwek.
+\newblock Quantum state discrimination and its applications.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  48(8):083001, January 2015.
+
+\bibitem{bae2015quantum}
+Joonwoo Bae and Leong-Chuan Kwek.
+\newblock Quantum state discrimination and its applications.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  48(8):083001, 2015.
+
+\bibitem{PhysicsExclusionSource}
+Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
+  Perry.
+\newblock Conclusive exclusion of quantum states.
+\newblock {\em Phys. Rev. A}, 89:022336, Feb 2014.
+
+\bibitem{bandyopadhyay2014conclusive}
+Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
+  Perry.
+\newblock Conclusive exclusion of quantum states.
+\newblock {\em Physical Review A}, 89(2):022336, 2014.
+
+\bibitem{CayleyTable}
+Prof. Cayley.
+\newblock On the theory of groups.
+\newblock {\em American Journal of Mathematics}, 11(2):139--157, 1889.
+
+\bibitem{OptimalitySRM}
+Nicola Dalla~Pozza and Gianfranco Pierobon.
+\newblock Optimality of square-root measurements in quantum state
+  discrimination.
+\newblock {\em Physical Review A}, 91(4), April 2015.
+
+\bibitem{circulantMatrices}
+P.J. Davis.
+\newblock {\em Circulant Matrices}.
+\newblock Monographs and textbooks in pure and applied mathematics. Wiley,
+  1979.
+
+\bibitem{MainPaper}
+Arnau Diebra, Santiago Llorens, Emili Bagan, Gael Sentís, and Ramon
+  Muñoz-Tapia.
+\newblock Quantum state exclusion for group-generated ensembles of pure states,
+  2025.
+
+\bibitem{gour2020weight}
+Gilad Gour and Marco Piani.
+\newblock Weight of informativeness, state exclusion games, and excludible
+  information.
+\newblock {\em New Journal of Physics}, 22(9):093062, 2020.
+
+\bibitem{haarMeasure}
+Alfréd Haar.
+\newblock Der {Maßbegriff} in der {Theorie} der kontinuierlichen {Gruppen}.
+\newblock {\em Annals of Mathematics}, 34(1):147--169, 1933.
+
+\bibitem{numpyRNG}
+Charles~R Harris, K~Jarrod Millman, St{\'e}fan~J van~der Walt, Ralf Gommers,
+  Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg,
+  Nathaniel~J Smith, et~al.
+\newblock Array programming with {NumPy}.
+\newblock {\em Nature}, 585(7825):357--362, 2020.
+
+\bibitem{helstromBook}
+Carl~W. Helstrom.
+\newblock {\em Quantum Detection and Estimation Theory}.
+\newblock Academic Press, New York, 1976.
+
+\bibitem{UnitaryMatricesGeneration}
+Francesco Mezzadri.
+\newblock How to generate random matrices from the classical compact groups,
+  2007.
+
+\bibitem{mosek_sdp}
+{MOSEK ApS}.
+\newblock {\em Semidefinite Optimization}, 2024.
+\newblock Version 11.0.
+
+\bibitem{piani2020quantum}
+Marco Piani and John Watrous.
+\newblock All quantum resources provide an advantage in exclusion tasks.
+\newblock {\em Physical Review Letters}, 124(6):060404, 2020.
+
+\bibitem{PICOS}
+Guillaume Sagnol and Maximilian Stahlberg.
+\newblock {PICOS}: A {Python} interface to conic optimization solvers.
+\newblock {\em Journal of Open Source Software}, 7(70):3915, February 2022.
+
+\bibitem{GitHub}
+SirSergi0.
+\newblock Qsex\_tfg-temporal\_name-.
+\newblock \url{https://github.com/SirSergi0/QSEx_TFG-Temporal_Name-}, 2025.
+
+\end{thebibliography}

@@ -1,0 +1,19 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}Preliminaries}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Postulates and definitions}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Formulation of the problem}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Gram Matrix Formulation}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Group Generated Ensembles}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Previous Results}{10}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Methodology}{14}{section.3}%
+\contentsline {section}{\numberline {4}Results and Discussion}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Comparison \gls {me} vs. \gls {ze}}{17}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The perfect exclusion regime and general ensembles}{19}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Distribution of the general ensembles success exclusion probability}{23}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Intuition behind the results}{24}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Conclusions}{27}{section.5}%
+\contentsline {section}{\numberline {A}Dual Formulation of the Problem}{30}{appendix.A}%
+\contentsline {section}{\numberline {B}Computation of Gram Matrices for a group-generated ensembles}{31}{appendix.B}%
+\contentsline {section}{\numberline {C}Comparison \gls {qsd} vs. \gls {qse}}{32}{appendix.C}%
+\contentsline {section}{\numberline {D}Limit Case Scenarios}{34}{appendix.D}%

@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Lower bounds of the success probability in quantum state exclusion for general ensembles.aux
+The style file: plain.bst
+Database file #1: references.bib
+You've used 17 entries,
+            2118 wiz_defined-function locations,
+            612 strings with 6558 characters,
+and the built_in function-call counts, 5134 in all, are:
+= -- 482
+> -- 259
+< -- 0
++ -- 103
+- -- 86
+* -- 374
+:= -- 895
+add.period$ -- 50
+call.type$ -- 17
+change.case$ -- 90
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 174
+empty$ -- 407
+format.name$ -- 86
+if$ -- 1040
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 15
+newline$ -- 86
+num.names$ -- 34
+pop$ -- 90
+preamble$ -- 1
+purify$ -- 76
+quote$ -- 0
+skip$ -- 126
+stack$ -- 0
+substring$ -- 280
+swap$ -- 18
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 64
+warning$ -- 0
+while$ -- 47
+width$ -- 19
+write$ -- 181
