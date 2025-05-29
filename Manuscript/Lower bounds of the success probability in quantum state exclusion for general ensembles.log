@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  27 MAY 2025 22:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  29 MAY 2025 15:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -902,7 +902,7 @@ Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 )
 
 Package hyperref Warning: Unexpected value for option `hidelinks'
-(hyperref)                is ignored on input line 105.
+(hyperref)                is ignored on input line 106.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2023/09/29 v4.53 (NLCT)
@@ -1093,32 +1093,36 @@ s/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (./Lower bounds of the success probability in quantum state exclusion for gener
-al ensembles.aux)
+al ensembles.aux
+
+LaTeX Warning: Label `FigureDistZ5ZE0.5' multiply defined.
+
+)
 \openout1 = `"Lower bounds of the success probability in quantum state exclusio
 n for general ensembles.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1177,7 +1181,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count388
-Package hyperref Info: Link coloring OFF on input line 125.
+Package hyperref Info: Link coloring OFF on input line 126.
 
 (./Lower bounds of the success probability in quantum state exclusion for gener
 al ensembles.out)
@@ -1192,27 +1196,27 @@ Couldn't patch \deferred@thm@head!
 <GeneralSources/UABLogo.png, id=79, 392.12303pt x 138.01239pt>
 File: GeneralSources/UABLogo.png Graphic file (type png)
 <use GeneralSources/UABLogo.png>
-Package pdftex.def Info: GeneralSources/UABLogo.png  used on input line 148.
+Package pdftex.def Info: GeneralSources/UABLogo.png  used on input line 149.
 (pdftex.def)             Requested size: 122.27576pt x 43.0361pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 148
+LaTeX Font Info:    Trying to load font information for U+msa on input line 149
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 148
+LaTeX Font Info:    Trying to load font information for U+msb on input line 149
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+esint on input line 1
-48.
+49.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 )
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 14
-8.
+9.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -1225,7 +1229,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.153 \newpage
+l.154 \newpage
                [1] [2] [3]
 (./Lower bounds of the success probability in quantum state exclusion for gener
 al ensembles.toc)
@@ -1238,22 +1242,22 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.192 
+l.193 
        [1]
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.201 \newpage
+l.202 \newpage
                [2]
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.244 \begin{align*}
+l.245 \begin{align*}
                      [3]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 2
-56.
+57.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
@@ -1262,17 +1266,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.272 \end{align*}
+l.273 \end{align*}
                    [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-sup
 er/cm-super-ts1.enc}] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
 [16]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 602.
+(hyperref)                removing `\gls' on input line 612.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 602.
+(hyperref)                removing `\gls' on input line 612.
 
 <../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf, id=447,
  867.24pt x 505.89pt>
@@ -1280,7 +1284,7 @@ File: ../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf Gra
 phic file (type pdf)
 <use ../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf>
 Package pdftex.def Info: ../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabili
-tyZ3HeatMap.pdf  used on input line 610.
+tyZ3HeatMap.pdf  used on input line 620.
 (pdftex.def)             Requested size: 239.66318pt x 150.34415pt.
 <../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf, id=449, 86
 7.24pt x 505.89pt>
@@ -1288,14 +1292,14 @@ File: ../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf Graphi
 c file (type pdf)
 <use ../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf>
 Package pdftex.def Info: ../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ
-3HeatMap.pdf  used on input line 614.
+3HeatMap.pdf  used on input line 624.
 (pdftex.def)             Requested size: 239.66318pt x 151.61235pt.
 [17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.627 
+l.637 
        <../Plots/ExlusionOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf> 
 <../Plots/ExlusionOverlapVSPhaseVSZeroErrorProbabilityZ3HeatMap.pdf>]
 <../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf, id=
@@ -1305,7 +1309,7 @@ File: ../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf
 <use ../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf>
 
 Package pdftex.def Info: ../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZone
-Z3BinaryHeatMap.pdf  used on input line 658.
+Z3BinaryHeatMap.pdf  used on input line 668.
 (pdftex.def)             Requested size: 239.66318pt x 174.27747pt.
 <../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf, id=5
 76, 462.52798pt x 346.89601pt>
@@ -1313,7 +1317,7 @@ File: ../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf
 Graphic file (type pdf)
 <use ../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf>
 Package pdftex.def Info: ../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZn
-Overlap3Phase0.pdf  used on input line 662.
+Overlap3Phase0.pdf  used on input line 672.
 (pdftex.def)             Requested size: 239.66318pt x 179.74648pt.
  [18]
 [19
@@ -1321,7 +1325,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.686 
+l.696 
        <../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pd
 f> <../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf>]
 <../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3.pdf, id=691, 867.24pt 
@@ -1330,7 +1334,7 @@ File: ../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3.pdf Graphic file
 (type pdf)
 <use ../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3.pdf>
 Package pdftex.def Info: ../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ
-3.pdf  used on input line 689.
+3.pdf  used on input line 699.
 (pdftex.def)             Requested size: 239.66318pt x 150.975pt.
 <../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf, id=693, 
 867.24pt x 505.89pt>
@@ -1338,14 +1342,14 @@ File: ../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf Grap
 hic file (type pdf)
 <use ../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf>
 Package pdftex.def Info: ../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ
-3ZeroError.pdf  used on input line 693.
+3ZeroError.pdf  used on input line 703.
 (pdftex.def)             Requested size: 239.66318pt x 150.975pt.
 [20
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.719 \begin{align*}
+l.729 \begin{align*}
                      <../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3.p
 df> <../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf>]
 [21]
@@ -1353,20 +1357,20 @@ df> <../Plots/ExclusionEignevaluesGroupGeneratedLowerBoundZ3ZeroError.pdf>]
 File: ../Plots/ExclusionEignevalueRandom3.pdf Graphic file (type pdf)
 <use ../Plots/ExclusionEignevalueRandom3.pdf>
 Package pdftex.def Info: ../Plots/ExclusionEignevalueRandom3.pdf  used on input
- line 771.
+ line 782.
 (pdftex.def)             Requested size: 288.56902pt x 181.78264pt.
 <../Plots/ExclusionEignevalueRandom33D.pdf, id=808, 722.7pt x 505.89pt>
 File: ../Plots/ExclusionEignevalueRandom33D.pdf Graphic file (type pdf)
 <use ../Plots/ExclusionEignevalueRandom33D.pdf>
 Package pdftex.def Info: ../Plots/ExclusionEignevalueRandom33D.pdf  used on inp
-ut line 775.
+ut line 786.
 (pdftex.def)             Requested size: 190.7499pt x 181.27386pt.
  [22
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.795 
+l.807 
        <../Plots/ExclusionEignevalueRandom3.pdf> <../Plots/ExclusionEignevalueR
 andom33D.pdf>]
 <../Plots/ExclusionMinimumErrorRandomDistributionZ3Prob0.962.pdf, id=914, 722.7
@@ -1375,44 +1379,69 @@ File: ../Plots/ExclusionMinimumErrorRandomDistributionZ3Prob0.962.pdf Graphic f
 ile (type pdf)
 <use ../Plots/ExclusionMinimumErrorRandomDistributionZ3Prob0.962.pdf>
 Package pdftex.def Info: ../Plots/ExclusionMinimumErrorRandomDistributionZ3Prob
-0.962.pdf  used on input line 807.
+0.962.pdf  used on input line 822.
 (pdftex.def)             Requested size: 366.8273pt x 224.10573pt.
-<../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5.pdf, id=916, 722.7pt x 
+ [23] [24
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.835 I
+       nterestingly, there exists a threshold of deviation from the Fourier ...
+ <../Plots/ExclusionMinimumErrorRandomDistributionZ3Prob0.962.pdf>]
+<../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5.pdf, id=978, 722.7pt x 
 433.62pt>
 File: ../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5.pdf Graphic file (
 type pdf)
 <use ../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5.pdf>
 Package pdftex.def Info: ../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5
-.pdf  used on input line 814.
+.pdf  used on input line 843.
 (pdftex.def)             Requested size: 366.8273pt x 224.10573pt.
- [23
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.818 
-       <../Plots/ExclusionMinimumErrorRandomDistributionZ3Prob0.962.pdf>]
-[24
+ [25
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.843 
-       <../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5.pdf>] [25
+l.849 
+       <../Plots/ExclusionZeroErrorRandomDistributionZ3Prob0.5.pdf>]
+<../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf, id=1033, 722.
+7pt x 433.62pt>
+File: ../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf Graphic f
+ile (type pdf)
+<use ../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf>
+Package pdftex.def Info: ../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob
+0.924.pdf  used on input line 854.
+(pdftex.def)             Requested size: 239.66318pt x 146.41238pt.
+<../Plots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf, id=1035, 722
+.7pt x 433.62pt>
+File: ../Plots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf Graphic 
+file (type pdf)
+<use ../Plots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf>
+Package pdftex.def Info: ../Plots/ExclusionMinimumErrorRandomDistributionZ11Pro
+b0.926.pdf  used on input line 855.
+(pdftex.def)             Requested size: 239.66318pt x 146.41238pt.
+ [26
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.900 
-      
+l.885 
+       <../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf> <../Pl
+ots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf>] [27
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.900 
-      ] [26] [27]
+l.942 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.942 
+      ] [28] [29]
 (./Lower bounds of the success probability in quantum state exclusion for gener
-al ensembles.bbl [28]
+al ensembles.bbl [30]
 Underfull \hbox (badness 10000) in paragraph at lines 94--97
 []\OT1/cmr/m/n/12 SirSergi0.  Qsex[]tfg-temporal[]name-.  []$\OT1/cmtt/m/n/12 h
 ttps : / / github . com / SirSergi0 / QSEx _
@@ -1420,72 +1449,72 @@ ttps : / / github . com / SirSergi0 / QSEx _
 
 )
 Using TeX to sort glossary entries---this may take a while
-[29] [30]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 1002.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\gls' on input line 1002.
-
-[31
+[31] [32] [33
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1005 
-       ]
+l.1050 ...tion{Comparison \gls{qsd} vs. \gls{qse}}
+                                                  \label{appendixComparisonQ...
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 1050.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\gls' on input line 1050.
+
 <../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pdf, i
-d=1088, 867.24pt x 505.89pt>
+d=1215, 867.24pt x 505.89pt>
 File: ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.p
 df Graphic file (type pdf)
 <use ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMap.pd
 f>
 Package pdftex.def Info: ../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorPro
-babilityZ3HeatMap.pdf  used on input line 1008.
+babilityZ3HeatMap.pdf  used on input line 1056.
 (pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
+[34
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1079 
+        <../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMa
+p.pdf>]
 <../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMap.pd
-f, id=1109, 867.24pt x 505.89pt>
+f, id=1286, 867.24pt x 505.89pt>
 File: ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatM
 ap.pdf Graphic file (type pdf)
 <use ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabilityZeroErrorZ3HeatMa
 p.pdf>
 Package pdftex.def Info: ../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabil
-ityZeroErrorZ3HeatMap.pdf  used on input line 1032.
+ityZeroErrorZ3HeatMap.pdf  used on input line 1082.
 (pdftex.def)             Requested size: 244.55153pt x 154.70157pt.
- [32
-pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1039 
-        <../Plots/DiscriminationOverlapVSPhaseVSMinimumErrorProbabilityZ3HeatMa
-p.pdf>]
 <../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf,
- id=1168, 462.52798pt x 346.89601pt>
+ id=1293, 462.52798pt x 346.89601pt>
 File: ../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0
 .pdf Graphic file (type pdf)
 <use ../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.
 pdf>
 Package pdftex.def Info: ../Plots/DiscriminationOverlapVSSucessProbabilitySDPvs
-SRMZnOverlap3Phase0.pdf  used on input line 1046.
+SRMZnOverlap3Phase0.pdf  used on input line 1096.
 (pdftex.def)             Requested size: 244.55153pt x 183.41467pt.
- [33
-pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1056 \end{align*}
-                   
+ [35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1056 \end{align*}
-                    <../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSRMZ
-nOverlap3Phase0.pdf> <../Plots/DiscriminationOverlapVSPhaseVSSuccessProbability
-ZeroErrorZ3HeatMap.pdf>] [34] [35]
+l.1104 \begin{align*}
+                     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1104 \begin{align*}
+                      <../Plots/DiscriminationOverlapVSSucessProbabilitySDPvsSR
+MZnOverlap3Phase0.pdf> <../Plots/DiscriminationOverlapVSPhaseVSSuccessProbabili
+tyZeroErrorZ3HeatMap.pdf>] [36] [37]
 
 enddocument/afterlastpage: lastpage setting LastPage.
 
@@ -1495,15 +1524,19 @@ al ensembles.aux)
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `"Lower bounds of the success probability in 
 quantum state exclusion for general ensembles".out' has not changed.
 (rerunfilecheck)             Checksum: DFA33590E132DFBC78E9EC990676EAE1;3469.
  ) 
 Here is how much of TeX's memory you used:
- 33001 strings out of 474116
- 617992 string characters out of 5743682
- 1953187 words of memory out of 5000000
- 54629 multiletter control sequences out of 15000+600000
+ 33019 strings out of 474116
+ 619060 string characters out of 5743682
+ 1949187 words of memory out of 5000000
+ 54643 multiletter control sequences out of 15000+600000
  571892 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,17n,103p,2441b,722s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1532,10 +1565,10 @@ ist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
 Output written on "Lower bounds of the success probability in quantum state exc
-lusion for general ensembles.pdf" (40 pages, 6206431 bytes).
+lusion for general ensembles.pdf" (42 pages, 6241452 bytes).
 PDF statistics:
- 1429 PDF objects out of 1440 (max. 8388607)
- 789 compressed objects within 8 object streams
- 123 named destinations out of 1000 (max. 500000)
- 293 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1556 PDF objects out of 1728 (max. 8388607)
+ 832 compressed objects within 9 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 315 words of extra memory for PDF output out of 10000 (max. 10000000)
 

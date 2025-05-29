@@ -11,9 +11,9 @@
 \contentsline {subsection}{\numberline {4.1}Comparison \gls {me} vs. \gls {ze}}{17}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}The perfect exclusion regime and general ensembles}{19}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Distribution of the general ensembles success exclusion probability}{23}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Intuition behind the results}{24}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Conclusions}{27}{section.5}%
-\contentsline {section}{\numberline {A}Dual Formulation of the Problem}{30}{appendix.A}%
-\contentsline {section}{\numberline {B}Computation of Gram Matrices for a group-generated ensembles}{31}{appendix.B}%
-\contentsline {section}{\numberline {C}Comparison \gls {qsd} vs. \gls {qse}}{32}{appendix.C}%
-\contentsline {section}{\numberline {D}Limit Case Scenarios}{34}{appendix.D}%
+\contentsline {subsection}{\numberline {4.4}Intuition behind the results}{26}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Conclusions}{29}{section.5}%
+\contentsline {section}{\numberline {A}Dual Formulation of the Problem}{32}{appendix.A}%
+\contentsline {section}{\numberline {B}Computation of Gram Matrices for a group-generated ensembles}{33}{appendix.B}%
+\contentsline {section}{\numberline {C}Comparison \gls {qsd} vs. \gls {qse}}{34}{appendix.C}%
+\contentsline {section}{\numberline {D}Limit Case Scenarios}{36}{appendix.D}%
