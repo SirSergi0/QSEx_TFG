@@ -534,10 +534,44 @@ Consequently, for an ensemble of $p$ quantum states, there exists a unique unita
 
 Ensembles containing a prime number of states are of particular interest, as the analytical result can be guaranteed to be exact for only one specific ensemble. Consequently, when interpreting the results for the case of generic ensembles in the following sections we can be ensure the analytical result is exact in only one instance. Moreover, there is no overlap with other Gram matrices for which the result would also hold exactly.
 
+\subsection{Haar Measure}
+\hspace{20pt}In this section, we introduce the concept of a measure on a topological space and define the Haar measure. This is one of the key theoretical tools underlying this project, as we use the Haar measure to ensure a uniform and unbiased sampling of ensembles when generating Gram matrices for general ensembles.
+
+Let \( \Omega \) be a set, and let \( \Sigma \) be a \( \sigma \)-algebra over \( \Omega \). A measure \( \mu \) on the measurable space \( (\Omega, \Sigma) \) is a set function \( \mu : \Sigma \to \mathbb{R}_{\geq 0} \) that satisfies the following properties:
+\begin{itemize}
+	\item Positive semidefiniteness, i.e. for any $\chi\in\Sigma$ we have $\mu(\chi)\geq 0$.
+	\item $\mu(\emptyset)=0$.
+	\item Sigma additivity, i.e. given a countable set $\{\chi_i\in\Sigma|i\in\mathbb{N}\}$ of pairwise-disjoint sets\footnote{This means that $\chi_i\cap\chi_j=\emptyset$ for any $i,j\in\mathbb{N}$ if $i\neq j$.} $\mu$ fulfils, 
+	\begin{align*}
+		\mu\left(\bigcup_{i=1}^\infty \chi_i\right)=\sum_{i=1}^\infty \mu(\chi_i).
+	\end{align*}
+\end{itemize}
+
+Now, let \( \Omega \) be a topological group. A Haaar measure \( \mu \) on a set \( \Omega \) is a measure defined on the Borel \( \sigma \)-algebra \( \Upsilon \) of \( \Omega \)\footnote{A full definition of Borel sets is beyond the scope of this work, it is enough to say they are sets generated from the open sets of \( \Omega \) through countable unions, intersections, and complements.}, satisfying the following properties:
+\begin{itemize}
+	\item Invariance under transition, i.e. for any $\omega \in \Omega$ and $\upsilon \in \Upsilon$ we have $\mu(\omega\upsilon)=\mu(\upsilon)$.
+	\item The measure is finite for any compact Borel subset, i.e. for any $\upsilon\in\Upsilon$ compact we have that $\mu(\upsilon)<\infty$.
+	\item $\mu$ is outer regular, i.e. for any $\upsilon\in\Upsilon$
+		\begin{align*}
+			\mu(\upsilon)=\inf_{\vartheta\:\text{open}}\{\mu(\vartheta)|\upsilon\subseteq\vartheta\}
+		\end{align*}
+	\item $\mu$ is inner regular, i.e. for any open $\upsilon\in\Upsilon$,
+		\begin{align*}
+			\mu(\upsilon)=\sup_{\vartheta\:\text{compact}}\{\mu(\vartheta)|\vartheta\subseteq\upsilon\}
+		\end{align*}
+\end{itemize}
+
+It can be shown that the Haar measure is unique up to a constant multiple. In particular, since we are working with the set of unitary matrices,
+\begin{align*}
+	U(n) = \{ U \in \mathbb{C}^{n \times n} \mid U^\dagger U = \mathds{1} \},
+\end{align*}
+
+which is compact in the usual topology, from the secon property we know the Haar measure \( \mu \) on \( U(n) \) to be finite. Therefore, we can normalize it so that \( \mu(U(n)) = 1 \), fully determining the measure. Moreover, since from the first property we know \( \mu \) is invariant under group multiplication, it is uniformly distributed over \( U(n) \). This allows us to generate unitary matrices that are randomly and uniformly distributed with respect to the Haar measure.
+
 \newpage
 \section{Methodology}\label{sectionMethodology}
 
-\hspace{20pt}All the code used in this project is hosted in the GitHub repository \cite{GitHub}, where additional documentation is available detailing the functionality and structure of each script and class involved in the implementation. The numerical analysis is performed by generating ensembles uniformly distributed taking into account all possibilities and then solving the \gls{sdp} problems presented in Section \ref{sectionFormulationOfTheProblem}.
+\hspace{20pt}All the used code in this project is hosted in the GitHub repository \cite{GitHub}, where additional documentation is available detailing the functionality and structure of each script and class involved in the implementation. The numerical analysis is performed by generating ensembles uniformly distributed taking into account all possibilities and then solving the \gls{sdp} problems presented in Section \ref{sectionFormulationOfTheProblem}.
 
 The core of the numerical analysis is the implementation of a Semi-Definite Programming (\gls{sdp}) solver based on the MOSEK optimization suite \cite{mosek_sdp}, interfaced through the Python-based PICOS optimization library \cite{PICOS}. 
 
@@ -853,9 +887,10 @@ As before, no ensembles yields lower success exclusion probabilities than the lo
 	\centering
 	\includegraphics[width=0.49\textwidth, trim={1.0cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf}
 	\includegraphics[width=0.49\textwidth, trim={1.0cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf}
-	\caption{Hisotgram depicting the distribution of generated Gram Matrices via the success probability for \gls{me} protocol with a lower bound of 0.92 for 7 states (left) and 11 states (right) ensembles of random priors probabilities.}
-	\label{FigureDistZ5ZE0.5}
+	\caption{Hisotgram depicting the distribution of generated Gram Matrices via the success probability for \gls{me} protocol with a lower bound of 0.926 for 7 states (left) and 11 states (right) ensembles of random priors probabilities.}
+	\label{FigureDistZ7Z11}
 \end{figure}
+In Figure~\ref{FigureDistZ7Z11}, we present the corresponding results for the \gls{me} protocol applied to ensembles composed of 7 (left) and 11 (right) quantum states, with a lower bound on the success exclusion probability of 0.926. As the number of states increases, the distribution approaches a Landau shape \cite{landau}. For ensembles of 7 elements, we still observe the phenomenon of accumulation near the perfect exclusion region. However, in the case of 11 states, only a small fraction of ensembles reach the perfect exclusion regime since the peak of the distribution is more narrow and the ensembles tend to agglomerate exclusion probabilities arround this peak.
 
 
 \subsection{Intuition behind the results}
@@ -1013,18 +1048,24 @@ This duality principle not only provides a tool for verification but also sugges
 \section{Computation of Gram Matrices for a group-generated ensembles}\label{appendixComputationGroupGeneratedGramMatrices}
 
 \hspace{20pt}We can compute the Gram matrix for any group-generated ensemble by using the Cayley table~\cite{CayleyTable}, also known as the \emph{multiplication table}, of the group. For example, consider the smallest non-commutative group, $S_3$, consisting of the symmetries and rotations of an equilateral triangle. Denoting the identity as $e$, the rotations elements as $s$, $s^2$ (one being the result of 2 times the other) and the symmetries $p$, $q$, and $r$, the Cayley table is,
-
 \begin{table}[H]
-	\centering
-	\caption{Cayley table of the $S_3$ group.}
-	\begin{tabular}{c||c c c c c c}
-        $S_3$ & $e$ & $s$ & $s^2$ & $p$ & $q$ & $r$ \\\hline\hline
+    \centering
+    \caption{Cayley table of the $S_3$ group.}
+    \label{tab:Cayley-S3}
+    \setlength{\tabcolsep}{12pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|>{\columncolor{gray!20}}c||c|c|c|c|c|c|}
+        \hline
+        \rowcolor{gray!20}
+        $S_3$ & $e$ & $s$ & $s^2$ & $p$ & $q$ & $r$ \\
+        \hline\hline
         $e$   & $e$ & $s$ & $s^2$ & $p$ & $q$ & $r$ \\
         $s^2$ & $s^2$ & $e$ & $s$ & $r$ & $p$ & $q$ \\
         $s$   & $s$ & $s^2$ & $e$ & $q$ & $r$ & $p$ \\
         $p$   & $p$ & $r$ & $q$ & $e$ & $s^2$ & $s$ \\
         $q$   & $q$ & $p$ & $r$ & $s$ & $e$ & $s^2$ \\
-        $r$   & $r$ & $q$ & $p$ & $s^2$ & $s$ & $e$
+        $r$   & $r$ & $q$ & $p$ & $s^2$ & $s$ & $e$ \\
+        \hline
     \end{tabular}
 \end{table}
 

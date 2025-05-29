@@ -70,6 +70,11 @@ Carl~W. Helstrom.
 \newblock {\em Quantum Detection and Estimation Theory}.
 \newblock Academic Press, New York, 1976.
 
+\bibitem{landau}
+L.~Landau.
+\newblock On the energy loss of fast particles by ionization.
+\newblock {\em Journal of Physics (USSR)}, 8:201, 1944.
+
 \bibitem{UnitaryMatricesGeneration}
 Francesco Mezzadri.
 \newblock How to generate random matrices from the classical compact groups,
