@@ -1,46 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Lower bounds of the success probability in quantum state exclusion for general ensembles.aux
-The style file: plain.bst
+The style file: unsrtnat.bst
 Database file #1: references.bib
-You've used 18 entries,
-            2118 wiz_defined-function locations,
-            618 strings with 6655 characters,
-and the built_in function-call counts, 5377 in all, are:
-= -- 506
-> -- 266
-< -- 0
-+ -- 106
-- -- 88
-* -- 388
-:= -- 939
-add.period$ -- 53
-call.type$ -- 18
-change.case$ -- 94
-chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 185
-empty$ -- 429
-format.name$ -- 88
-if$ -- 1090
-int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 16
-newline$ -- 91
-num.names$ -- 36
-pop$ -- 92
+You've used 20 entries,
+            2481 wiz_defined-function locations,
+            709 strings with 7909 characters,
+and the built_in function-call counts, 7215 in all, are:
+= -- 631
+> -- 324
+< -- 16
++ -- 136
+- -- 94
+* -- 556
+:= -- 1181
+add.period$ -- 82
+call.type$ -- 20
+change.case$ -- 37
+chr.to.int$ -- 18
+cite$ -- 20
+duplicate$ -- 361
+empty$ -- 672
+format.name$ -- 128
+if$ -- 1523
+int.to.chr$ -- 3
+int.to.str$ -- 21
+missing$ -- 19
+newline$ -- 129
+num.names$ -- 60
+pop$ -- 144
 preamble$ -- 1
-purify$ -- 79
+purify$ -- 20
 quote$ -- 0
-skip$ -- 133
+skip$ -- 214
 stack$ -- 0
-substring$ -- 294
-swap$ -- 19
+substring$ -- 263
+swap$ -- 49
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 68
+type$ -- 131
 warning$ -- 0
-while$ -- 50
-width$ -- 20
-write$ -- 192
+while$ -- 56
+width$ -- 0
+write$ -- 306

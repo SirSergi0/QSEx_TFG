@@ -21,7 +21,11 @@
 \usepackage{tikz}
 \usepackage{wrapfig}
 \usepackage{url}
-\usepackage{natbib}
+%\usepackage{natbib}
+\usepackage[numbers,square]{natbib}
+\bibliographystyle{unsrtnat}
+%\usepackage[style=numeric,sorting=none]{biblatex}
+
 \usepackage[normalem]{ulem}
 \usepackage{multicol}
 \useunder{\uline}{\ul}{}
@@ -163,6 +167,26 @@
 \thispagestyle{empty}
 \mbox{} 
 \newpage
+\pagestyle{empty}
+\headheight 35pt
+\lhead{\NetIDb}    
+\rhead{\subject}
+\cfoot{}
+\headsep 1.5em
+
+\section*{abstract}
+\vspace{1cm}
+\hspace{20pt}Unlike the well-studied problem of \gls{qsd}, which aims to identify an unknown quantum state from a known ensemble, \gls{qse} focuses on confidently ruling out one or more possible candidates. This approach becomes particularly valuable in scenarios where exclusion can be achieved without error.
+
+This project investigates \gls{qse} under two principal protocols, \gls{me}, which aims to minimize the risk of incorrectly excluding the true state, and \gls{ze}, which seeks to guarantee perfect exclusion at the cost of potentially inconclusive outcomes. Building on recent analytical results for group generated ensembles in these protocols \cite{MainPaper}, we carry out a numerical study of \gls{qse} task using \gls{sdp} techniques, analyzing general ensembles and benchmarking them against the  group generated cases, i.e. the lower bound.
+
+We begin by introducing the mathematical formulation of the \gls{qse} problem and the theoretical tools necessary to interpret our results. We also describe a protocol for generating random generic ensembles in a homogeneous manner according to the Haar measure.
+
+Our findings confirm that the analytical bounds established for group generated ensembles serve as effective lower bounds for more general cases. We present detailed results for three-state ensembles and examine the statistical distribution of correct exclusion probabilities for randomly sampled ensembles. Furthermore, we provide theoretical insights and intuition to support the observed behavior.
+
+These results underscore the unique role of \gls{qse} in quantum information theory, particularly in contexts where partial state inference and hypothesis elimination are more feasible or desirable than full state identification.
+
+\newpage
 \thispagestyle{empty}
 \cfoot{}
 \tableofcontents
@@ -175,29 +199,24 @@
 \cfoot{\small\thepage}
 \headsep 1.5em
 \setcounter{page}{1}
-\begin{center}
-\begin{abstract}
-Given a quantum state known to be prepared from an ensemble of two or more states, quantum state exclusion aims to rule out the possibility that it was prepared in a particular state from the ensemble. Using the known solution for group generated ensembles \cite{MainPaper}, we study this result as a lower bound for randomly generated ensembles via semidefinite programming.
-\end{abstract}
-\end{center}
 %Keywords: \emph{SDP, Quantum state exclusion , \textcolor{blue}{Add keywords}}.
-\section{Introduction}
+\section{Introduction}	\label{sectionIntroduction}
 
 \hspace{20pt}In many real-world scenarios, excluding a certain hypothesis can be more practical than solving the problem entirely. For instance, in disease diagnosis, ruling out potential illnesses is often the first step toward identifying the actual condition. Similarly, in the context of detecting a gas leak in a complex pipe system, excluding the possibility of the gas being chlorine, a toxic substance, can guide the search for the faulty pipe by narrowing down the potential sources and providing critical information about the gas's toxicity. In numerous everyday situations, the strategy of excluding specific possibilities forms a natural and often effective initial approach to the problem.
 
-In the quantum realm, a similar line of reasoning can be applied in some problmes. One of the fundamental tasks in quantum information theory is the identification of an unknown quantum state known to belong to a given ensemble of possible states. This task is referred to as Quantum State Discrimination (\gls{qsd}), and it has been extensively studied in the literature \cite{DiscriminationArticle}. However, instead of aiming to identify the exact state, we may take another approach by applying the hypothesis exclusion idea. That is, given a quantum state known to be one among a certain ensemble, the goal becomes to conclusively rule out the possibility of the unknown state being a specific member of that ensemble. This alternative task is known as Quantum State Exclusion (\gls{qse}) \cite{PhysicsExclusionSource}, and it offers a distinct framework with its own set of advantages \cite{piani2020quantum} with respect to its counterpart \gls{qsd}.
+In the quantum realm, a similar line of reasoning can be applied in some tasks in this field. One of the fundamental tasks in quantum information theory is the identification of an unknown quantum state known to belong to a given ensemble of possible states. This task is referred to as Quantum State Discrimination (\gls{qsd}), and it has been extensively studied in the literature \cite{DiscriminationArticle}. However, instead of aiming to identify the exact state, we may take another approach by applying the hypothesis exclusion idea. That is, given a quantum state known to be one among a certain ensemble, the goal becomes to rule out the possibility of the unknown state being a specific member of that ensemble. This alternative task is known as Quantum State Exclusion (\gls{qse}) \cite{PhysicsExclusionSource}, and it offers a distinct framework with its own set of advantages \cite{piani2020quantum} with respect to its counterpart \gls{qsd}.
 
-We can approach \gls{qse} task under several protocols, depending on the context within we perform the hypothesis exclusion we can prefer one or another. In this project, we focus on two main protocols, Minimum Error (\gls{me}) and Zero Error (\gls{ze})\footnote{Also known as \emph{unambiguous exclusion}.}, i.e. the protocols for which analytical results have been presented \cite{MainPaper}. In the Minimum Error scenario, the goal is to minimize the probability of mistakenly excluding the actual prepared state. In contrast, the Zero Error approach seeks to exclude a state with absolute certainty, although this procedure sometimes yields an inconclusive result when perfect exclusion cannot be accomplished.
+We can approach \gls{qse} task under several protocols, depending on the context within we perform the hypothesis exclusion we can prefer one or another. In this project, we focus on two main protocols, Minimum Error (\gls{me}) and Zero Error (\gls{ze})\footnote{Also known as \emph{unambiguous exclusion}.}, i.e. the protocols for which analytical results have been presented \cite{MainPaper}. In the \gls{me} scenario, the goal is to minimize the probability of mistakenly excluding the actual prepared state. In contrast, the \gls{ze} approach seeks to exclude a state with absolute certainty, although this procedure sometimes yields an inconclusive result when perfect exclusion cannot be accomplished.
 
-While \gls{qsd} has seen significant progress over the years \cite{bae2015quantum, helstromBook}, \gls{qse} has remained relatively underexplored until recently. New analytical results have emerged \cite{MainPaper} for both the \gls{me} and \gls{ze} protocols, particularly when the ensemble of quantum states possesses a certain degree of symmetry. In particular, when the ensemble is generated through the action of a finite algebraic group, the problem becomes more tractable, highlighting \gls{qse} as a worthwhile object of study.
+While \gls{qsd} has seen significant progress over the years \cite{bae2015quantum, helstromBook}, \gls{qse} has remained relatively underexplored until recently. New analytical results have emerged \cite{MainPaper} for both the \gls{me} and \gls{ze} protocols. In particular, when the ensemble is generated through the action of a finite algebraic group, the problem becomes more tractable, highlighting \gls{qse} as a worthwhile object of study.
 
-Although the tasks of exclusion and discrimination coincide for ensembles containing only two states\footnote{Since for the two states case excluding one necessarily implies identifying the other.}, when dealing with ensembles of three or more states, the two problems diverge in both approach and complexity. Though this work primarily focuses on \gls{qse}, we include a comparative discussion of both tasks and protocols to further motivate the interest in \gls{qse} and discuss the main differences with \gls{qsd} in Appendix \ref{appendixComparisonQSDvsQSE}. One of the key features of \gls{qse} is the possibility of achieving \emph{perfect exclusion}, i.e. confidently ruling out a candidate state with complete certainty that it is not the unknown state. In contrast, \emph{perfect discrimination} is generally not achievable, meaning that one cannot identify the unknown state with absolute certainty in most settings\cite{OptimalitySRM}.
+Although the tasks of exclusion and discrimination coincide for ensembles containing only two states\footnote{Since for the two states case excluding one necessarily implies identifying the other.}, when dealing with ensembles of three or more states, the two problems diverge in both approach and complexity. In order to further motivate the interest in \gls{qse} and discuss the main differences, we include a brief comparison of both tasks and protocols  with \gls{qsd} in Appendix \ref{appendixComparisonQSDvsQSE}. One of the key features of \gls{qse} is the possibility of achieving \emph{perfect exclusion}, i.e. confidently ruling out a candidate state with complete certainty that it is different from our given unknown state. In contrast, \emph{perfect discrimination} is generally not achievable, meaning that one cannot identify the unknown state with absolute certainty in most settings\cite{OptimalitySRM}.
 
 This capacity for perfect exclusion opens new avenues in quantum information theory, especially in scenarios involving partial information retrieval from quantum systems \cite{gour2020weight}. By eliminating certain hypotheses, one can extract meaningful information from a quantum system without requiring full state identification.
 
-Building upon the recent results for the probability of a correct exclusion for group-generated ensembles \cite{MainPaper},\footnote{A proper definition of a \emph{group generated ensemble} will be given in the \emph{Group generated ensembles} section \ref{sectionGroupGeneratedEnsemble}, for the time being, we can identify them as ensembles that comprehend set of states that exhibit a certain symmetry.} this project undertakes a numerical investigation into \gls{qse}, highlighting the analytical results from group-generated ensembles as lower bounds for more general cases. The project comences with a preliminaries section that outlines the mathematical framework underlying the \gls{qse} task, along with the essential tools used in our analysis. We then present results for the probability of correct hypothesis exclusion in ensembles consisting of three quantum states, the simplest case. Furthermore, we explore the distribution of correct exclusion probabilities for randomly generated ensembles sampled according to Haar measure.\footnote{The importance of the generic ensembles generation being performed according to Haar measure is a key for the numerical analysis and it is discussed in the \emph{Methodology} section (\ref{sectionMethodology})}
+Building upon the recent results for the probability of a correct exclusion for group generated ensembles \cite{MainPaper},\footnote{A proper definition of a \emph{group generated ensemble} will be given in the \emph{Group generated ensembles} section \ref{sectionGroupGeneratedEnsemble}, for the time being, we can identify them as ensembles that comprehend set of states that exhibit a certain symmetry.} this project undertakes a numerical investigation into \gls{qse}, highlighting the analytical results from group generated ensembles as lower bounds for more general cases. The project comences with a preliminaries section that outlines the mathematical framework underlying the \gls{qse} task, along with the essential tools used in our analysis. We then present results for the probability of correct hypothesis exclusion in ensembles consisting of three quantum states, the simplest case. Furthermore, we explore the distribution of correct exclusion probabilities for randomly generated ensembles sampled according to Haar measure.\footnote{The importance of the generic ensembles generation being performed according to Haar measure is a key for the numerical analysis and it is discussed in the \emph{Methodology} section (\ref{sectionMethodology})}
 
-To carry out our numerical analysis, we employ \gls{sdp} techniques, which allow us to cast the \gls{qse} task as a convex optimization problem. The \gls{sdp} approach has proven particularly effective for problems of this kind \cite{bandyopadhyay2014conclusive}. Finally, ve conclude by providing some theoretical intuition and insights based on our results.
+To carry out our numerical analysis, we employ \gls{sdp} techniques,\cite{vandenberghe1996semidefinite} which enable us to formulate the \gls{qse} task as a convex optimization problem. The \gls{sdp} approach has proven particularly effective for problems of this nature \cite{bandyopadhyay2014conclusive}. Finally, we conclude by providing some theoretical intuition and insights based on our results.
 
 \newpage
 \section{Preliminaries}
@@ -258,15 +277,15 @@ In relation to the observable postulate, we now define a \gls{povm} as a collect
 where $\mathds{1}$ denotes the identity operator on the Hilbert space $\mathcal{H}$.
 \end{itemize}
 
-Unlike projective measurements, the operators $\Pi_i$ in a POVM are not necessarily orthogonal projectors. This allows the number of measurement outcomes to exceed the dimensionality of the Hilbert space, extending the previos orthogonal measurement to a more generic status and making POVMs particularly useful in tasks such as \gls{qse} and \gls{qsd}.
+Unlike projective measurements, the operators $\Pi_i$ in a \gls{povm} are not necessarily orthogonal projectors. This allows the number of measurement outcomes to exceed the dimensionality of the Hilbert space, extending the previos orthogonal measurement to a more generic status and making POVMs particularly useful in tasks such as \gls{qse} and \gls{qsd}.
 
 \subsection{Formulation of the problem}\label{sectionFormulationOfTheProblem}
 
-\hspace{20pt}Let $\left\{(\rho_i, \eta_i)\right\}_{i=1}^n$ be an ensemble of $n$ quantum states, where each $\rho_i$ denotes a pure state density matrix\footnote{This formulation hols true for mixed states but the project will only discuss the pure state scenario.}, i.e., $\rho_i = \ket{\psi_i}\bra{\psi_i}$, and $\eta_i$ represents the prior probability of occurrence of the state $\rho_i$. Let $\tilde{\rho}$ be a state from this ensemble. Our objective is to develop a procedure to identify another state $\rho_j \in \left\{\rho_i\right\}_{i=1}^n$, such that $\rho_j \neq \tilde{\rho}$.
+\hspace{20pt}Let $\left\{(\rho_i, \eta_i)\right\}_{i=1}^n$ be an ensemble of $n$ quantum states, where each $\rho_i$ denotes a pure state density matrix\footnote{This formulation holds true for mixed states but the project will only consider the pure state scenario.}, i.e., $\rho_i = \ket{\psi_i}\bra{\psi_i}$, and $\eta_i$ represents the prior probability of occurrence of the state $\rho_i$. Let $\tilde{\rho}$ be a state from this ensemble. Our objective is to develop a procedure to identify another state $\rho_j \in \left\{\rho_i\right\}_{i=1}^n$, such that $\rho_j \neq \tilde{\rho}$.
 
-Quantum measurements are described by a set of \glspl{povm}, denoted by $\left\{\Pi_i\right\}_{i=1}^n$, acting on the Hilbert space $\mathcal{H}$ of the quantum system. Here we present the two studied protocols for \gls{qse}: minimum-error (\gls{me}) and zero-error (\gls{ze}).
+Additionally, let $\left\{\Pi_i\right\}_{i=1}^n$ be a set of \glspl{povm} acting on the Hilbert space $\mathcal{H}$ of the quantum system. Here we present the two studied protocols for \gls{qse}: Minimum Error (\gls{me}) and Zero Error (\gls{ze}).
 
-As previously discussed the goal of the \gls{me} protocol is to minimize the probability of incorrectly excluding the unknown state from our hypothesis. If we formulate it as an \gls{sdp}, the \gls{sdp} minimization of the error probability reads,\footnote{Note that the \gls{sdp} formulations of quantum state discrimination may differ from the exclusion ones by interchanging minimization and maximization problems.}
+As previously discussed the goal of the \gls{me} protocol is to minimize the probability of incorrectly excluding the unknown state from our hypothesis. If we formulate the error probability as an \gls{sdp}, we obtain,\footnote{Note that SDP formulations for quantum state discrimination may differ from exclusion tasks by interchanging minimization and maximization objectives.}
 \begin{align*}
 	P_{\text{\gls{me}}}^e = \min_{\left\{\Pi_i\right\}} &\sum_{i=1}^n \eta_i \tr(\Pi_i \rho_i),\\
 	\text{subject to} \quad & \sum_{i=1}^n \Pi_i = \mathds{1}, \quad \Pi_i \geq 0 \quad \forall i \in \{1, \dots, n\}.
@@ -285,7 +304,7 @@ Naturally, both formulations are related via,
 P_{\text{\gls{me}}}^s + P_{\text{\gls{me}}}^e = 1.
 \end{align*}
 
-In the case of the \gls{ze} protocol, the objective is to exclude with total accuracy a state known to be different from the unkown state. However, the protocol might lead to inconclusive result. In order to do so, the \gls{povm}s must also satisfy an unambiguity condition, i.e. each measurement operator $\Pi_i$ must be orthogonal to the corresponding state $\rho_i$. In other words,
+In the case of the \gls{ze} protocol, the objective is to exclude with total certainty a state known to be different from the unkown state. However, the protocol might lead to inconclusive result. In order to do so, the \gls{povm}s must also satisfy an unambiguity condition, i.e. each measurement operator $\Pi_i$ must be orthogonal to the corresponding state $\rho_i$. In other words,
 \begin{align*}
 \tr(\Pi_i \rho_i) = 0 \quad \forall i \in \{1, \dots, n\}.
 \end{align*}
@@ -295,7 +314,7 @@ To ensure completeness, we introduce an additional \gls{povm} element $\Pi_?$ re
 \Pi_? = \mathds{1} - \sum_{i=1}^n \Pi_i.
 \end{align*}
 
-If the measurement yields the outcome $\Pi_?$, i.e., the "?" label, the result is inconclusive.
+If the measurement yields the outcome "?" , the result is inconclusive.
 
 The corresponding \gls{sdp} for minimizing the probability of an inconclusive result, i.e. error, in the \gls{ze} protocol is,
 \begin{align*}
@@ -379,7 +398,7 @@ Similarly, the success probability becomes,
 	\text{subject to} \quad & X^\dagger X = \mathcal{G}, \quad X \geq 0.
 \end{align*}
 
-This reformulation reveals that if two ensembles $A$ and $B$ share the same Gram matrix, then their exclusion problems under both the \gls{me} and \gls{ze} protocols are equivalent. That is, their optimal success and error probabilities coincide. Consequently, we focus on the Gram matrix to study exclusion problems rather than the explicit state representations.
+This reformulation reveals that if two ensembles $A$ and $B$ share the same Gram matrix, then their exclusion problems under both the \gls{me} and \gls{ze} protocols are equivalent. That is, their optimal success and error probabilities coincide. Consequently, we focus on the Gram matrix to study exclusion problems rather than the explicit state representations, as it encodes all the relevant information.
 
 %Furthermore, we note that the case of arbitrary prior probabilities $\eta_i$ can be reduced to the equal prior case $\eta_i = \frac{1}{n}$ by defining non-normalized states,
 %\begin{align*}
@@ -389,7 +408,7 @@ This reformulation reveals that if two ensembles $A$ and $B$ share the same Gram
 
 \subsection{Group Generated Ensembles}\label{sectionGroupGeneratedEnsemble}
 
-\hspace{20pt}As we have mentioned before, analytical results have been found for the exclusion task in both protocols \gls{me} and \gls{ze} for ensembles that exhibit a certain degree of symmetry\cite{MainPaper}, that is for \emph{group-generated} ensembles. In this section we present a proper definition for a group-generated ensemble as well as a brief discussion on this ensembles generated by a cyclic group, a key type of grop-generated ensembles in our analysis.
+\hspace{20pt}As we have mentioned before (Section \ref{sectionIntroduction}), analytical results have been found for the exclusion task in both protocols \gls{me} and \gls{ze} for ensembles that exhibit a certain degree of symmetry\cite{MainPaper}, that is for \emph{group generated} ensembles. In this section we present a proper definition for a group generated ensemble as well as a brief discussion on this ensembles generated by a cyclic group, a key type of group generated ensembles in our analysis.
 
 Given a quantum state $\ket{\psi}$, referred to as the \emph{seed state}, we define a \emph{group generated ensemble} as the set of states obtained by applying a group of unitary transformations to $\ket{\psi}$. Specifically, if the ensemble consists of $n$ quantum states, its elements are of the form,
 
@@ -410,11 +429,11 @@ For instance, let $\mathcal{U}$ be a unitary operator such that $\mathcal{U}^n =
 	\left\{ \mathcal{U}^i\ket{\psi} \right\}_{i=0}^{n-1},
 \end{align*}
 
-forms a group generated ensemble based on the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This type of ensemble is of particular interest in our study and will be explored in more detail at the end of this section. Additionally, in Appendix \ref{appendixComputationGroupGeneratedGramMatrices} we present a general procedure to compute the Gram Matrix for any group-generated ensemble.
+forms a group generated ensemble based on the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This type of ensemble is of particular interest in our study and will be explored in more detail at the end of this section. Nonetheless, in Appendix \ref{appendixComputationGroupGeneratedGramMatrices} we present a general procedure to compute the Gram Matrix for any group generated ensemble.
 
-\subsubsection*{The $\mathbb{Z}/n\mathbb{Z}$ group-generated ensemble}
+\subsubsection*{The $\mathbb{Z}/n\mathbb{Z}$ group generated ensemble}
 
-\hspace{20pt}Here we discuss the particular case for a $\mathbb{Z}/n\mathbb{Z}$ group-generated ensemble a key type of ensemble for our project.\footnote{The relevance of this type of ensembles relies on the fact that for a prime number of states, the possible group-generated group ensemble } Let $\mathcal{U} \in U(n)$ be an $n \times n$ unitary matrix satisfying $\mathcal{U}^n = \mathds{1}$, and let $\ket{\psi}$ be the seed state. The Gram matrix $\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}}$ elements associated with the ensemble $\left\{\mathcal{U}^i\ket{\psi}\right\}_{i=0}^{n-1}$ are,
+\hspace{20pt}Here we discuss the particular case for a $\mathbb{Z}/n\mathbb{Z}$ group generated ensemble a key type of ensemble for our project.\footnote{The relevance of this type of ensembles relies on the fact that for a prime number of states, the possible group generated group ensemble } Let $\mathcal{U} \in U(n)$ be an $n \times n$ unitary matrix satisfying $\mathcal{U}^n = \mathds{1}$, and let $\ket{\psi}$ be the seed state. The Gram matrix $\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}}$ elements associated with the ensemble $\left\{\mathcal{U}^i\ket{\psi}\right\}_{i=0}^{n-1}$ are,
 \begin{align*}
 	\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}}_{i,j} = \sqrt{\eta_i \eta_j}\braket{\mathcal{U}^i\psi | \mathcal{U}^j\psi} = \sqrt{\eta_i \eta_j}\braket{\psi | \mathcal{U}^{j-i} | \psi} = \sqrt{\eta_i \eta_j}\braket{\mathcal{U}^{j-i}}_{\psi},
 \end{align*}
@@ -456,7 +475,13 @@ Thus, we may write,
 \end{pmatrix}.
 \end{align*}
 
-This shows the circulant structure of $\mathcal{G}$ for a equal prior probability case, where each row is a cyclic permutation of the previous one. In other words, the Gram matrices of $\mathbb{Z}/n\mathbb{Z}$-generated ensembles are circulant matrices when taking equal priors probabilities. This structure is particularly useful, as circulant matrices can be diagonalized by the discrete Fourier basis, greatly simplifying many computations~\cite{circulantMatrices}.
+For instance, the $\mathbb{Z}/4\mathbb{Z}$ group generated gram matrix with equal prior probabilities is,
+
+\begin{align*}
+\mathcal{G}^{\mathbb{Z}/n\mathbb{Z}} = \frac{1}{4}\begin{pmatrix}1 & c_1 & c_2 & c_1^* \\c_1^* & 1 & c_1 & c_2  \\c_2 & c_1^* & 1 & c_1\\c_1 & c_2 & c_1^* & 1  \\\end{pmatrix},
+\end{align*}
+
+where we have denoted $\braket{\mathcal{U}^i}_{\psi}$ as $c_i$. This shows the circulant structure of $\mathcal{G}$ for an equal prior probability case, where each row is a cyclic permutation of the previous one. In other words, the Gram matrices of $\mathbb{Z}/n\mathbb{Z}$ goup generated ensembles are circulant matrices when taking equal priors probabilities. This structure is particularly useful, as circulant matrices can be diagonalized by the discrete Fourier basis, greatly simplifying many computations~\cite{circulantMatrices}.
 
 The Fourier basis for an $n \times n$ circulant matrix consists of the set of vectors $\{\omega_i\}_{i=1}^n$, where
 \begin{align*}
@@ -472,11 +497,13 @@ Finally, we denote the cardinality of a finite group $G$, i.e. the number of its
 \begin{align*}
 	\eta_i = \frac{1}{|G|}\quad \forall i\in\{1,...,n\}.
 \end{align*}
+
+\newpage
 \subsection{Previous Results}\label{sectionPreviousResults}
 
-\hspace{20pt}Significant progress has been made in the study of the state exclusion task for group-generated ensembles. In particular, the work \emph{Quantum State Exclusion for Group-Generated Ensembles of Pure States}\cite{MainPaper} presents exact analytical expressions for the success and error probabilities under both the Minimum Error (\gls{me}) and Zero Error (\gls{ze}) exclusion protocols. In this section we present this results and comment some key aspects of this results regarding our project, in particular we present the concept of \emph{perfect exclusion region} and we discuss the case of ensembles with a prime number of states.
+\hspace{20pt}Significant progress has been made in the study of the state exclusion task for group generated ensembles. In particular, the work \emph{Quantum State Exclusion for group generated Ensembles of Pure States}\cite{MainPaper} presents exact analytical expressions for the success and error probabilities under both the Minimum Error (\gls{me}) and Zero Error (\gls{ze}) exclusion protocols. In this section we present this results and comment some key aspects of this results regarding our project, in particular we present the concept of \emph{perfect exclusion region} and we discuss the case of ensembles with a prime number of states.
 
-Let $\mathcal{G}^G$ denote the Gram matrix of a group-generated ensemble $\left\{ \left( \rho_i, \frac{1}{|G|} \right) \right\}_{i=1}^{|G|}$, where $G$ is a finite group of size $|G|$, and let $\{\lambda_i\}_{i=1}^{|G|}$ be the set of eigenvalues of $\mathcal{G}^G$, the Gram Matrix of the group. Assume the eigenvalues $\left\{\frac{\lambda_i}{|G|}|1\leq i \leq n\right\}$ are ordered increasingly,
+Let $\mathcal{G}^G$ denote the Gram matrix of a group generated ensemble $\left\{ \left( \rho_i, \frac{1}{|G|} \right) \right\}_{i=1}^{|G|}$, where $G$ is a finite group of size $|G|$, and let $\{\lambda_i\}_{i=1}^{|G|}$ be the set of eigenvalues of $\mathcal{G}^G$, the Gram Matrix of the group. Assume the eigenvalues $\left\{\frac{\lambda_i}{|G|}|1\leq i \leq n\right\}$ are ordered increasingly,
 \begin{align*}
 	i \leq j \quad \Leftrightarrow \quad \lambda_i \leq \lambda_j, \quad \forall i,j \in \{1, \dots, |G|\},
 \end{align*}
@@ -485,17 +512,15 @@ i.e., $\frac{\lambda_1}{|G|}$ is the smallest and $\lambda_{|G|}$ the largest ei
 
 The exclusion probabilities under the Minimum Error protocol are given by,
 \begin{align*}
-	P_{\gls{me}}^e &= \max\left\{ 0, \left( \frac{ \sqrt{\lambda_{|G|}} - \sum_{i<|G|} \sqrt{\lambda_i} }{|G|} \right)^2 \right\}, \\
 	P_{\gls{me}}^s &= \min\left\{ 1, 1 - \left( \frac{ \sqrt{\lambda_{|G|}} - \sum_{i<|G|} \sqrt{\lambda_i} }{|G|} \right)^2 \right\}.
 \end{align*}
 
-For the Zero Error protocol, the corresponding expressions arem
+For the Zero Error protocol, the corresponding expressions are,
 \begin{align*}
-	P_{\gls{ze}}^e &= \max\left\{ 0, \frac{ \sum_{i=1}^{|G|} \sqrt{\lambda_i} \left( \sqrt{\lambda_{|G|}} - \sum_{j<|G|} \sqrt{\lambda_j} \right) }{|G|} \right\}, \\
 	P_{\gls{ze}}^s &= \min\left\{ 1, 1 - \frac{ \sum_{i=1}^{|G|} \sqrt{\lambda_i} \left( \sqrt{\lambda_{|G|}} - \sum_{j<|G|} \sqrt{\lambda_j} \right) }{|G|} \right\}.
 \end{align*}
 
-A key feature of these results is their independence from the specific group generating the ensemble. That is, for any two group-generated ensembles $A$ and $B$ corresponding to groups $G_A$ and $G_B$, with $G_A \neq G_B$ but $|G_A| = |G_B|$, if their respective Gram matrices $\mathcal{G}^{G_A}$ and $\mathcal{G}^{G_B}$ share the same eigenvalues, then the exclusion probabilities for both \gls{me} and \gls{ze} protocols are identical. This group-independence property is a cornerstone of the present study.
+A key feature of these results is their independence from the specific group generating the ensemble. That is, for any two group generated ensembles $A$ and $B$ corresponding to groups $G_A$ and $G_B$, with $G_A \neq G_B$ but $|G_A| = |G_B|$, if their respective Gram matrices $\mathcal{G}^{G_A}$ and $\mathcal{G}^{G_B}$ share the same eigenvalues, then the exclusion probabilities for both \gls{me} and \gls{ze} protocols are identical. This group-independence property is a cornerstone of the present study.
 
 Another important outcome from \cite{MainPaper} is the identification of conditions under which perfect exclusion is achievable, i.e., the exclusion can be carried out with zero error. This occurs if the eigenvalues satisfy the inequality,
 
@@ -505,7 +530,7 @@ Another important outcome from \cite{MainPaper} is the identification of conditi
 
 We refer to the regime satisfying this inequality as the \emph{perfect exclusion zone}. Within this regime, the success probability of the exclusion task reaches one, implying that exclusion can be performed perfectly.
 
-In this project, we will extend this result by demonstrating that the perfect exclusion condition Eq. (\ref{equationPerfectExclusionCondition}) provides a lower bound for the success probability of exclusion even for non-group-generated ensembles. Since this bound equals 1, it implies that any ensemble whether or not group-generated that satisfies condition Eq. (\ref{equationPerfectExclusionCondition}) can achieve perfect exclusion. Thus, the perfect exclusion zone is not exclusive to group-generated ensembles, but also includes all ensembles that fulfill the given condition.
+In this project, we will extend this result by showcasing that the perfect exclusion condition Eq. (\ref{equationPerfectExclusionCondition}) provides a lower bound for the success probability of exclusion even for non-group generated ensembles. Since this bound equals 1, it implies that any ensemble whether or not group generated that satisfies condition Eq. (\ref{equationPerfectExclusionCondition}) can achieve perfect exclusion. Thus, the perfect exclusion zone is not exclusive to group generated ensembles, but also includes all ensembles that fulfil the given condition.
 
 Furthermore, we might highlight a key aspect of the analytical solutions for the \gls{qse} task form \gls{me} and \gls{ze} protocols. These results depend solely on the eigenvalues of the Gram matrix and are independent of the specific group structure generating the ensemble. Hence, let the Gram matrix of an ensemble decompose as,
 \begin{align*}
@@ -520,34 +545,34 @@ where $U$ is a unitary matrix and $D$ is the diagonal matrix of eigenvalues. We 
 
 In the perfect exclusion regime, the existence of a \gls{povm}, such that the measurement outcome allows exclusion of a hypothesis without error, is guaranteed.
 
-In the non-perfect exclusion regime, the analytical results for group-generated ensembles provide lower bounds on the success probabilities, and upper bounds on the error probabilities for general ensembles.
+In the non-perfect exclusion regime, the analytical results for group generated ensembles provide lower bounds on the success probabilities, and upper bounds on the error probabilities for general ensembles.
 
 Consider, for example, the case of an ensemble of 4 quantum states. There are exactly two groups of four elements, $\mathbb{Z}/4\mathbb{Z}$ and $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$.\footnote{These are the only non-isomorphic groups of order 4.} This implies that there exist two specific unitary matrices, $U_{\mathbb{Z}/4\mathbb{Z}}$ and $U_{\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}}$ (up to permutation of rows and columns), for which the analytical solution holds exactly.
 
-Since $U(n)$ is compact, and assuming continuity of the exclusion probabilities with respect to $U$ under a given matrix norm, for each of these unitary matrices there exist arbitrarily small neighborhoods $\mathcal{B}(U_{\mathbb{Z}/4\mathbb{Z}})$ and $\mathcal{B}(U_{\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}})$ such that the exclusion probabilities within these neighborhoods approximate the analytical result as closely as desired. However, the existence of multiple such matrices, and intersecting neighborhoods, can complicate numerical optimization and analysis.
+Since $U(n)$ is compact, and assuming continuity of the exclusion probabilities with respect to $U$ under a given matrix norm, for each of these unitary matrices there exist arbitrarily small neighbourhoods $\mathcal{B}(U_{\mathbb{Z}/4\mathbb{Z}})$ and $\mathcal{B}(U_{\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}})$ such that the exclusion probabilities within these neighborhoods approximate the analytical result as closely as desired. However, the existence of multiple such matrices, and intersecting neighbourhoods, can complicate numerical optimization and analysis.
 
-In contrast, it is usefull to consider the case where the ensemble contains a prime number $p$ of states. In this scenario, the situation simplifies considerably, since there exists only one group, up to isomorphism, of order $p$, namely $\mathbb{Z}/p\mathbb{Z}$.
+In contrast, it is useful to consider the case where the ensemble contains a prime number $p$ of states. In this scenario, the situation simplifies considerably, since there exists only one group, up to isomorphism, of order $p$, namely $\mathbb{Z}/p\mathbb{Z}$.
 
-This result follows immediately from Lagrange's theorem. The theorem guarantees the order of any element in a finite group\footnote{The order of an element $\tau$ in a group $G$ is the smallest positive integer $m$ such that $\tau^m = e$, where $e$ denotes the identity/neutral element of the group.} must divide the order of the group. Since $p$ is a prime number, the only positive integers dividing $p$ are either $1$ or $p$ itself. Therefore, the order of any group element must be either $1$ or $p$. An element of order $1$ must be the identity, so every non-identity element in the group must have order $p$. This implies that all non-identity elements generate the entire group, i.e., the group is cyclic. As a result, any group of prime order $p$ is necessarily cyclic and isomorphic to $\mathbb{Z}/p\mathbb{Z}$.
+This result follows immediately from Lagrange's theorem\cite{LagrangeTheoreme}. The theorem guarantees the order of any element in a finite group\footnote{The order of an element $\tau$ in a group $G$ is the smallest positive integer $m$ such that $\tau^m = e$, where $e$ denotes the identity/neutral element of the group.} must divide the order of the group. Since $p$ is a prime number, the only positive integers dividing $p$ are either $1$ or $p$ itself. Therefore, the order of any group element must be either $1$ or $p$. An element of order $1$ must be the identity, so every non-identity element in the group must have order $p$. This implies that all non-identity elements generate the entire group, i.e., the group is cyclic. As a result, any group of prime order $p$ is necessarily cyclic and isomorphic to $\mathbb{Z}/p\mathbb{Z}$.
 
 Consequently, for an ensemble of $p$ quantum states, there exists a unique unitary matrix $U_{\mathbb{Z}/p\mathbb{Z}}$ (up to reordering) that diagonalizes the Gram matrix in such a way that the analytical results are exact. \footnote{Moreover, the columns of this matrix correspond to the elements of the Fourier basis, as discussed in Section~\ref{sectionGroupGeneratedEnsemble}, particularly in the example involving $\mathbb{Z}/n\mathbb{Z}$.}
 
 Ensembles containing a prime number of states are of particular interest, as the analytical result can be guaranteed to be exact for only one specific ensemble. Consequently, when interpreting the results for the case of generic ensembles in the following sections we can be ensure the analytical result is exact in only one instance. Moreover, there is no overlap with other Gram matrices for which the result would also hold exactly.
 
 \subsection{Haar Measure}
-\hspace{20pt}In this section, we introduce the concept of a measure on a topological space and define the Haar measure. This is one of the key theoretical tools underlying this project, as we use the Haar measure to ensure a uniform and unbiased sampling of ensembles when generating Gram matrices for general ensembles.
+\hspace{20pt}In this section, we introduce the concept of a measure on a topological space and define the Haar measure. This is one of the key theoretical tools underlying this project, as we use the Haar measure to ensure a uniform sampling of ensembles when generating Gram matrices for general ensembles.
 
-Let \( \Omega \) be a set, and let \( \Sigma \) be a \( \sigma \)-algebra over \( \Omega \). A measure \( \mu \) on the measurable space \( (\Omega, \Sigma) \) is a set function \( \mu : \Sigma \to \mathbb{R}_{\geq 0} \) that satisfies the following properties:
+Let \( \Omega \) be a set, and let \( \Sigma \) be a \( \sigma \)-algebra over \( \Omega \). A measure \( \mu \) on the measurable space \( (\Omega, \Sigma) \) is a set function \( \mu : \Sigma \to \mathbb{R}\) that satisfies the following properties:
 \begin{itemize}
 	\item Positive semidefiniteness, i.e. for any $\chi\in\Sigma$ we have $\mu(\chi)\geq 0$.
 	\item $\mu(\emptyset)=0$.
 	\item Sigma additivity, i.e. given a countable set $\{\chi_i\in\Sigma|i\in\mathbb{N}\}$ of pairwise-disjoint sets\footnote{This means that $\chi_i\cap\chi_j=\emptyset$ for any $i,j\in\mathbb{N}$ if $i\neq j$.} $\mu$ fulfils, 
 	\begin{align*}
-		\mu\left(\bigcup_{i=1}^\infty \chi_i\right)=\sum_{i=1}^\infty \mu(\chi_i).
+		\mu\left(\bigsqcup_{i=1}^\infty \chi_i\right)=\sum_{i=1}^\infty \mu(\chi_i).
 	\end{align*}
 \end{itemize}
 
-Now, let \( \Omega \) be a topological group. A Haaar measure \( \mu \) on a set \( \Omega \) is a measure defined on the Borel \( \sigma \)-algebra \( \Upsilon \) of \( \Omega \)\footnote{A full definition of Borel sets is beyond the scope of this work, it is enough to say they are sets generated from the open sets of \( \Omega \) through countable unions, intersections, and complements.}, satisfying the following properties:
+Now, let \( \Omega \) be a topological group. A Haaar measure $\mu $ on a set $\Omega$ is a measure defined on the Borel $\sigma$-algebra $\Upsilon$ of $\Omega$\footnote{A full definition of Borel sets is beyond the scope of this work, it is enough to say they are sets generated from the open sets of \( \Omega \) through countable unions, intersections, and complements.}, satisfying the following properties:
 \begin{itemize}
 	\item Invariance under transition, i.e. for any $\omega \in \Omega$ and $\upsilon \in \Upsilon$ we have $\mu(\omega\upsilon)=\mu(\upsilon)$.
 	\item The measure is finite for any compact Borel subset, i.e. for any $\upsilon\in\Upsilon$ compact we have that $\mu(\upsilon)<\infty$.
@@ -566,8 +591,8 @@ It can be shown that the Haar measure is unique up to a constant multiple. In pa
 	U(n) = \{ U \in \mathbb{C}^{n \times n} \mid U^\dagger U = \mathds{1} \},
 \end{align*}
 
-which is compact in the usual topology, from the secon property we know the Haar measure \( \mu \) on \( U(n) \) to be finite. Therefore, we can normalize it so that \( \mu(U(n)) = 1 \), fully determining the measure. Moreover, since from the first property we know \( \mu \) is invariant under group multiplication, it is uniformly distributed over \( U(n) \). This allows us to generate unitary matrices that are randomly and uniformly distributed with respect to the Haar measure.
-
+which is compact in the usual topology, from the secon property we know the Haar measure $\mu$ on $U(n)$ to be finite. Therefore, we can normalize it so that $\mu(U(n)) = 1$, fully determining the measure. Moreover, since from the first property we know $\mu $ is invariant under group multiplication, it is uniformly distributed over $U(n)$. Hence, this invariance allows us to generate unitary matrices that are randomly and uniformly distributed over $U(n)$. This property is one of the cornerstones of our project, as it allows us to convert the uniform distribution of random unitary matrices into a uniform distribution over general ensembles of quantum states.\footnote{We present this conversion in the Methodology section (Section~\ref{sectionMethodology}).}
+ 
 \newpage
 \section{Methodology}\label{sectionMethodology}
 
@@ -575,7 +600,7 @@ which is compact in the usual topology, from the secon property we know the Haar
 
 The core of the numerical analysis is the implementation of a Semi-Definite Programming (\gls{sdp}) solver based on the MOSEK optimization suite \cite{mosek_sdp}, interfaced through the Python-based PICOS optimization library \cite{PICOS}. 
 
-To analyze both group-generated and generic quantum state ensembles, we developed a method for generating random Gram matrices with prescribed spectral properties.
+To analyze both group generated and generic quantum state ensembles, we developed a method for generating random Gram matrices with prescribed spectral properties.
 
 A Numpy \gls{rng}\cite{numpyRNG} produces a set of $n$ non-negative real numbers $\{\lambda_i\}_{i=1}^n$ that are normalized to satisfy the trace condition,
 \begin{align*}
@@ -589,24 +614,24 @@ Next, we generate a unitary matrix $U$ and construct the Gram matrix as,
 	\mathcal{G} = U D U^\dagger.
 \end{align*}
 
-At this point, we choose whether the ensemble is to be group-generated or generic.
+At this point, we choose whether the ensemble is to be group generated or generic.
 
 For a generic ensemble, the unitary matrix $U$ is drawn randomly according to the Haar measure \cite{haarMeasure}, which defines the unique uniform probability measure on the unitary group $U(n)$ that is invariant under group multiplication. To ensure this uniformity, we use the algorithm introduced by Francesco Mezzadri in \cite{UnitaryMatricesGeneration}, which provides an efficient and accurate way of sampling unitary matrices while uniformly covering $U(n)$. 
 
 This aspect is crucial: if the random generation of unitary matrices did not uniformly cover U(n), the numerical analysis would be fundamentally flawed. It would lead to an overrepresentation of certain types of ensembles, potentially missing rare or atypical configurations. As a result, ensembles that might violate the theoretical lower bound could be systematically avoided, rendering the conclusions of the analysis unreliable.
 
-In the case of a group-generated ensemble, we restrict ourselves to ensembles generated by the cyclic group $\mathbb{Z}/n\mathbb{Z}$. The corresponding unitary matrix $U$ is constructed such that its columns are the vectors of the discrete Fourier basis, as discussed in Section~\ref{sectionGroupGeneratedEnsemble} (\emph{Group-Generated Ensemble}).
+In the case of a group generated ensemble, we restrict ourselves to ensembles generated by the cyclic group $\mathbb{Z}/n\mathbb{Z}$. The corresponding unitary matrix $U$ is constructed such that its columns are the vectors of the discrete Fourier basis, as discussed in Section~\ref{sectionGroupGeneratedEnsemble} (\emph{group generated Ensemble}).
 
-Other groups are omitted in our analysis since we can always choose $n$ to be a prime number, in which case the only group of order $n$ (up to isomorphism) is the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This significantly simplifies the group structure and ensures that the only group-generated ensemble under consideration corresponds to a well-defined, unique construction.
+Other groups are omitted in our analysis since we can always choose $n$ to be a prime number, in which case the only group of order $n$ (up to isomorphism) is the cyclic group $\mathbb{Z}/n\mathbb{Z}$. This significantly simplifies the group structure and ensures that the only group generated ensemble under consideration corresponds to a well-defined, unique construction.
 
-This methodology provides a flexible yet rigorous foundation for both exploring generic quantum ensembles and benchmarking them against analytically tractable group-generated cases.
+This methodology provides a flexible yet rigorous foundation for both exploring generic quantum ensembles and benchmarking them against analytically tractable group generated cases.
 
 \newpage
 \section{Results and Discussion}\label{sectionResultsAndDiscussion}
 
-\hspace{20pt}The begining of the analysis consists in showing up the key differences between \gls{me} and \gls{ze} protocols, and the concordance of the \gls{sdp}'s numerical results with the analytical results given in \ref{sectionPreviousResults}.
+\hspace{20pt}The beginning of the analysis consists in showing up the key differences between \gls{me} and \gls{ze} protocols, and the concordance of the \gls{sdp}'s numerical results with the analytical results given in \ref{sectionPreviousResults}.
 
-The case of ensembles conformed by 3 states is one of the main objects of study, that is because it is the only ensemble that we can entirely represent 2 dimensional plots with. In orther to show up this fact, let us analyze the case of a $\mathbb{Z}/3\mathbb{Z}$ ensemble for equal priors probabilities. The Gram matrix in this case takes the form,
+The case of ensembles conformed by 3 states is one of the main objects of study, that is because it is the only ensemble that we can entirely represent 2 dimensional plots with. In other to show up this fact, let us analyze the case of a $\mathbb{Z}/3\mathbb{Z}$ ensemble for equal priors probabilities. The Gram matrix in this case takes the form,
 
 \begin{align*}
 	\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}=\frac{1}{3}\begin{pmatrix}
@@ -622,7 +647,7 @@ with $c \in \mathbb{C}$. Note that, with respect to previous notation, we write 
 \end{align*}
 we observe two \gls{dof}.
 
-Since 3 is a prime number, the only group of order 3 is $\mathbb{Z}/3\mathbb{Z}$, as discussed in Section (\ref{sectionLimitCaseScenarios}). The Gram matrix can be diagonalized as,
+Since 3 is a prime number, the only group of order 3 is $\mathbb{Z}/3\mathbb{Z}$, as discussed in Appendix (\ref{sectionLimitCaseScenarios})\footnote{In dis appendix we discuss the limit case scenarios for general ensembles.}. The Gram matrix can be diagonalized as,
 \begin{align*}
 	\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}} = U_{\mathbb{Z}/3\mathbb{Z}} D U_{\mathbb{Z}/3\mathbb{Z}}^\dagger,
 \end{align*}
@@ -636,7 +661,7 @@ we again find only two \glspl{dof}, consistent with our earlier parameterization
 \begin{align*}
 	\lambda_i \geq 0 \quad \forall i \in \{1,2,3\},
 \end{align*}
-implying the eigenvalues must lie in the interval $[0,3]$.\footnote{In general, eigenvalues lie in $[0,n]$ for an $n$-dimensional ensemble, even for non-group-generated ensembles.} Therefore,
+implying the eigenvalues must lie in the interval $[0,3]$.\footnote{In general, eigenvalues lie in $[0,n]$ for an $n$-dimensional ensemble, even for non-group generated ensembles.} Therefore,
 \begin{align*}
 	\lambda_3 \in [0,3], \quad \lambda_2 \in [0,\lambda_3], \quad \lambda_1 = 3 - \lambda_2 - \lambda_3.
 \end{align*}
@@ -647,7 +672,7 @@ This scenario is particularly interesting as it is the only ensemble with a smal
 
 \hspace{20pt}Here we present a comparison between both protocols for \gls{ze} and \gls{me} giving insights on the protocols's essence and contextualising the problem in a visual way.
 
-In Figure (\ref{FigureQSEMEZ3ZHeatmap})  we presents the \gls{me} (left) and \gls{ze} (right) protocols results for the \gls{qse} task. In particular Figure (\ref{FigureQSEMEZ3ZHeatmap}) shows two heatmaps of the average successful exclusion probability under the Minimum Error (\gls{me}) protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble. Probabilities are shown as functions of the modulus $|c|$ ($x$-axis) and phase $\theta$ ($y$-axis) of the overlap $c=|c|^{i\theta}$, which fully determines the Gram matrix. Notice we take equal prior probabilities, as discussed in the analytical results in Section (\ref{sectionPreviousResults}). 
+In Figure (\ref{FigureQSEMEZ3ZHeatmap})  we present the \gls{me} (left) and \gls{ze} (right) protocols results for the \gls{qse} task. In particular Figure (\ref{FigureQSEMEZ3ZHeatmap}) shows two heatmaps of the average successful exclusion probability under the Minimum Error (\gls{me}) protocol for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble. Probabilities are shown as functions of the modulus $|c|$ ($x$-axis) and phase $\theta$ ($y$-axis) of the overlap $c=|c|^{i\theta}$, which fully determines the Gram matrix. Notice we take equal prior probabilities, as discussed in the analytical results in Section (\ref{sectionPreviousResults}). 
 
 \begin{figure}[H]
 	\centering
@@ -665,22 +690,22 @@ In Figure (\ref{FigureQSEMEZ3ZHeatmap})  we presents the \gls{me} (left) and \gl
 
 The colorless regions correspond to parameters where $\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}$ is not positive semi-definite, and leading up to non-valid Gram matrices, since positive semi-definition is inherent to a Gram matrix.
 
-At this stage, we have developed some intuition behind these results. Consider an ensemble of highly similar quantum states. When the modulus of the overlap between any two states in the ensemble is given by $|\braket{\psi_i|\psi_j}|^2 = |c|,$ and $|c| \to 1$, the states become nearly indistinguishable. In this limiting case, the ensemble effectively consists of identical states.\footnote{One might argue this ensemble corresponds to a group-generated ensemble from the trivial group.}
+At this stage, we have developed some intuition behind these results. Consider an ensemble of highly similar quantum states. When the modulus of the overlap between any two states in the ensemble is given by $|\braket{\psi_i|\psi_j}|^2 = |c|,$ and $|c| \to 1$, the states become nearly indistinguishable. In this limiting case, the ensemble effectively consists of identical states.\footnote{One might argue this ensemble corresponds to a group generated ensemble from the trivial group.}
 
-Since all the states are approximately the same, it becomes impossible to distinguish between them. The best approach we can take is to guess randomly. Consequently, the probability of correctly excluding a state different from the actual (unknown) target state by random guessing is $\frac{n - 1}{n}$. In this case, when $n = 3$, this probability is $\frac{2}{3}$. Therefore, in this limit, this is the best achievable performance, and the success probability for the Minimum Error (\gls{me}) exclusion protocol is $\frac{2}{3}$.
+Since all the states are approximately the same, it becomes impossible to distinguish between them. The best approach we can take is to guess randomly. Consequently, the probability of correctly excluding a state different from the actual (unknown) target state by random guessing is $\frac{n - 1}{n}$. In this case, when $n = 3$, this probability is $\frac{2}{3}$. Therefore, in this limit, this is the best achievable performance, and the success probability for the \gls{me} exclusion protocol is $\frac{2}{3}$.
 
-On the other hand, since the states are indistinguishable, we can never be certain that the excluded state is not the unknown target state. Thus, the probability of successful exclusion in the Zero Error (\gls{ze}) protocol is $0$, i.e. we cannot perform unambiguous exclusion.
+On the other hand, since the states are indistinguishable, we can never be certain that the excluded state is not the unknown target state. Thus, the probability of successful exclusion in the \gls{ze} protocol is $0$, i.e. we cannot perform unambiguous exclusion.
 
 A more detailed analytical discussion is provided in Appendix~\ref{sectionLimitCaseScenarios}, where we explore this limiting case by computing the Gram matrix and connecting the analytical results to the intuitive arguments presented here. 
 
 Thus, we observe this intuition clearly corresponds to the results from Figure (\ref{FigureQSEMEZ3ZHeatmap}). For the limit case scenario of $|c|=1$ in the \gls{me} protocol we can never do better than taking a random guess, i.e. the probabilities spectrum consists in the interval $[\frac{2}{3},1]$. Notice this random exclusion procedure only remains valid for the equal prior probabilities case, if we want to extend this idea to a generic ensemble the best approach can take is a random exclusion with different probabilities. In particular if the state $\rho_i$ has a prior probability of $\eta_i$ we exclude the state $\rho_i$ state with a probability of $\eta_i$. All in all the final $P_{\gls{me}}^s$ is the same in the equal and non-equal prior probabilities i.e. $\frac{2}{3}$.
 
-Still, the \gls{ze} success probabilities always remain under those of the \gls{me} protocol. This is explained by the stricter constraints imposed in the \gls{ze} scenario, where $\tr(\Pi_i\rho_i) = 0$ is enforced for all \gls{povm} elements except one. Notice both probabilities are computed in a completely symmetric way,
+Still, the \gls{ze} success probabilities are always lower than those of the \gls{me} protocol. This is explained by the stricter constraints imposed in the \gls{ze} scenario. Notice both probabilities are computed in a completely symmetric way,
 \begin{align*}
-	P^s_{\gls{me}}\sim P^s_{\gls{ze}}\sim 1-\sum_{\gls{povm}}\tr{(\Pi_i\rho_i)}.
+	P^s_{\gls{me}}\sim P^s_{\gls{ze}}\sim 1-\sum_{i=1}^n\tr{(\Pi_i\rho_i)}.
 \end{align*}
 
-Nevertheless, in the \gls{ze} case we enforce $\tr{(\Pi_i\rho_i)}=0$ for all the \glspl{povm} except one\footnote{Naturally the \gls{povm} that is not enforced to be orthogonal is the one that yields to an inconclusive result, i.e. $\Pi_?$.}. Thus, the system is more constrained in the \gls{ze} protocol, then the optimization of the probability cannot be performed up to the same point as in the \gls{me} protocol. Hence, the success probabilities for \gls{me} are greater than the ones obtained with the \gls{ze} protocol.
+Nevertheless, in the \gls{ze} case we enforce $\tr{(\Pi_i\rho_i)}=0$ for all the \gls{povm}'s elements except one\footnote{Naturally the \gls{povm} element that is not enforced to be orthogonal is the one that yields to an inconclusive result, i.e. $\Pi_?$.}. Thus, the system is more constrained in the \gls{ze} protocol, then the optimization of the probability cannot be performed up to the same point as in the \gls{me} protocol. Hence, the success probabilities for \gls{me} are greater than the ones obtained with the \gls{ze} protocol.
 
 %At this stage we have some intuition behind this results. If we have an ensemble of similar states, the overlap's modulus of two states, i.e. $|\braket{\psi_i|\psi_j}|^2=c$, will tend to 1. In this limit case scenario we are dealing with ensembles conformed by the same state\footnote{In some way one might argue this is a grup-generated ensemble from the trivial group.}. Hence, since we are dealing with the same state there is no actual way to distinguish between them and we cannot do any better than guessing randomly. Thus the probability of discarding a state different from the target state taking by doing a random guess is $\frac{n-1}{n}$, in particular, for $n=3$ we have this probability being $\frac{2}{3}$. Hence in the limit case scenario this is the better we can do and the outcome of the state \gls{me} protocol for the probability of a successful exclusion is $\frac{2}{3}$. Additionally, we can never ensure we have discarded a different state state from our unknown state, hence, the probability for the successful exclusion for the \gls{ze} protocol is 0, i.e. we can not exclude without unambiguity. A much deeper analytical discussion is provided in appendix \ref{sectionLimitCaseScenarios}, where we take discuss this limit case scenarios computing the Gram Matrix and we connect with the analytical resutls the previous results.
 
@@ -699,19 +724,19 @@ Nevertheless, in the \gls{ze} case we enforce $\tr{(\Pi_i\rho_i)}=0$ for all the
 
 \begin{figure}[H]
 	\centering
-	\begin{overpic}[width=0.49\textwidth, trim={2.3cm 0.8cm 2.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf}
+	\begin{overpic}[width=0.49\textwidth, trim={1.8cm 0.8cm 2.5cm 2cm}, clip]{../Plots/ExlusionOverlapVSPhaseVSPerfectExclussionZoneZ3BinaryHeatMap.pdf}
 		\put(70,27){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(70,60){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
-		\includegraphics[width=0.49\textwidth]{../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf}
+		\includegraphics[width=0.49\textwidth, trim={0.5cm 0.2cm 1.5cm 1.3cm}, clip]{../Plots/ExclusionOverlapVSSucessProbabilitySDPvsSRMZnOverlap3Phase0.pdf}
 	\caption{Plot of the successful exclusion probabilities for the \gls{sdp} results for the \gls{me}, \gls{ze} protocols in a $\mathbb{Z}/3\mathbb{Z}$ ensemble impossing phase=$0$ as well as the results given by the analytical expressions (left). Perfect exclusion zone for a $\mathbb{Z}/3\mathbb{Z}$ ensemble in terms of the overlap's modulus and phase (right).}
 	%\caption{Perfect exclusion zone for a $\mathbb{Z}/3\mathbb{Z}$ ensemble in terms of the overlap's modulus and phase.}
 	\label{FigureQSEMEZ3ZPerfectExclusion}
 \end{figure}
 
-Crucially, we observe perfect exclusion is possible even when perfect discrimination is not \footnote{See section Comparison \gls{qsd} VS. \gls{qse} (\ref{appendixComparisonQSDvsQSE})}, in this regime seems to correspond to the ensembles such that the modulus of the overlap between two ensembles do not overtakes $\frac{1}{2}$. Nevertheless, this description is purely observational, we will give a better description in Section (\ref{sectionPerfectExclusionRegimeAndGeneralEnsembles}). In Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) (left) we highlight the regions where perfect exclusion is achieved, i.e. the red zone, even outside the perfect discrimination regime. Notice this regime appears in both protocols \gls{ze} and \gls{me}.
+Crucially, we observe perfect exclusion is possible even when perfect discrimination is not \footnote{See Appendix (\ref{appendixComparisonQSDvsQSE}) Comparison \gls{qsd} VS. \gls{qse} }, in this regime seems to correspond to the ensembles such that the modulus of the overlap between two ensembles do not overtakes $\frac{1}{2}$. Nevertheless, this description is purely observational, we will give a better description in Section (\ref{sectionPerfectExclusionRegimeAndGeneralEnsembles}). In Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) (left) we highlight the regions where perfect exclusion is achieved, i.e. the red zone, even outside the perfect discrimination regime. Notice this regime appears in both protocols \gls{ze} and \gls{me}.
 
-In Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) (right) we present de dependency on the modulus of the overlap in the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble impossing the phase being equal to 0. The result is analogous to Figure (\ref{FigureQSDMEZESRM}) but in the exclusion task. The existence of the perfect exclusion zone appears in overlap values between 0 and $\frac{1}{2}$. 
+In Figure (\ref{FigureQSEMEZ3ZPerfectExclusion}) (right) we present de dependency on the modulus of the overlap in the $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble impossing the phase being equal to 0. The result is analogous to Figure (\ref{FigureQSDMEZESRM}) but in the exclusion task. The existence of the perfect exclusion zone appears in overlap values between 0 and $\frac{1}{2}$. 
 
 %\begin{figure}[H]
 %	\centering
@@ -724,9 +749,9 @@ We highlight the good performance of the \gls{me} protocol up to limit values we
 
 \subsection{The perfect exclusion regime and general ensembles}\label{sectionPerfectExclusionRegimeAndGeneralEnsembles}
 
-\hspace{20pt}In this section, we present the results for ensembles generated by the group $\mathbb{Z}/3\mathbb{Z}$, analyzed across the spectrum of eigenvalues, i.e. the analogus results from the previos section in the eigenvalues spectum. We also explicitly show the conditions for perfect exclusion, we give a proper analysis of this regime, and provide an initial exploration of the results for general ensembles being low bounded by the group-generated results of three quantum states.
+\hspace{20pt}In this section, we present the results for ensembles generated by the group $\mathbb{Z}/3\mathbb{Z}$, analyzed across the spectrum of eigenvalues, i.e. the analogous results from the previous section in the eigenvalues spectrum. We also explicitly show the conditions for perfect exclusion, we give a proper analysis of this regime, and provide an initial exploration of the probabilities excluding successfully for general ensembles being bounded from below by the group generated results of three quantum states.
 
-Although the \emph{Overlap modulus - phase} spectrum might seem as the most intuituve representation, the spectrum of Gram's matrix eigenvalues results the most appropriate representation for the perfect exclusion zone as well as the discussion and its comparison for general ensembles. Carrying on with the previos discussion, one can check the two \gls{dof} now appear as two of the eigenvalues. In the Figure (\ref{FigureQSEMEZ3ZEigenValues}) the results for the exclusion task under the \gls{me} protocol (left) and \gls{ze} protocol (right) for the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble are represented. The axis represent two of the eigenvalues of the Gram matrix and a heatmap presents the probability for a perfect exclusion in the given conditions.
+Although the \emph{Overlap modulus - phase} spectrum might seem as the most intuitive representation, the spectrum of Gram's matrix eigenvalues results the most appropriate representation for the perfect exclusion zone as well as the discussion and its comparison for general ensembles. Carrying on with the previous discussion, one can check the two \gls{dof} now appear as two of the eigenvalues. In the Figure (\ref{FigureQSEMEZ3ZEigenValues}) the results for the exclusion task under the \gls{me} protocol (left) and \gls{ze} protocol (right) for the $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble are represented. The axis represent two of the eigenvalues of the Gram matrix and a heatmap presents the probability for a perfect exclusion in the given conditions.
 
 \begin{figure}[H]
 	\centering
@@ -738,7 +763,7 @@ Although the \emph{Overlap modulus - phase} spectrum might seem as the most intu
 	\put(20,25){\footnotesize{Perfect exclusion}}
 	\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
-	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} (left) and \gls{ze} (right) protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} (left) and \gls{ze} (right) protocol for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble.}
 	\label{FigureQSEMEZ3ZEigenValues}
 \end{figure}
 
@@ -759,7 +784,7 @@ that constraints the possible eigenvalues to only reach values under this line. 
 	\Omega=\left\{(\lambda_1,\lambda_2)\in\mathbb{R}^2\left|\lambda_1\geq0,\lambda_2\geq0,\lambda_1+\lambda_2\leq3\right.\right\}.
 \end{align*}
 
-This region $\Omega$ is depicted in the Figure (\ref{FigureQSEMEZ3ZEigenValues}) as boottom left triangle, where our system is recluded. Inside this region we can find the perfect exclusion zone, i.e. the eigenvalues such that Eq.(\ref{equationPerfectExclusionCondition}) is fulfilled. In particular, if we set $\lambda_i$ with $i\in\{1,2,3\}$ to be the greatest eigenvalues and denote $\lambda_j,\lambda_k$ as the remaining 2 eigenvalues, we know perfect exclusion to be archived if,
+This region $\Omega$ is depicted in the Figure (\ref{FigureQSEMEZ3ZEigenValues}) as bottom left triangle, where our system is precluded. Inside this region we can find the perfect exclusion zone, i.e. the eigenvalues such that Eq.(\ref{equationPerfectExclusionCondition}) is fulfilled. In particular, if we set $\lambda_i$ with $i\in\{1,2,3\}$ to be the greatest eigenvalues and denote $\lambda_j,\lambda_k$ as the remaining 2 eigenvalues, we know perfect exclusion to be archived if,
 \begin{align*}
 	\sqrt{\lambda_i}\leq \sqrt{\lambda_j}+\sqrt{\lambda_k}.
 \end{align*}
@@ -769,7 +794,7 @@ With a little bit of algebra and recalling that $\lambda_3=3-\lambda_1-\lambda_2
 	(\lambda_1,\lambda_2)\in \Delta\Leftrightarrow\lambda_1^2 + 4\lambda_2^2 + 4\lambda_1\lambda_2 - 12\lambda_1 - 12\lambda_2 + 9 \leq 0
 \end{align*}
 
-By plotting the $\Delta$ regio it turns out inmediatly this region corresponds to the colorless perfect exclusion regime in Figure (\ref{FigureQSEMEZ3ZEigenValues}).
+By plotting the $\Delta$ region it turns out immediately this region corresponds to the colourless perfect exclusion regime in Figure (\ref{FigureQSEMEZ3ZEigenValues}).
 
 %Figure (\ref{FigurePerfectExclusionZ3Z}) shows the $\Delta$ region. 
 %\begin{figure}[H]
@@ -785,14 +810,14 @@ Naturally we can prove the perfect exclusion zone to be a subset of valid Gram m
 	\text{Non-perfect exclusion regime}=\Omega\setminus \Delta.
 \end{align*}
 
-The limit case scenarios corresponding to $\lambda_i=3$ and $\lambda_j,\lambda_k=0$ are located in the vertex of the triangle\footnote{Remember this case correspond to sets with the same state repeated 3 times discussed in Section (\ref{sectionLimitCaseScenarios})}. Additionally, the cases corresponding to the edges are those with one state repeated 2 times and one different from the other 2. This ensembles can also be underestood as a limit case scenario systems.
+The limit case scenarios corresponding to $\lambda_i=3$ and $\lambda_j,\lambda_k=0$ are located in the vertex of the triangle\footnote{Remember this case correspond to sets with the same state repeated 3 times discussed in Appendix (\ref{sectionLimitCaseScenarios})}. Additionally, the cases corresponding to the edges are those with one state repeated 2 times and one different from the other 2. This ensembles can also be underestood as a limit case scenario systems.
 
 In practice this scenario is entirely equivalent to a 2 quantum states exclusion (\gls{qse}) system. Nevertheless we know this to be equivalent to a 2 quantum states discrimination system (\gls{qsd}), therefore perfect discrimination/exclusion cannot be archived unless the states are orthogonal. This last case corresponds to the intersection of the elipse $\Delta$ with the triangles edges, this can be described as the ensembles with associated Gram matrices whose eigenvalues $\lambda_i,\lambda_j,\lambda_k$ are,
 \begin{align*}
 	\lambda_i=\lambda_j=\frac{3}{2}\quad\lambda_k=0.
 \end{align*}
 
-Additionally, we observe that no ensembles seem to have a lower exclusion success probability $P_{\gls{me}}^s$ under $\frac{2}{3}$ as expected from the discussion in Section (\ref{sectionLimitCaseScenarios}).
+Additionally, we observe that no ensembles yield to lower exclusion success probabilities $P_{\gls{me}}^s$ than $\frac{2}{3}$ as expected from the discussion in Appendix \ref{sectionLimitCaseScenarios}.
 
 % Hence the results for the \gls{ze} protocol in \gls{qse} for a $\mathbb{Z}/3\mathbb{Z}$ ensemble are presented in Figure (\ref{FigureQSEZEZ3ZEigenValues}).
 
@@ -803,7 +828,7 @@ Additionally, we observe that no ensembles seem to have a lower exclusion succes
 %		\put(20,25){\footnotesize{Perfect exclusion}}
 %		\put(50,50){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 %	\end{overpic}
-%	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{ze} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+%	\caption{Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{ze} protocol for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble.}
 %	\label{FigureQSEZEZ3ZEigenValues}
 %\end{figure}
 
@@ -819,25 +844,25 @@ Hence, we present the result for randomly generated ensembles, i.e. a general en
 	\end{overpic}
 	\begin{overpic}[width=0.39\textwidth, trim={6.5cm 2cm 4.4cm 2cm}, clip]{../Plots/ExclusionEignevalueRandom33D.pdf}
 	\end{overpic}
-	\caption{Heat map plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a generic ensemble (left) and 3D Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a group-generated and generic ensembles (right)}
+	\caption{Heat map plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for generic ensembles (left) and 3D Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a group generated and generic ensembles (right)}
 	\label{FigureQSEMEGenericEigenValues}
 \end{figure}
 
 
-A remarcable feature is that each ensemble has been checked to not have a successful exclusion probability that overtakes the value from the $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble pointing this value to be a lower bound for the general case scenario.
+A remarcable feature is that each ensemble has been checked to not have a successful exclusion probability that overtakes the value from the $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble pointing this value to be a lower bound for the general case scenario.
 
 
 %\begin{figure}[H]
 %	\centering
-%	\caption{3D Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a group-generated and generic ensembles.}
+%	\caption{3D Plot of the success exclusion probability in the eigenvalues spectrum for the \gls{me} protocol for a group generated and generic ensembles.}
 %	\label{FigureQSEMEGenericEigenValues3D}
 %\end{figure}
 
-In Figure (\ref{FigureQSEMEGenericEigenValues}) we present a 3D plot for the comparison of the success probability for exclusion for ensembles of 3 states between generic and group-generated ensembles. The $x$ and $y$ axis representing de eigenvalues of the Gram matrix are analogous to previous figures. Nevertheless the $z$ axis shows the success probability for exclusion instead of the previous heat maps. Here we can observe how the randomly generated states raise the probabilities over the group-generated values. The generation of unitary matrices that fill $U(n)$ according Haar measure ensures the Gram matrices we are generating comprehend the entire set of possible Gram matrices homogeneously. Furthermore, we observe how the group-generated results lay under the results for general ensembles \gls{sdp}s, i.e. this results are bounded by the group-generated results.
+In Figure (\ref{FigureQSEMEGenericEigenValues}) we present a 3D plot for the comparison of the success probability for exclusion for ensembles of 3 states between generic and group generated ensembles. The $x$ and $y$ axis representing de eigenvalues of the Gram matrix are analogous to previous figures. Nevertheless the $z$ axis shows the success probability for exclusion instead of the previous heat maps. Here we can observe how the randomly generated states raise the probabilities over the group generated values. As we have mentioned in the \emph{Methodology section} (i.e. Section \ref{sectionMethodology}), the generation of unitary matrices that fill $U(n)$ according Haar measure ensures the Gram matrices we are generating comprehend the entire set of possible Gram matrices homogeneously. Furthermore, we observe how the group generated results lay under the results for general ensembles \gls{sdp}s, i.e. these results are bounded from below by the group generated results.
 
 \subsection{Distribution of the general ensembles success exclusion probability}
 
-\hspace{20pt}In this section, we present the main results of the project. Specifically, we provide analytical results for generic ensembles and examine how the success probabilities for quantum state exclusion are distributed in relation to the lower bound defined by group-generated ensembles.
+\hspace{20pt}In this section, we present the main results of the project. Specifically, we provide analytical results for generic ensembles and examine how the success probabilities for quantum state exclusion are distributed in relation to the lower bound defined by group generated ensembles.
 
 We begin by recalling that any Gram matrix $ \mathcal{G} $ can be decomposed as $ \mathcal{G} = U D U^\dagger $, where $ D $ is a diagonal matrix containing the eigenvalues $\{g_i\geq0\}_{i=1}^n $. We fix these eigenvalues such that
 \begin{align*}
@@ -864,9 +889,9 @@ We emphasize that each computed result has been verified not to fall below this 
 
 From the results in Figure (\ref{FigureDistZ5ME0.962}), we observe the ensembles are broadly distributed across a range of success probabilities. However, a significant clustering occurs near a success probability of 1 under the \gls{me} protocol, indicating that perfect exclusion is achievable for a substantial subset of these randomly generated ensembles.
 
-These ensembles were generated uniformly by sampling unitary matrices $ U $ from $U(n)$, which determine the Gram matrices via the decomposition $\mathcal{G} = U D U^\dagger$. Ensembles with Gram matrices structurally similar to those of group-generated ensembles, particularly those diagonalized in the Fourier basis\footnote{Recall that we are working with ensembles of a prime number of states, for which the only known analytical result corresponds to the Gram matrix generated by $\mathbb{Z}/n\mathbb{Z}$, which is diagonalized in the Fourier basis. A more complete study would consider other group-generated cases.}, yield lower success probabilities. 
+These ensembles were generated uniformly by sampling unitary matrices $ U $ from $U(n)$, which determine the Gram matrices via the decomposition $\mathcal{G} = U D U^\dagger$. Ensembles with Gram matrices structurally similar to those of group generated ensembles, particularly those diagonalized in the Fourier basis\footnote{Recall that we are working with ensembles of a prime number of states, for which the only known analytical result corresponds to the Gram matrix generated by $\mathbb{Z}/n\mathbb{Z}$, which is diagonalized in the Fourier basis. A more complete study would consider other group generated cases.}, yield lower success probabilities. 
 
-Interestingly, there exists a threshold of deviation from the Fourier basis beyond which all ensembles yield a success probability of 1. In other words, beyond a certain \emph{distance} from the group-generated case, i.e. the Fourier basis, the ensembles become sufficiently distinguishable to allow perfect exclusion, regardless of the specific basis in which their Gram matrices are diagonalised.
+Interestingly, there exists a threshold of deviation from the Fourier basis beyond which all ensembles yield a success probability of 1. In other words, beyond a certain \emph{distance} from the group generated case, i.e. the Fourier basis, the ensembles become sufficiently distinguishable to allow perfect exclusion, regardless of the specific basis in which their Gram matrices are diagonalised.
 
 At this stage we can observe the crucial importance of the generation of the unitary matrices uniformly covering  $U(n)$, i.e. being generated according to the Haar measure. If we could not ensure we are exploring all the possible ensembles this observations and the study of the generic ensembles case would be completely pointless since we can overrepresent one specific kind of ensambles respect to others.
 
@@ -881,21 +906,49 @@ In Figure (\ref{FigureDistZ5ZE0.5}) we present the analogous results for the \gl
 
 Thus, we observe a similar behaviour respect to Figure (\ref{FigureDistZ5ME0.962}), still we attribute the pick of ensembles where perfect exclusion is feasible to the threshold of the \emph{distance} from the group generated case as previously discussed. Still some remarkable aspect of this protocol is the constant is the constant decay in the frequency for higher exclusion probabilities.
 
-As before, no ensembles yields lower success exclusion probabilities than the lower bound, proving this as a lower bound of the generic case scenario.
+As before, no ensemble yields a success exclusion probability below the theoretical lower bound.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.49\textwidth, trim={1.0cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf}
-	\includegraphics[width=0.49\textwidth, trim={1.0cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf}
+	\includegraphics[width=0.49\textwidth, trim={1.5cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionMinimumErrorRandomDistributionZ7Prob0.924.pdf}
+	\includegraphics[width=0.49\textwidth, trim={1.5cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionMinimumErrorRandomDistributionZ11Prob0.926.pdf}
 	\caption{Hisotgram depicting the distribution of generated Gram Matrices via the success probability for \gls{me} protocol with a lower bound of 0.926 for 7 states (left) and 11 states (right) ensembles of random priors probabilities.}
 	\label{FigureDistZ7Z11}
 \end{figure}
-In Figure~\ref{FigureDistZ7Z11}, we present the corresponding results for the \gls{me} protocol applied to ensembles composed of 7 (left) and 11 (right) quantum states, with a lower bound on the success exclusion probability of 0.926. As the number of states increases, the distribution approaches a Landau shape \cite{landau}. For ensembles of 7 elements, we still observe the phenomenon of accumulation near the perfect exclusion region. However, in the case of 11 states, only a small fraction of ensembles reach the perfect exclusion regime since the peak of the distribution is more narrow and the ensembles tend to agglomerate exclusion probabilities arround this peak.
 
+In Figure~\ref{FigureDistZ7Z11}, we present the results for the ME protocol applied to ensembles of 7 (left) and 11 (right) quantum states, with a fixed analytical lower bound on the success exclusion probability of 0.926. As the number of states increases, the resulting distributions tend to exhibit a Landau-like shape \cite{landau}. For the 7-state ensembles, we continue to observe a significant accumulation near the perfect exclusion region. However, in the case of 11 states, only a small fraction of ensembles achieve perfect exclusion. Furthermore, the main peak of the Landau-like distribution is narrower, and ensembles tend to cluster around this peak rather than at the upper limit.
+
+This behavior can be understood in terms of the relative freedom of success exclusion probabilities. As discussed in Appendix~\ref{sectionLimitCaseScenarios}, any exclusion probability for a generic ensemble of $n$ states must exceed $\frac{n-1}{n}$, the result expected from a random exclusion strategy. Therefore, the exclusion probabilities for 7 and 11 quantum states must lie within the following intervals,
+\begin{align*}
+\left[\frac{6}{7},1\right]\sim\left[0.858,1\right]\quad \left[\frac{10}{11},1\right]\sim\left[0.909,1\right],
+\end{align*}
+
+Although both cases are analyzed with the same lower bound of 0.926, they are not relatively equivalent. For the 7 state case, this lower bound lies approximately at the midpoint of the possible interval, thereby pushing the generation of random ensembles closer to the perfect exclusion. This results in the observable peak of ensembles of success exclusion probability of 1. \footnote{Notice that when we refer to \emph{perfect exclusion} there is no direct connection to the \emph{perfect exclussion regime} provided in Eq. (\ref{equationPerfectExclusionCondition}). In this regime of eigenvalues all the Gram Matrices give rise to ensembles where perfect exclusion can be performed. Now we are outside this regime, i.e. the lower analytical bound is different from 1, but still we can find ensembles where perfect exclusion can be acomplished.} In contrast, for the 11 state case, the analytical lower bound is very close to the minimum of the allowed region, meaning ensembles are relatively farther from perfect exclusion, hence, the peak located at 1 does not appear.
+
+We can interpret this phenomenon as the lower bound compressing the region in which exclusion probabilities can appear. For 7 states, the interval is more compressed, forcing a greater amount of ensembles to exhibit high exclusion probabilities, and thus more frequently reach the perfect exclusion, forming a peak. 
+
+This compression effect also helps to explain the location of the peak in the Landau-shaped distribution. In the 11 state case, the lower bound is closer to the exclusion probability expected from a random strategy. As a result, the eigenvalues\footnote{Note that all ensembles in Figure~\ref{FigureDistZ7Z11} share the same eigenvalues to ensure consistency with the analytical lower bound.} of the corresponding Gram matrices resemble those of an ensemble composed entirely of identical states.\footnote{This corresponds to the limit case scenario described in Appendix~\ref{sectionLimitCaseScenarios}, where the Gram matrix has one non-zero eigenvalue and all others equal to zero.} Therefore, most Gram matrices correspond to ensembles with very similar states yielding to exclusion probabilities close to the analytical lower bound since this is almost the same as the exact result of ensembles conformed by the same state. In contrast, the eigenvalues for the 7 state case are significantly different from this limit case, leading to more diverse exclusion probabilities and a higher chance of achieving perfect exclusion.
+
+In Figure (\ref{FigureDistZ7Z11ZE}), we present the corresponding results for ensembles composed of 7 (left) and 11 (right) quantum states under the \gls{ze} protocol.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.49\textwidth, trim={1.5cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionZeroErrorRandomDistributionZ7Prob0.553.pdf}
+	\includegraphics[width=0.49\textwidth, trim={1.5cm 0.3cm 2.4cm 1.5cm}, clip]{../Plots/ExclusionZeroErrorRandomDistributionZ11Prob0.5.pdf}
+	\caption{Hisotgram depicting the distribution of generated Gram Matrices via the success probability for \gls{ze} protocol with a lower bound of 0.553 for 7 states (left) and 11 states (right) ensembles of random priors probabilities.}
+	\label{FigureDistZ7Z11ZE}
+\end{figure}
+
+As depicted in Figure (\ref{FigureDistZ7Z11ZE}), the compression effect, previously observed in the \gls{me} protocol, is even more pronounced in the \gls{ze} setting. Here, the majority of ensembles yield a success exclusion probability of 1, leading to a broad peak at the upper end of the distribution. Notably, this effect appears equally strong in both the 7 and 11 state cases.
+
+As shown in Appendix~\ref{sectionLimitCaseScenarios}, the lower bound on the success exclusion probability for the \gls{ze} protocol, when using a random exclusion strategy, is always 0, regardless of the number of states in the ensemble. That is, in the limit case of an ensemble composed entirely of identical states, perfect exclusion becomes impossible, and the probability drops to zero. Consequently, success probabilities under the \gls{ze} protocol must lie within the full interval $[0,1]$ for any ensemble size, i.e. the usual interval.
+
+Therefore, unlike in the \gls{me} protocol, the compression effect induced by the analytical lower bound in the \gls{ze} scenario applies equally across all ensemble sizes since this are equally compressed. This explains why the distributions in both the 7 and 11 state cases are similarly skewed toward ensembles where perfect exclusion can be accomplished. 
+
+One might perceive an apparent inconsistency with the previous discussion, where we claimed that success probabilities under the \gls{ze} protocol to be higher than those obtained with the \gls{me} protocol. This discrepancy arises because the eigenvalues of the Gram matrices used in the \gls{ze} analysis differ from those in Figure (\ref{FigureDistZ7Z11}), which pertain to the \gls{me} protocol. In the \gls{ze} setting, the eigenvalues have been shifted in such a way that the ensembles are more likely to achieve perfect exclusion. As a result, most ensembles cluster around a success exclusion probability of 1 and no inconsistency raises up.
 
 \subsection{Intuition behind the results}
 
-\hspace{20pt}The intuition behind the exclusion task for group-generated ensembles being the worst case scenario for this task, thus yielding a lower bound for the probability of excluding a hypothesis state in the general case is as follows. Consider an ensemble $\{\ket{\psi_i}\}_{i=1}^n$ with a certain degree of symmetry, and a state $\ket{\psi_j}$ known to be a member of this ensemble. Our goal is to perform the exclusion task, i.e., to identify a state $\ket{\psi_k} \in \{\ket{\psi_i}\}_{i=1}^n$ such that we \emph{suspect} $\ket{\psi_k} \neq \ket{\psi_j}$\footnote{We emphasize the word \emph{suspect} because in many scenarios we are not certain about $\ket{\psi_k} \neq \ket{\psi_j}$, which corresponds to the \emph{non-perfect exclusion} case.}.
+\hspace{20pt}The intuition behind the exclusion task for group generated ensembles being the worst case scenario for this task, thus yielding a lower bound for the probability of excluding a hypothesis state in the general case is as follows. Consider an ensemble $\{\ket{\psi_i}\}_{i=1}^n$ with a certain degree of symmetry, and a state $\ket{\psi_j}$ known to be a member of this ensemble. Our goal is to perform the exclusion task, i.e., to identify a state $\ket{\psi_k} \in \{\ket{\psi_i}\}_{i=1}^n$ such that we \emph{belive} $\ket{\psi_k} \neq \ket{\psi_j}$\footnote{We emphasize the word \emph{belive} because in many scenarios we are not certain about $\ket{\psi_k} \neq \ket{\psi_j}$, which corresponds to the \emph{non-perfect exclusion} case.}.
 
 Due to the symmetric nature of the ensemble, the states are very similar to each other. This makes it especially difficult to identify which state is different from the unknown state. In contrast, if the ensemble includes a state $\ket{\tilde{\psi}}$ that is very different from the others, it becomes easier to determine whether $\ket{\tilde{\psi}}$ matches the unknown state or not. Thus, when the symmetry is broken, exclusion can be performed more accurately.
 
@@ -973,32 +1026,33 @@ Hence,
 \end{align*}
 where $\mathds{1}|_{\text{Bloch circle}}$ denotes the identity operator restricted to this subspace. This implies the ensemble is generated by a cyclic group of order 3, i.e., $\mathbb{Z}/3\mathbb{Z}$.
 
-In such a group-generated ensemble, distinguishing any pair of states is equally difficult due to symmetry. Therefore, exclusion becomes more challenging, representing a worst-case scenario compared to the asymmetric case.
+In such a group generated ensemble, distinguishing any pair of states is equally difficult due to symmetry. Therefore, exclusion becomes more challenging, representing a worst-case scenario compared to the asymmetric case.
 
 \newpage
 \section{Conclusions}
 
-\hspace{20pt}We have presented a robust protocol for generating ensembles of quantum states, along with their corresponding prior probabilities, in a manner that uniformly samples the full space of possible ensembles. This approach ensures a comprehensive and unbiased exploration for the study of Quantum State Exclusion (\gls{qse}). Using this ensemble generation method, we have computed the corresponding Semidefinite Programming (\gls{sdp}) optimization problems, allowing us to numerically verify and support the analytical results obtained for the success and error probabilities associated with group-generated ensembles.
+\hspace{20pt}We have presented a robust protocol for generating ensembles of quantum states, along with their corresponding prior probabilities, in a manner that uniformly samples the full space of possible ensembles\footnote{The protocol is presented in the \emph{Methodology} section (Section \ref{sectionMethodology}). }. This approach ensures a comprehensive and unbiased exploration for the study of Quantum State Exclusion (\gls{qse}). Using this ensemble generation method, we have computed the corresponding Semidefinite Programming (\gls{sdp}) optimization problems, allowing us to numerically verify and support the analytical results obtained for the success and error probabilities associated with group generated ensembles.
 
-The analytical results, presented in Section~\ref{sectionPreviousResults} \emph{Previous Results}, for the success probability in Quantum State Exclusion (\gls{qse}) for the Minimum Error (\gls{me}) and Zero Error (\gls{ze}) protocols for equal prior probabilities for group-generated ensambles have provide lower bounds for the success probability in Quantum State Exclusion (\gls{qse}) the same protocols. Our numerical simulations confirm that these group-generated ensembles consistently achieve the lowest exclusion success probabilities, thus validating their role as theoretical lower bounds when compared to the broader set of randomly generated ensembles. We have also offered conceptual insights into the intuition of why these bounds persist in the general case, including a geometric interpretation based on Gram matrix structure and ensemble distinguishability.
+The analytical results, presented in Section~\ref{sectionPreviousResults} \emph{Previous Results}, for the success probability in Quantum State Exclusion (\gls{qse}) for the Minimum Error (\gls{me}) and Zero Error (\gls{ze}) protocols for equal prior probabilities for group generated ensambles have provide lower bounds for the success probability in Quantum State Exclusion (\gls{qse}) for the same protocols. Our numerical simulations confirm that these group generated ensembles consistently achieve the lowest exclusion success probabilities, thus validating their role as theoretical lower bounds when compared to the broader set of randomly generated ensembles. We have also offered conceptual insights into the intuition of why these bounds persist in the general case, including a geometric interpretation based on Gram matrix structure and ensemble distinguishability.
 
-In addition, we have explored in detail the specific case of the cyclic group $\mathbb{Z}/3\mathbb{Z}$, the only group-generated ensemble that can be faithfully represented in two dimensions. This visualization not only has provided intuition but also demonstrates the practical advantage of \gls{qse} over its counterpart, Quantum State Discrimination (\gls{qsd}). These results strengthen the case for employing \gls{qse} in quantum information tasks where conventional discrimination strategies fall short.
+In addition, we have explored in detail the specific case of the cyclic group $\mathbb{Z}/3\mathbb{Z}$, the only group generated ensemble that can be faithfully represented in two dimensions. This visualization not only has provided intuition but also demonstrates the practical advantage of \gls{qse} over its counterpart, Quantum State Discrimination (\gls{qsd}). These results strengthen the case for employing \gls{qse} in quantum information tasks where conventional discrimination strategies fall short.
 
-The observations made in this project open the door to further analytical and numerical investigations. Extending this analysis to more generic ensembles, that may reveal new structural properties and exclusion capabilities. Furthermore, from the results and discussions in this project it results obvious that research in hybrid protocols that interpolate between Minimum Error \gls{me} and Zero Error \gls{ze} protocols as well as \gls{qse} and \gls{qsd} could potentially yield more optimal performance in practical applications.
+The observations made in this project open the door to further analytical and numerical investigations. Extending this analysis to more generic ensembles, that may reveal new structural properties and exclusion capabilities. Furthermore, from the results and discussions in this project it results obvious that research in hybrid protocols that interpolate between Minimum Error (\gls{me}) and Zero Error (\gls{ze}) protocols as well as \gls{qse} and \gls{qsd} could potentially yield more optimal performance in practical applications.
 
-In summary, this work contributes both rigorous numerical evidence and conceptual motivation for viewing group-generated ensembles as the worst case scenario in the study of quantum state exclusion, i.e. leading up to a lower bound in the exclusion probability. It also highlights promising directions for future work, including the development of tighter bounds, hybrid exclusion strategies, and generalizations of the analitical results.
+In summary, this work contributes both rigorous numerical evidence and conceptual motivation for viewing group generated ensembles as the worst case scenario in the study of quantum state exclusion, i.e. leading up to a lower bound in the exclusion probability. It also highlights promising directions for future work, including the development of tighter bounds, hybrid exclusion strategies, and generalizations of the analitical results.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\bibliographystyle{plain}
+%\bibliographystyle{unsrtnat}
 \bibliography{references} 
+
 %%%%%%%%
 \section*{List of abbreviations}
 \renewcommand{\glsnamefont}[1]{\textbf{#1}}
 \printnoidxglossary[type=main, title={\vspace{-1cm}}, nonumberlist, nogroupskip, style=super]
-
+\newpage
 \section*{Acknowledgements}
 
 \hspace{20pt}I am grateful to Dr. Ramón Muñoz Tapia for allowing me to be one of his pupils and for presenting this project. I am also deeply grateful to PhD. student Santiago Llorens Fernández for being the lighthouse that illuminates my path throughout this journey.
@@ -1045,9 +1099,9 @@ One of the primary uses of the dual formulation is in establishing optimality. I
 
 This duality principle not only provides a tool for verification but also suggests constructive approaches to discovering optimal measurements, especially in structured ensembles such as those generated by group actions.
 
-\section{Computation of Gram Matrices for a group-generated ensembles}\label{appendixComputationGroupGeneratedGramMatrices}
+\section{Computation of Gram Matrices for a group generated ensembles}\label{appendixComputationGroupGeneratedGramMatrices}
 
-\hspace{20pt}We can compute the Gram matrix for any group-generated ensemble by using the Cayley table~\cite{CayleyTable}, also known as the \emph{multiplication table}, of the group. For example, consider the smallest non-commutative group, $S_3$, consisting of the symmetries and rotations of an equilateral triangle. Denoting the identity as $e$, the rotations elements as $s$, $s^2$ (one being the result of 2 times the other) and the symmetries $p$, $q$, and $r$, the Cayley table is,
+\hspace{20pt}We can compute the Gram matrix for any group generated ensemble by using the Cayley table~\cite{CayleyTable}, also known as the \emph{multiplication table}, of the group. For example, consider the smallest non-commutative group, $S_3$, consisting of the symmetries and rotations of an equilateral triangle. Denoting the identity as $e$, the rotations elements as $s$, $s^2$ (one being the result of 2 times the other) and the symmetries $p$, $q$, and $r$, the Cayley table is,
 \begin{table}[H]
     \centering
     \caption{Cayley table of the $S_3$ group.}
@@ -1069,7 +1123,7 @@ This duality principle not only provides a tool for verification but also sugges
     \end{tabular}
 \end{table}
 
-We now identify $S_3$ as a group of unitary matrices\footnote{We treat each group element as a unitary matrix, and the group operation as matrix multiplication.}. It follows that the Gram matrix of the $S_3$ group-generated ensemble is the matrix of expected values of the Cayley table entries with respect to the seed state $\ket{\psi}$. That is,
+We now identify $S_3$ as a group of unitary matrices\footnote{We treat each group element as a unitary matrix, and the group operation as matrix multiplication.}. It follows that the Gram matrix of the $S_3$ group generated ensemble is the matrix of expected values of the Cayley table entries with respect to the seed state $\ket{\psi}$. That is,
 \begin{align*}
 	\mathcal{G}^{S_3}_{\psi} = \frac{1}{6}\begin{pmatrix}
         1 & \braket{s}_\psi & \braket{s^2}_\psi & \braket{p}_\psi & \braket{q}_\psi & \braket{r}_\psi \\ 
@@ -1086,11 +1140,13 @@ Notice we have assumed equal prior probabilities, i.e. $\eta_i = \eta_j = \frac{
 \braket{p}_{\psi},\ \braket{q}_{\psi},\ \braket{r}_{\psi} \in \mathbb{R}, \quad \forall \ket{\psi} \in \mathcal{H},
 \end{align*}
 
-which implies the unitary matrices corresponding to the triangle symmetries $p$, $q$, and $r$ are Hermitian. As a matter of fact we know the eigenvalues of this matrices can only be $\pm 1$ and at least one of them must be $-1$.\footnote{Otherwise, they would be the identity and we know them to be different by construction.} This procedure generalizes to any finite group $G$, showing that computing the Cayley table is equivalent to computing the Gram matrix of the corresponding group-generated ensemble.
+which implies the unitary matrices corresponding to the triangle symmetries $p$, $q$, and $r$ are Hermitian. As a matter of fact we know the eigenvalues of this matrices can only be $\pm 1$ and at least one of them must be $-1$.\footnote{Otherwise, they would be the identity and we know them to be different by construction.} This procedure generalizes to any finite group $G$, showing that computing the Cayley table is equivalent to computing the Gram matrix of the corresponding group generated ensemble.
 
 \section{Comparison \gls{qsd} vs. \gls{qse}}\label{appendixComparisonQSDvsQSE}
 
 \hspace{20pt}Here we present the results for the Quantum State Discrimination (\gls{qsd}) task to motivate the problem and highlight contrasts with the Quantum State Exclusion (\gls{qse}) task, which is the focus of this study.
+
+In Figure (\ref{FigureQSDMEZ3ZHeatmap}) we present the \gls{me} (left) and \gls{ze} (right) protocols results for the \gls{qsd} task. Recalling the probabilities are shown as functions of the modulus $|c|$ ($x$-axis) and phase $\theta$ ($y$-axis) of the overlap $c=|c|^{i\theta}$, which fully determines the Gram matrix. Notice we take equal prior probabilities, as discussed in the analytical results in Section (\ref{sectionPreviousResults}). This result is the analogous of Figure (\ref{FigureQSEMEZ3ZHeatmap}) for \gls{qsd}.
 
 \begin{figure}[H]
 	\centering
@@ -1098,7 +1154,7 @@ which implies the unitary matrices corresponding to the triangle symmetries $p$,
 		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
-	\caption{Heatmap of the success probability for minimum error (\gls{me}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\caption{Heatmap of the success probability for minimum error (\gls{me}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble.}
 	\label{FigureQSDMEZ3ZHeatmap}
 \end{figure}
 
@@ -1114,7 +1170,7 @@ and is the standard in \gls{qsd} under the \gls{me} protocol \cite{OptimalitySRM
 
 were $S_{i,i}$ denotes the diagonal elements of $S$ and $n$ the number of quantum states\footnote{In this case we are taking $n=3$.}.
 
-As expected, no ensemble yields a success probability below $1/3$, consistent with the discussion in Section (\ref{sectionLimitCaseScenarios}). Moreover, as the modulus of the overlap approaches zero, the success probability approaches one, corresponding to orthogonal states, again matching expectations.
+As expected, no ensemble yields a success probability below $1/3$, consistent with the discussion in Appendix (\ref{sectionLimitCaseScenarios}). Moreover, as the modulus of the overlap approaches zero, the success probability approaches one, corresponding to orthogonal states, again matching expectations.
 
 Figure (\ref{FigureQSDZEZ3ZHeatmap}) shows analogous results for the Zero Error (\gls{ze}) protocol under the same conditions.
 
@@ -1124,11 +1180,11 @@ Figure (\ref{FigureQSDZEZ3ZHeatmap}) shows analogous results for the Zero Error 
 		\put(60,25){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 		\put(60,55){$\mathcal{G}^{\mathbb{Z}/3\mathbb{Z}}<0$}
 	\end{overpic}
-	\caption{Heatmap of the success probability for zero-error (\gls{ze}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group-generated ensemble.}
+	\caption{Heatmap of the success probability for zero-error (\gls{ze}) quantum state discrimination for a $\mathbb{Z}/3\mathbb{Z}$ group generated ensemble.}
 	\label{FigureQSDZEZ3ZHeatmap}
 \end{figure}
 
-Again, the ZE protocol yields lower probabilities due to its constraints and the limit case scenarios match with the previos discussion in Section (\ref{sectionLimitCaseScenarios}) and Section (\ref{sectionResultsAndDiscussion}). 
+Again, the ZE protocol yields lower probabilities due to its constraints and the limit case scenarios match with the previous discussion in Appendix (\ref{sectionLimitCaseScenarios}) and Section (\ref{sectionResultsAndDiscussion}). 
 
 Figure (\ref{FigureQSDMEZESRM}) compares the performance of the ME, ZE, and SRM protocols.
 
@@ -1157,7 +1213,7 @@ This highlights the motivation behind the study of \gls{qse}, which allows for p
 
 \section{Limit Case Scenarios}\label{sectionLimitCaseScenarios}
 
-\hspace{20pt}Let us study the Gram matrix of a limit ensemble composed of $n$ identical quantum states with equal probabilities, i.e. the same state is repeated $n$ times in the ensemble with the same probability.\footnote{This case may appear paradoxical, since there is no way to distinguish between identical states. Nevertheless, we present it as a limiting scenario.} The Gram matrix reads:
+\hspace{20pt}Let us study the Gram matrix of a limit ensemble composed of $n$ identical quantum states with equal probabilities, i.e. the same state is repeated $n$ times in the ensemble with the same probability.\footnote{This case may appear paradoxical, since there is no way to distinguish between identical states. Nevertheless, we present it as a limiting scenario.} The Gram matrix reads,
 \begin{align*}
 	\mathcal{G}^{\text{limit}} = \frac{1}{n}\begin{pmatrix}
  1 & 1 & \cdots & 1 \\
@@ -1175,7 +1231,7 @@ The eigenvalues of this matrix are:
 	\lambda_1 &= 0.
 \end{align*}
 
-Clearly, this set of eigenvalues does not satisfy Eq. (\ref{equationPerfectExclusionCondition}), i.e., we are in the non-perfect exclusion regime. In fact, we can interpret this ensemble as a group-generated ensemble from the \emph{trivial group},\footnote{The trivial group is the group consisting solely of the neutral/identity element.} which generates no variation.
+Clearly, this set of eigenvalues does not satisfy Eq. (\ref{equationPerfectExclusionCondition}), i.e., we are in the non-perfect exclusion regime. In fact, we can interpret this ensemble as a group generated ensemble from the \emph{trivial group},\footnote{The trivial group is the group consisting solely of the neutral/identity element.} which generates no variation.
 
 Thus, the success and error probabilities for both the \gls{me} protocol is,
 \begin{align*}

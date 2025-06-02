@@ -1,103 +1,152 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{DiscriminationArticle}
-Joonwoo Bae and Leong-Chuan Kwek.
-\newblock Quantum state discrimination and its applications.
-\newblock {\em Journal of Physics A: Mathematical and Theoretical},
-  48(8):083001, January 2015.
-
-\bibitem{bae2015quantum}
-Joonwoo Bae and Leong-Chuan Kwek.
-\newblock Quantum state discrimination and its applications.
-\newblock {\em Journal of Physics A: Mathematical and Theoretical},
-  48(8):083001, 2015.
-
-\bibitem{PhysicsExclusionSource}
-Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
-  Perry.
-\newblock Conclusive exclusion of quantum states.
-\newblock {\em Phys. Rev. A}, 89:022336, Feb 2014.
-
-\bibitem{bandyopadhyay2014conclusive}
-Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
-  Perry.
-\newblock Conclusive exclusion of quantum states.
-\newblock {\em Physical Review A}, 89(2):022336, 2014.
-
-\bibitem{CayleyTable}
-Prof. Cayley.
-\newblock On the theory of groups.
-\newblock {\em American Journal of Mathematics}, 11(2):139--157, 1889.
-
-\bibitem{OptimalitySRM}
-Nicola Dalla~Pozza and Gianfranco Pierobon.
-\newblock Optimality of square-root measurements in quantum state
-  discrimination.
-\newblock {\em Physical Review A}, 91(4), April 2015.
-
-\bibitem{circulantMatrices}
-P.J. Davis.
-\newblock {\em Circulant Matrices}.
-\newblock Monographs and textbooks in pure and applied mathematics. Wiley,
-  1979.
-
-\bibitem{MainPaper}
+\bibitem[Diebra et~al.(2025)Diebra, Llorens, Bagan, Sentís, and
+  Muñoz-Tapia]{MainPaper}
 Arnau Diebra, Santiago Llorens, Emili Bagan, Gael Sentís, and Ramon
   Muñoz-Tapia.
 \newblock Quantum state exclusion for group-generated ensembles of pure states,
   2025.
+\newblock URL \url{https://arxiv.org/abs/2503.02568}.
 
-\bibitem{gour2020weight}
+\bibitem[Bae and Kwek(2015{\natexlab{a}})]{DiscriminationArticle}
+Joonwoo Bae and Leong-Chuan Kwek.
+\newblock Quantum state discrimination and its applications.
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical},
+  48\penalty0 (8):\penalty0 083001, January 2015{\natexlab{a}}.
+\newblock ISSN 1751-8121.
+\newblock \doi{10.1088/1751-8113/48/8/083001}.
+\newblock URL \url{http://dx.doi.org/10.1088/1751-8113/48/8/083001}.
+
+\bibitem[Bandyopadhyay et~al.(2014{\natexlab{a}})Bandyopadhyay, Jain,
+  Oppenheim, and Perry]{PhysicsExclusionSource}
+Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
+  Perry.
+\newblock Conclusive exclusion of quantum states.
+\newblock \emph{Phys. Rev. A}, 89:\penalty0 022336, Feb 2014{\natexlab{a}}.
+\newblock \doi{10.1103/PhysRevA.89.022336}.
+\newblock URL \url{https://link.aps.org/doi/10.1103/PhysRevA.89.022336}.
+
+\bibitem[Piani and Watrous(2020)]{piani2020quantum}
+Marco Piani and John Watrous.
+\newblock All quantum resources provide an advantage in exclusion tasks.
+\newblock \emph{Physical Review Letters}, 124\penalty0 (6):\penalty0 060404,
+  2020.
+\newblock \doi{10.1103/PhysRevLett.124.060404}.
+
+\bibitem[Bae and Kwek(2015{\natexlab{b}})]{bae2015quantum}
+Joonwoo Bae and Leong-Chuan Kwek.
+\newblock Quantum state discrimination and its applications.
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical},
+  48\penalty0 (8):\penalty0 083001, 2015{\natexlab{b}}.
+\newblock \doi{10.1088/1751-8113/48/8/083001}.
+
+\bibitem[Helstrom(1976)]{helstromBook}
+Carl~W. Helstrom.
+\newblock \emph{Quantum Detection and Estimation Theory}.
+\newblock Academic Press, New York, 1976.
+\newblock ISBN 978-0-12-340050-5.
+
+\bibitem[Dalla~Pozza and Pierobon(2015)]{OptimalitySRM}
+Nicola Dalla~Pozza and Gianfranco Pierobon.
+\newblock Optimality of square-root measurements in quantum state
+  discrimination.
+\newblock \emph{Physical Review A}, 91\penalty0 (4), April 2015.
+\newblock ISSN 1094-1622.
+\newblock \doi{10.1103/physreva.91.042334}.
+\newblock URL \url{http://dx.doi.org/10.1103/PhysRevA.91.042334}.
+
+\bibitem[Gour and Piani(2020)]{gour2020weight}
 Gilad Gour and Marco Piani.
 \newblock Weight of informativeness, state exclusion games, and excludible
   information.
-\newblock {\em New Journal of Physics}, 22(9):093062, 2020.
+\newblock \emph{New Journal of Physics}, 22\penalty0 (9):\penalty0 093062,
+  2020.
+\newblock \doi{10.1088/1367-2630/abae0e}.
 
-\bibitem{haarMeasure}
-Alfréd Haar.
-\newblock Der {Maßbegriff} in der {Theorie} der kontinuierlichen {Gruppen}.
-\newblock {\em Annals of Mathematics}, 34(1):147--169, 1933.
+\bibitem[Vandenberghe and Boyd(1996)]{vandenberghe1996semidefinite}
+Lieven Vandenberghe and Stephen Boyd.
+\newblock Semidefinite programming.
+\newblock \emph{SIAM review}, 38\penalty0 (1):\penalty0 49--95, 1996.
 
-\bibitem{numpyRNG}
+\bibitem[Bandyopadhyay et~al.(2014{\natexlab{b}})Bandyopadhyay, Jain,
+  Oppenheim, and Perry]{bandyopadhyay2014conclusive}
+Somshubhro Bandyopadhyay, Rahul Jain, Jonathan Oppenheim, and Christopher
+  Perry.
+\newblock Conclusive exclusion of quantum states.
+\newblock \emph{Physical Review A}, 89\penalty0 (2):\penalty0 022336,
+  2014{\natexlab{b}}.
+\newblock \doi{10.1103/PhysRevA.89.022336}.
+
+\bibitem[Davis(1979)]{circulantMatrices}
+P.J. Davis.
+\newblock \emph{Circulant Matrices}.
+\newblock Monographs and textbooks in pure and applied mathematics. Wiley,
+  1979.
+\newblock ISBN 9780471057710.
+\newblock URL \url{https://books.google.es/books?id=2wrvAAAAMAAJ}.
+
+\bibitem[Gallian(2006)]{LagrangeTheoreme}
+Joseph~A. Gallian.
+\newblock \emph{Contemporary Abstract Algebra}.
+\newblock Houghton Mifflin, Boston, 6th edition, 2006.
+\newblock ISBN 978-0-618-51471-7.
+
+\bibitem[SirSergi0(2025)]{GitHub}
+SirSergi0.
+\newblock Qsex\_tfg.
+\newblock \url{https://github.com/SirSergi0/QSEx_TFG}, 2025.
+
+\bibitem[{MOSEK ApS}(2024)]{mosek_sdp}
+{MOSEK ApS}.
+\newblock \emph{Semidefinite Optimization}, 2024.
+\newblock URL
+  \url{https://nbviewer.org/github/MOSEK/Tutorials/blob/master/binary-quadratic/binquad.ipynb}.
+\newblock Version 11.0.
+
+\bibitem[Sagnol and Stahlberg(2022)]{PICOS}
+Guillaume Sagnol and Maximilian Stahlberg.
+\newblock {PICOS}: A {Python} interface to conic optimization solvers.
+\newblock \emph{Journal of Open Source Software}, 7\penalty0 (70):\penalty0
+  3915, February 2022.
+\newblock \doi{10.21105/joss.03915}.
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen,
+  Cournapeau, Wieser, Taylor, Berg, Smith, et~al.]{numpyRNG}
 Charles~R Harris, K~Jarrod Millman, St{\'e}fan~J van~der Walt, Ralf Gommers,
   Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg,
   Nathaniel~J Smith, et~al.
 \newblock Array programming with {NumPy}.
-\newblock {\em Nature}, 585(7825):357--362, 2020.
+\newblock \emph{Nature}, 585\penalty0 (7825):\penalty0 357--362, 2020.
 
-\bibitem{helstromBook}
-Carl~W. Helstrom.
-\newblock {\em Quantum Detection and Estimation Theory}.
-\newblock Academic Press, New York, 1976.
+\bibitem[Haar(1933)]{haarMeasure}
+Alfréd Haar.
+\newblock Der {Maßbegriff} in der {Theorie} der kontinuierlichen {Gruppen}.
+\newblock \emph{Annals of Mathematics}, 34\penalty0 (1):\penalty0 147--169,
+  1933.
+\newblock \doi{10.2307/1968346}.
 
-\bibitem{landau}
-L.~Landau.
-\newblock On the energy loss of fast particles by ionization.
-\newblock {\em Journal of Physics (USSR)}, 8:201, 1944.
-
-\bibitem{UnitaryMatricesGeneration}
+\bibitem[Mezzadri(2007)]{UnitaryMatricesGeneration}
 Francesco Mezzadri.
 \newblock How to generate random matrices from the classical compact groups,
   2007.
+\newblock URL \url{https://arxiv.org/abs/math-ph/0609050}.
 
-\bibitem{mosek_sdp}
-{MOSEK ApS}.
-\newblock {\em Semidefinite Optimization}, 2024.
-\newblock Version 11.0.
+\bibitem[Landau(1944)]{landau}
+L.~Landau.
+\newblock On the energy loss of fast particles by ionization.
+\newblock \emph{Journal of Physics (USSR)}, 8:\penalty0 201, 1944.
 
-\bibitem{piani2020quantum}
-Marco Piani and John Watrous.
-\newblock All quantum resources provide an advantage in exclusion tasks.
-\newblock {\em Physical Review Letters}, 124(6):060404, 2020.
-
-\bibitem{PICOS}
-Guillaume Sagnol and Maximilian Stahlberg.
-\newblock {PICOS}: A {Python} interface to conic optimization solvers.
-\newblock {\em Journal of Open Source Software}, 7(70):3915, February 2022.
-
-\bibitem{GitHub}
-SirSergi0.
-\newblock Qsex\_tfg-temporal\_name-.
-\newblock \url{https://github.com/SirSergi0/QSEx_TFG-Temporal_Name-}, 2025.
+\bibitem[Cayley(1889)]{CayleyTable}
+Prof. Cayley.
+\newblock On the theory of groups.
+\newblock \emph{American Journal of Mathematics}, 11\penalty0 (2):\penalty0
+  139--157, 1889.
+\newblock ISSN 00029327, 10806377.
+\newblock URL \url{http://www.jstor.org/stable/2369415}.
 
 \end{thebibliography}
