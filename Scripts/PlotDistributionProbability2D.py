@@ -18,8 +18,8 @@ from collections import Counter
 from picos.modeling.problem import SolutionFailure  
 
 
-NumberOfMatrices              = 7
-MatrixDimension               = 7
+NumberOfMatrices              = 11
+MatrixDimension               = 11
 MatrixGenerationMethod        = "Random"
 ProbabliltiesGenerationMethod = "Equal"
 IterationsRandomSets          = 100000
@@ -31,7 +31,7 @@ SDPZeroErrorList              = []
 LowerBound                    = []
 LowerBoundZE                  = []
 EigenValues = [1 for i in range (NumberOfMatrices-1)]
-EigenValues.append(70)
+EigenValues.append(210)
 EigenValuesNormalized   = [iEigenValue*NumberOfMatrices/sum(EigenValues) for iEigenValue in EigenValues]
 
 mode = "ZE"
